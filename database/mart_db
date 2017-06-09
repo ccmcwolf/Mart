@@ -1,3 +1,5 @@
+
+drop database mart;
 CREATE DATABASE IF NOT EXISTS `mart` ;
 
 USE `mart`;
@@ -87,16 +89,16 @@ CREATE TABLE `product` (
   `stripSize` int(11) DEFAULT NULL,
   `unitPrice` double DEFAULT NULL,
   `typeId` int(11) DEFAULT NULL,
-  PRIMARY KEY (`medicineId`)  
+  PRIMARY KEY (`productId`)  
 ) ENGINE=InnoDB AUTO_INCREMENT=20  ;
 
 
 
 
 
-DROP TABLE IF EXISTS `medicine_order`;
+DROP TABLE IF EXISTS `product_order`;
 
-CREATE TABLE `medicine_order` (
+CREATE TABLE `product_order` (
   `productOrderId` int(11) NOT NULL AUTO_INCREMENT,
   `orderOrderNo` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
@@ -104,7 +106,7 @@ CREATE TABLE `medicine_order` (
   `productId` int(11) DEFAULT NULL,
   PRIMARY KEY (`productOrderId`),
   KEY `FKCACF2D0984C55179` (`productId`),
-  CONSTRAINT `FKCACF2D0984C55179` FOREIGN KEY (`productId`) REFERENCES `medicine` (`productId`)
+  CONSTRAINT `FKCACF2D0984C55179` FOREIGN KEY (`productId`) REFERENCES `product` (`productId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20  ;
 
 
@@ -193,8 +195,7 @@ CREATE TABLE `order` (
   KEY `FK75DCD23192137E8B` (`courierId`),
   KEY `FK75DCD231A53974D1` (`shopNo`),
   CONSTRAINT `FK75DCD23192137E8B` FOREIGN KEY (`courierId`) REFERENCES `courier` (`courierId`),
-  CONSTRAINT `FK75DCD231A53974D1` FOREIGN KEY (`pharmacyNo`) REFERENCES `pharmacy` (`pharmacyNo`),
+  CONSTRAINT `FK75DCD231A53974D1` FOREIGN KEY (`shopNo`) REFERENCES `shop` (`shopNo`),
   CONSTRAINT `FK75DCD231DA2CA4AE` FOREIGN KEY (`delivery_optionid`) REFERENCES `delivery_option` (`delivery_optionid`),
   CONSTRAINT `FK75DCD231E78EC4C6` FOREIGN KEY (`customerEmail`) REFERENCES `customer` (`customerEmail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15;
-
