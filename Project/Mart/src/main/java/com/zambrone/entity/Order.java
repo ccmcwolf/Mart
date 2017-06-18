@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 13/06/2017.
+ * Created by Chamith on 18/06/2017.
  */
 @Entity
 public class Order {

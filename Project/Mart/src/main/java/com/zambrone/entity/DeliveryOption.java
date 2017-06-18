@@ -3,7 +3,7 @@ package com.zambrone.entity;
 import javax.persistence.*;
 
 /**
- * Created by Chamith on 13/06/2017.
+ * Created by Chamith on 18/06/2017.
  */
 @Entity
 @Table(name = "delivery_option", schema = "mart", catalog = "")
