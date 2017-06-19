@@ -167,7 +167,7 @@
 
                 <ul id="smallullist" class="collection">
                     <li class="collection-item avatar">
-                        <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg" alt="" class="circle">
+                        <img  class="item_thumb" src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg"  thumb ="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg"  alt="" class="circle">
                         <span class="title">Item Name</span>
                         <p>X 1<br>$15.25
 
@@ -200,6 +200,7 @@
                 <ul class="collection" id="smallcart" >
                     <li class="collection-item avatar">
                         <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg" alt="" class="circle">
+                        <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
                         $15.25 &nbsp; X &nbsp; 1
 
@@ -279,7 +280,8 @@ simpleCart({
     // see the cart columns documentation
     cartColumns: [
         { attr: "name", label: "Name"},
-        { attr: "id" , label: "Id" },
+        { attr: "id" , label: "ID" },
+        {view:'image' , attr:'thumb', label: false},
         { view: "currency", attr: "price", label: "Price"},
         { view: "decrement", label: false},
         { attr: "quantity", label: "Qty"},
@@ -350,14 +352,13 @@ simpleCart({
 });
 
 simpleCart.bind( "afterAdd" , function( item ){
-    Materialize.toast(item.get("name")+ " was added to the cart!", 4000);
+
+    Materialize.toast(item.get("name")+ item.get("uid")  +" was added to the cart!", 4000);
 
     loaditemtocart();
 });
 function loaditemtocart() {
     $('.collection-item').remove();
-
-
 
     simpleCart.each(function(item){
 
