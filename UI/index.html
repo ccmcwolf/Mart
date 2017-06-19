@@ -80,8 +80,12 @@
                     <li class="tab col s6"><a href="#test2"><i class="material-icons">shopping_cart</i>Cart</a></li>
                 </ul>
             </div>
+            <div class = "col s3 center grey darken-4 white-text">
+                <i class="material-icons">shopping_cart</i>Small Cart</a>
 
-            <div id="test1" class="col s9">
+            </div>
+
+            <div id="test1" class="col s9 ">
 
                 <div class="row">
                     <div class="col s4">
@@ -113,6 +117,24 @@
                             <div class="card-content">
                                <br>
                                <p class="item_price">14.50</p><br>
+                            </div>
+                            <div class="card-action" >
+                                <a href="#"> Add to Cart </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="card simpleCart_shelfItem">
+                            <div class="card-image">
+                                <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/sample1.jpg">
+                                <span class="card-title item_name">Wooden Chair</span>
+                                <a href="javascript:;"
+                                   class="btn-floating halfway-fab waves-effect waves-light red item_add"><i
+                                        class="material-icons">add</i></a>
+                            </div>
+                            <div class="card-content">
+                                <br>
+                                <p class="item_price">12.50</p><br>
                             </div>
                             <div class="card-action" >
                                 <a href="#"> Add to Cart </a>
@@ -218,9 +240,8 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                    content.</p>
+                <h5 class="white-text">Mart Online Shopping</h5>
+                <p class="grey-text text-lighten-4">@2017</p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Links</h5>
@@ -245,9 +266,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/simpleCart.js"></script>
-<script>$(document).ready(function () {
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
-});
+<script>
 $('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
         edge: 'right', // Choose the horizontal origin
@@ -332,7 +351,14 @@ simpleCart({
 
 simpleCart.bind( "afterAdd" , function( item ){
     Materialize.toast(item.get("name")+ " was added to the cart!", 4000);
-    $('#smallullist').empty();
+
+    loaditemtocart();
+});
+function loaditemtocart() {
+    $('.collection-item').remove();
+
+
+
     simpleCart.each(function(item){
 
         var ulElement = document.getElementById('smallcart');
@@ -343,16 +369,19 @@ simpleCart.bind( "afterAdd" , function( item ){
         spanelement.setAttribute('class','title');
         spanelement.innerHTML=item.get('name');
         var p = document.createElement('p');
-        p.innerHTML=item.get('quantity')+' X '+item.get('price');
+        p.innerHTML=item.get('quantity')+' X '+item.get('price').toFixed(2);
         var totp = document.createElement('p');
         totp.setAttribute('align','right');
-        var textnode =document.createTextNode(item.get('quantity')* item.get('price'));
+        var price = item.get('price').toFixed(2);
+        var textnode =document.createTextNode(item.get('quantity')* price);
         totp.appendChild(textnode);
         var aremove = document.createElement('a');
         aremove.setAttribute('class','secondary-content');
         var itemremovelogo = document.createElement('i');
         itemremovelogo.setAttribute('class','material-icons');
         itemremovelogo.innerHTML = 'close';
+        //itemremovelogo.setAttribute('onclick','removeitem('+item+');');
+        itemremovelogo.setAttribute('onclick','removeitem("'+item.id()+'");');
         aremove.appendChild(itemremovelogo);
 
 
@@ -364,6 +393,28 @@ simpleCart.bind( "afterAdd" , function( item ){
 
         console.log( item.get('quantity') + ' x ' + item.get('name') );
     });
+
+}
+
+
+function removeitem(itemid){
+
+var item = simpleCart.find(itemid);
+
+var qty = item.get('quantity');
+    if(qty>0){
+        qty--;
+        item.set('quantity',qty);
+    }
+    else{
+
+        item.remove();
+    }
+    loaditemtocart();
+}
+$(window).load(function() {
+    // executes when HTML-Document is loaded and DOM is ready
+    loaditemtocart();
 });
 
 </script>
