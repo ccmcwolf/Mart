@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90681d5c-9225-4784-9c6d-d685ada7417c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/css/mystyle.css" afterPath="$PROJECT_DIR$/UI/css/mystyle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/products.html" afterPath="$PROJECT_DIR$/UI/products.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/shops.html" afterPath="$PROJECT_DIR$/UI/shops.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,51 +19,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="155" column="62" lean-forward="true" selection-start-line="155" selection-start-column="62" selection-end-line="155" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shops.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shops.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/shops.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="127" column="15" lean-forward="false" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
+            <state relative-caret-position="282">
+              <caret line="198" column="15" lean-forward="true" selection-start-line="198" selection-start-column="15" selection-end-line="198" selection-end-column="15" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="products.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="products.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UI/products.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mystyle.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/css/mystyle.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shopcss.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/UI/css/shopcss.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+            <state relative-caret-position="273">
+              <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -89,8 +61,8 @@
       <find>add</find>
       <find>el</find>
       <find>.card</find>
-      <find>slide-out</find>
       <find>filter</find>
+      <find>slide-out</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,6 +84,7 @@
         <option value="$PROJECT_DIR$/UI/css/shopcss.css" />
         <option value="$PROJECT_DIR$/UI/css/mystyle.css" />
         <option value="$PROJECT_DIR$/UI/shops.html" />
+        <option value="$PROJECT_DIR$/UI/products.html" />
       </list>
     </option>
   </component>
@@ -317,12 +290,12 @@
       <updated>1497903357458</updated>
       <workItem from="1497903358855" duration="5000" />
       <workItem from="1497903563775" duration="3421000" />
-      <workItem from="1497934792270" duration="17369000" />
+      <workItem from="1497934792270" duration="19919000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20795000" />
+    <option name="totallyTimeSpent" value="23345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -475,42 +448,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/css/shopcss.css">
+    <entry file="file://$PROJECT_DIR$/UI/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        <state relative-caret-position="2495">
+          <caret line="155" column="62" lean-forward="true" selection-start-line="155" selection-start-column="62" selection-end-line="155" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/css/mystyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/index.html">
+    <entry file="file://$PROJECT_DIR$/UI/css/shopcss.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="155" column="62" lean-forward="true" selection-start-line="155" selection-start-column="62" selection-end-line="155" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/products.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="55" column="41" lean-forward="true" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+        <state relative-caret-position="126">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/shops.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="127" column="15" lean-forward="false" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
+        <state relative-caret-position="282">
+          <caret line="198" column="15" lean-forward="true" selection-start-line="198" selection-start-column="15" selection-end-line="198" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/products.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding />
         </state>
       </provider>

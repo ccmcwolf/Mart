@@ -35,9 +35,9 @@
 </nav>
 <div class="col s12 grey darken-4">
     <div class="container col s12">
-        <a href="#!" class="breadcrumb">First</a>
-        <a href="#!" class="breadcrumb">Second</a>
-        <a href="#!" class="breadcrumb">Third</a>
+        <a href="#!" class="breadcrumb">Explore</a>
+        <a href="#!" class="breadcrumb">Shops</a>
+        <a href="#!" class="breadcrumb">Products</a>
     </div>
 </div>
 <ul id="slide-out" class="side-nav">
@@ -85,9 +85,10 @@
             </div>
 
             <div id="test1" class="col s9 ">
+                <input id="filter" type="text" class="validate">
 
-                <div class="row">
-                    <div class="col s4">
+                <ul class="list row">
+                    <li class="col s4">
                         <div class="card">
                             <div class="card-image">
                                 <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/sample1.jpg">
@@ -97,14 +98,14 @@
                             </div>
                             <div class="card-content">
                                 <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
+                                   </p>
                             </div>
                             <div class="card-action">
                                 <a href="#">This is a link</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s4">
+                    </li>
+                    <li class="col s4">
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
                                 <img class="item_path"  src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg">
@@ -121,8 +122,8 @@
                                 <a href="#"> Add to Cart </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s4">
+                    </li>
+                    <li class="col s4">
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
                                 <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/sample1.jpg">
@@ -139,8 +140,8 @@
                                 <a href="#"> Add to Cart </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s4">
+                    </li>
+                    <li class="col s4">
                         <div class="card">
                             <div class="card-image">
                                 <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/sample1.jpg">
@@ -150,16 +151,16 @@
                             </div>
                             <div class="card-content">
                                 <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
+                                   </p>
                             </div>
                             <div class="card-action">
                                 <a href="#">This is a link</a>
                             </div>
                         </div>
-                    </div>
+                    </li>
 
 
-                </div>
+                </ul>
 
             </div>
             <div id="test2" class="col s9">
@@ -265,6 +266,7 @@
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/jquery.filterList.js"></script>
 <script type="text/javascript" src="js/simpleCart.js"></script>
 <script>
 $('.button-collapse').sideNav({
@@ -417,11 +419,12 @@ var qty = item.get('quantity');
     }
     loaditemtocart();
 }
+
 $(window).load(function() {
     // executes when HTML-Document is loaded and DOM is ready
     loaditemtocart();
 });
-
+$('#filter').filterList();
 </script>
 </body>
 </html>
