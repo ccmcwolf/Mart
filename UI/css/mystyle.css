@@ -5,3 +5,8 @@ html {
 .card {
     height:400px;
 }
+.card-content{
+
+    height: 160px;
+
+}
