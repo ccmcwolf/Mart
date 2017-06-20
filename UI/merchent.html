@@ -7,6 +7,8 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="css/merchant.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+          media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -82,7 +84,7 @@
                 <div class="card-panel orange accent-3 white-text center-align">
                     <i class="material-icons">shopping_basket</i><br>
                     <span class="white-text">Orders to be delivered</span>
-                    <h3>2</h3>
+                    <h3>3</h3>
                 </div>
             </div>
             <div class="col s12 m4">
@@ -101,52 +103,230 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col s12">
-                <div class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="http://lorempixel.com/100/190/nature/6">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="http://lorempixel.com/100/190/nature/6">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="http://lorempixel.com/100/190/nature/6">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>I am a very simple card. I am good at containing small bits of information.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#">This is a link</a>
-                        </div>
-                    </div>
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab col s3"><a href="#test1">Test 1</a></li>
+                    <li class="tab col s3"><a class="active" href="#activeorders">Active Orders</a></li>
+
+                    <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                </ul>
+            </div>
+            <div id="activeorders" class="col s12">
+
+                <div class="col s12">
+                    <!--<div class="col s6 card horizontal">-->
+                    <!--<div class="card-image">-->
+                    <!--<img src="http://lorempixel.com/100/190/nature/6">-->
+                    <!--</div>-->
+                    <!--<div class="card-stacked">-->
+                    <!--<div class="card-content">-->
+                    <!--<p>I am a very simple card. I am good at containing small bits of information.</p>-->
+                    <!--</div>-->
+                    <!--<div class="card-action">-->
+                    <!--<a href="#">This is a link</a>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <ul class="collapsible" data-collapsible="expandable">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>Order #7456845
+
+                                <div class="center-align">Order Date : 23 - 06 - 2017</div>
+                                <div class="center-align">Delivery Time : 05:00 PM</div>
+                                <div class="center-align">Oder Total : $14</div>
+                                <div id="getting-started"></div>
+
+                            </div>
+                            <table class="container collapsible-body highlight">
+                                <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test6"/>
+                                        <label for="test6">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test7"/>
+                                        <label for="test7">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test8" checked="checked"/>
+                                        <label for="test8">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                            Mark
+                                            as Order Completed
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+                        <li>
+
+                            <span class="collapsible-header"><i class="material-icons">done_all</i>Order #7456845
+
+                                <div class="center-align">Order Date : 01 - 05 - 2017</div>
+                                <div class="center-align">Delivery Time : 05:00 PM</div>
+                                <div class="center-align">Oder Total : $14</div>
+                                <span class="countdown highlight"></span>
+                            </span>
+
+                            <table class="container collapsible-body highlight">
+                                <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test36"/>
+                                        <label for="test36">Completed</label>
+                                    </p></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                            Mark
+                                            as Order Completed
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Order #7456845
+
+                                <div class="center-align">Order Date : 01 - 05 - 2017</div>
+                                <div class="center-align">Delivery Time : 05:00 PM</div>
+                                <div class="center-align">Oder Total : $14</div>
+
+                            </div>
+                            <table class="container collapsible-body highlight">
+                                <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Ordered Date</th>
+                                    <th>Delievered Date</th>
+                                    <th>Delievered Time</th>
+                                    <th>Order Status</th>
+                                    <th>Order Total</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                    <td>#756454544</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test46"/>
+                                        <label for="test46">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test57"/>
+                                        <label for="test57">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td>Alvin</td>
+                                    <td>Eclair</td>
+                                    <td><p>
+                                        <input type="checkbox" id="test18" checked="checked"/>
+                                        <label for="test18">Completed</label>
+                                    </p></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                            Mark
+                                            as Order Completed
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </li>
+                    </ul>
+
                 </div>
 
             </div>
+            <div id="test1" class="col s12">
+
+                <table id="completedorders">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Item Name</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>$0.87</td>
+                    </tr>
+                    <tr>
+                        <td>Alan</td>
+                        <td>Jellybean</td>
+                        <td>$3.76</td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Lollipop</td>
+                        <td>$7.00</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div id="test4" class="col s12">Test 4</div>
+
 
         </div>
     </div>
 </div>
+</body>
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -175,14 +355,34 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
 <script>$('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
         edge: 'right', // Choose the horizontal origin
         closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
         draggable: true // Choose whether you can drag to open on touch screens
     }
-);</script>
+);
+$(document).ready(function () {
+    $('ul.tabs').tabs();
+    $('#completedorders').DataTable();
+});
+$(document).ready(function () {
+    $('ul.tabs').tabs('select_tab', 'tab_id');
+});
+
+
+$("#getting-started")
+    .countdown("2017/07/01", function (event) {
+        $(this).text(
+            event.strftime('%D days %H:%M:%S')
+        );
+    });
+
+</script>
 
 </body>
 </html>
