@@ -67,7 +67,39 @@
 <div class="section no-pad-bot" id="index-banner">
 
 
+
     <div class="container">
+        <form>
+            <!--<input type="text" id="filter">-->
+            <ul>
+                <li>Alpha</li>
+                <li>Bravo</li>
+                <li>Charlie</li>
+                <li>Delta</li>
+                <li>Echo</li>
+                <li>Foxtrot</li>
+                <li>Golf</li>
+                <li>Hotel</li>
+                <li>India</li>
+                <li>Juliet</li>
+                <li>Kilo</li>
+                <li>Lima</li>
+                <li>Mike</li>
+                <li>November</li>
+                <li>Oscar</li>
+                <li>Papa</li>
+                <li>Quebec</li>
+                <li>Romeo</li>
+                <li>Sierra</li>
+                <li>Tango</li>
+                <li>Uniform</li>
+                <li>Victor</li>
+                <li>Whiskey</li>
+                <li>X-ray</li>
+                <li>Yankee</li>
+                <li>Zulu</li>
+            </ul>
+        </form>
 
         <br><br>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -78,21 +110,22 @@
                 <h5>Explore Shops</h5>
 
             </div>
-            <div class="col s12">
-                <div class="input-field">
-                    <input class="search" id="search" type="search" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-
-
-            </div>
+            <!--<div class="col s12">-->
+                <!--<div class="input-field">-->
+                    <!--<input class="search" id="search" type="search" required>-->
+                    <!--<label class="label-icon" for="search"><i class="material-icons">search</i></label>-->
+                    <!--<i class="material-icons">close</i>-->
+                <!--</div>-->
+            <!--</div>-->
 
         </div>
-
+        <form>
+            <input type="text" id="filter">
         <ul class="list row">
-            <li class="col s6 card horizontal">
 
+
+            <li class="col s6 card horizontal">
+               
                 <div class="card-image">
                     <img src="img/food-h-c-150-400-1.jpg">
 
@@ -103,6 +136,7 @@
                         <p>Fort, Colombo. Casual Dining</p>
 
                     </div>
+
                     <div class="card-action">
                         <div class="rateYo"></div>
                         <a href="#">This is a link</a>
@@ -161,7 +195,7 @@
                 </div>
             </li>
         </ul>
-
+        </form>
     </div>
 </div>
 <footer class="page-footer">
@@ -193,7 +227,7 @@
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/jquery.filterList.js.js"></script>
+<script type="text/javascript" src="js/jquery.filterList.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
 <script>$('.button-collapse').sideNav({
@@ -203,6 +237,7 @@
         draggable: true // Choose whether you can drag to open on touch screens
     }
 );
+
 
 $(function () {
 
@@ -215,6 +250,7 @@ $(function () {
         }
     });
 
+$('#filter').filterList();
 
 
 });
