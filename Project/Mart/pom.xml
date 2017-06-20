@@ -6,7 +6,7 @@
 	<groupId>com.zambrone</groupId>
 	<artifactId>zambrone</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>zambrone</name>
 	<description>Mart Online Food Platform</description>
@@ -32,6 +32,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.keycloak.bom</groupId>
+			<artifactId>keycloak-adapter-bom</artifactId>
+			<version>3.1.0.Final</version>
+			<type>pom</type>
+			<scope>import</scope>
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
