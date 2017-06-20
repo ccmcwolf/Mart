@@ -8,5 +8,7 @@ html {
 .card-content{
 
     height: 160px;
-
+}
+#map {
+    height: 250px;
 }
