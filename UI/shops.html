@@ -22,7 +22,8 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Signup</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
@@ -83,7 +84,8 @@
             <div class="input-field">
                 <i class="material-icons prefix">search</i>
             </div>
-            <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category" type="text" class="validate">
+            <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category" type="text"
+                   class="validate">
 
             <ul class="list row">
                 <li class="col s6 card horizontal">
@@ -92,12 +94,12 @@
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <h5 class="name"><a href="products.html">Fast Fooddie</a></h5>
+                            <h5 class="name"><a href="products.html">Cafe Fort</a></h5>
                             <p>Fort, Colombo. Casual Dining</p>
                         </div>
                         <div class="card-action">
                             <div class="rateYo"></div>
-                            <a href="#">This is a link</a>
+                            <a href="#">More info</a>
                         </div>
                     </div>
 
@@ -115,7 +117,7 @@
                         </div>
                         <div class="card-action">
                             <div class="rateYo"></div>
-                            <a href="#">This is a link</a>
+                            <a href="#">More info</a>
                         </div>
                     </div>
 
@@ -131,7 +133,7 @@
                         </div>
                         <div class="card-action">
                             <div class="rateYo"></div>
-                            <a href="#">This is a link</a>
+                            <a href="#">More info</a>
                         </div>
                     </div>
                 </li>
@@ -148,12 +150,47 @@
                         </div>
                         <div class="card-action">
                             <div class="rateYo"></div>
-                            <a href="#">This is a link</a>
+                            <a href="#modal1">More info</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="col s6 card horizontal">
+                    <div class="card-image">
+                        <img src="img/food-h-c-150-400-7.jpg">
+
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>
+                            <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+
+                        </div>
+                        <div class="card-action">
+                            <div class="rateYo"></div>
+                            <a href="#modal1">More info</a>
                         </div>
                     </div>
                 </li>
             </ul>
         </form>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Pilawoos (Open: 09:00 AM - 03:00 AM)</h4>
+            <div><img class="responsive-img"
+                      src="https://s3-ap-southeast-1.amazonaws.com/cdn.quickee.lk/4619/conversions/profile_thumb.jpg"/>
+                <div>Hotel De Pilawoos (Colombo -3) is one of the most popular 24 hours eateries in
+                    Colombo which has been
+                    serving customers for over 20 years!
+                </div>
+            </div>
+
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
     </div>
 </div>
 <footer class="page-footer">
@@ -196,6 +233,9 @@
     }
 );
 
+$(document).ready(function () {
+    $('.modal').modal();
+});
 
 $(function () {
 

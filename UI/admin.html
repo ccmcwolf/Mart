@@ -81,8 +81,8 @@
         </div>
         <div class="row">
             <div class=" col s12 m3">
-                <div class="card-panel orange accent-3 white-text center-align">
-                    <i class="material-icons">user</i><br>
+                <div class="card-panel green accent-7 white-text center-align">
+                    <i class="material-icons">verified_user</i><br>
                     <span class="white-text">Users</span>
                     <h3>3</h3>(This month)
                     <h3>12</h3>(Total)
@@ -90,7 +90,7 @@
             </div>
             <div class=" col s12 m3">
                 <div class="card-panel teal white-text center-align">
-                    <i class="material-icons">shopping_basket</i><br>
+                    <i class="material-icons">store</i><br>
                     <span class="white-text">Merchants</span>
                     <h3>3</h3>(This month)
                     <h3>12</h3>(Total)
@@ -120,9 +120,11 @@
                     <li class="tab col s3"><a class="active" href="#activeorders">Active Orders</a></li>
 
                     <li class="tab col s3"><a href="#revenue">Revenue Report</a></li>
-                    <li class="tab col s3"><a href="#topselling">Top Selling</a></li>
+                    <li class="tab col s3"><a href="#topselling">Top Products Selling</a></li>
                 </ul>
             </div>
+
+
             <div id="activeorders" class="col s12">
 
                 <div class="col s12">
@@ -139,14 +141,15 @@
                     <!--</div>-->
                     <!--</div>-->
                     <!--</div>-->
-
+                    <input id="filter" placeholder="Search Anything on Orders" type="text"
+                           class="validate">
                     <ul class="collapsible" data-collapsible="expandable">
                         <li>
                             <div class="collapsible-header"><i class="material-icons">place</i>Order #7456845
 
-                                <div class="center-align">Order Date : 23 - 06 - 2017</div>
+                                <div class="center-align">Order Date : 23-06-2017</div>
                                 <div class="center-align">Delivery Time : 05:00 PM</div>
-                                <div class="center-align">Oder Total : $14</div>
+                                <div class="center-align">Order Total : $14</div>
                                 <div id="getting-started"></div>
 
                             </div>
@@ -198,11 +201,11 @@
                         </li>
                         <li>
 
-                            <span class="collapsible-header"><i class="material-icons">done_all</i>Order #7456845
+                            <span class="collapsible-header"><i class="material-icons">done_all</i>Order #7656846
 
-                                <div class="center-align">Order Date : 01 - 05 - 2017</div>
-                                <div class="center-align">Delivery Time : 05:00 PM</div>
-                                <div class="center-align">Oder Total : $14</div>
+                                <div class="center-align">Order Date : 11-05-2017</div>
+                                <div class="center-align">Delivery Time : 08:00 PM</div>
+                                <div class="center-align">Order Total : $54</div>
                                 <span class="countdown highlight"></span>
                             </span>
 
@@ -238,11 +241,11 @@
 
                         </li>
                         <li>
-                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Order #7456845
+                            <div class="collapsible-header"><i class="material-icons">whatshot</i>Order #7756845
 
-                                <div class="center-align">Order Date : 01 - 05 - 2017</div>
-                                <div class="center-align">Delivery Time : 05:00 PM</div>
-                                <div class="center-align">Oder Total : $14</div>
+                                <div class="center-align">Order Date : 21-05-2017</div>
+                                <div class="center-align">Delivery Time : 07:00 PM</div>
+                                <div class="center-align">Order Total : $24</div>
 
                             </div>
                             <table id="exporttable" class="container collapsible-body highlight">
@@ -392,7 +395,7 @@
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
                         $15.25 &nbsp; X &nbsp; 1
-
+                        <span>By Shandong</span>
                         </p>
                         <p align="right">$45.00</p>
 
@@ -405,7 +408,7 @@
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
                         $15.25 &nbsp; X &nbsp; 1
-
+                        <span>By Chinese Dragon</span>
                         </p>
                         <p align="right">$45.00</p>
 
@@ -417,7 +420,7 @@
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
                         $15.25 &nbsp; X &nbsp; 1
-
+                        <span>By Pizza Hut</span>
                         </p>
                         <p align="right">$45.00</p>
 
@@ -479,9 +482,9 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/jquery.countdown.js"></script>
-
-
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+<script type="text/javascript" src="js/jquery.filterList.js"></script>
 
 <script>$('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
@@ -493,11 +496,13 @@
 $(document).ready(function () {
     $('ul.tabs').tabs();
     $('#completedorders').DataTable();
+    $('#shoptable').DataTable();
 });
 $(document).ready(function () {
     $('ul.tabs').tabs('select_tab', 'tab_id');
 });
 
+$('#filter').filterList();
 
 $("#getting-started")
     .countdown("2017/07/01", function (event) {
@@ -505,7 +510,6 @@ $("#getting-started")
             event.strftime('%D days %H:%M:%S')
         );
     });
-
 </script>
 
 </body>
