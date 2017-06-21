@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/merchant.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+          media="screen,projection"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<table id="completedorders">
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Ordered Date</th>
+        <th>Delievered Date</th>
+        <th>Delievered Time</th>
+        <th>Order Status</th>
+        <th>Order Total</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>#74645454</td>
+        <td>05/03/2017</td>
+        <td>05/05/2017</td>
+        <td>17:50</td>
+        <td>Completed</td>
+        <td>$10.87</td>
+    </tr>
+    <tr>
+        <td>#74645454</td>
+        <td>05/03/2017</td>
+        <td>05/05/2017</td>
+        <td>17:50</td>
+        <td>Completed</td>
+        <td>$25</td>
+    </tr>
+    <tr>
+        <td>#74645454</td>
+        <td>05/03/2017</td>
+        <td>05/05/2017</td>
+        <td>17:50</td>
+        <td>Completed</td>
+        <td>$18.00</td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#completedorders').DataTable();
+    });
+
+</script>
+
+
+</body>
+</html>
