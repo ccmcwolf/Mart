@@ -148,10 +148,6 @@
 
             </div>
             <div id="completedtab" class="col s12">
-                <div class="left-align">Order Date : 23 - 06 - 2017</div>
-                <div class="left-align">Delivery Time : 05:00 PM</div>
-                <p>Delivery Adress : </p>
-                <p>Payment method : Cash</p>
 
                 <table id="completedorders">
                     <thead>
@@ -236,11 +232,15 @@
                         </div>
                     </td>
                 </tr>
+
                 </tbody>
             </table>
+
+
             <div class="modal-footer">
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
+            <div id="map"></div>
         </div>
 
     </div>
@@ -303,7 +303,15 @@ $("#getting-started")
         );
     });
 
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+        });
+    }
 </script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCklaZgoS2Kj0lC_Sq2jyB6w0aOwZw6N0Y&callback=initMap"
+        async defer></script>
 </body>
 </html>

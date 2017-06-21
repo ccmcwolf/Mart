@@ -38,7 +38,7 @@
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Login</a>
-        <a href="#!" class="breadcrumb">Merchant Area</a>
+        <a href="#!" class="breadcrumb">Admin Area</a>
 
     </div>
 </div>
@@ -74,37 +74,47 @@
         <div class="row">
 
             <div class="col s12 grey center-align darken-3 white-text">
-                <h5>Merchant Area</h5>
+                <h5>Admin Area</h5>
 
             </div>
 
         </div>
         <div class="row">
-            <div class="col s12 m4">
+            <div class=" col s12 m3">
                 <div class="card-panel orange accent-3 white-text center-align">
-                    <i class="material-icons">shopping_basket</i><br>
-                    <span class="white-text">Orders to be delivered</span>
-                    <h3>3</h3>
+                    <i class="material-icons">user</i><br>
+                    <span class="white-text">Users</span>
+                    <h3>3</h3>(This month)
+                    <h3>12</h3>(Total)
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class=" col s12 m3">
                 <div class="card-panel teal white-text center-align">
                     <i class="material-icons">shopping_basket</i><br>
-                    <span class="white-text">Total Number of Orders</span>
-                    <h3>24</h3>
+                    <span class="white-text">Merchants</span>
+                    <h3>3</h3>(This month)
+                    <h3>12</h3>(Total)
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class=" col s12 m3">
+                <div class="card-panel orange white-text center-align">
+                    <i class="material-icons">shopping_basket</i><br>
+                    <span class="white-text">Orders</span>
+                    <h3>3</h3>(This month)
+                    <h3>12</h3>(Total)
+                </div>
+            </div>
+            <div class=" col s12 m3">
                 <div class="card-panel teal white-text center-align">
                     <i class="material-icons">shopping_cart</i><br>
-                    <span class="white-text">Total Sales</span>
-                    <h3>$12.00</h3>
+                    <span class="white-text">Sales</span>
+                    <h3>$300</h3>(This month)
+                    <h3>$1200</h3>(Total)
                 </div>
             </div>
         </div>
         <div class="row">
-
-            <div class="col s12">
+            <div class="mycard col s12">
                 <ul class="tabs tabs-fixed-width">
                     <li class="tab col s3"><a href="#completedtab">Completed Orders</a></li>
                     <li class="tab col s3"><a class="active" href="#activeorders">Active Orders</a></li>
@@ -287,7 +297,8 @@
 
             </div>
             <div id="completedtab" class="col s12">
-                     <table id="completedorders">
+            <button class="button" id="exporttopdf" onClick ="$('#exporttable').tableExport({type:'pdf',escape:'false'});">Export to PDF</button>
+                <table id="completedorders">
                     <thead>
                     <tr>
                         <th>Order ID</th>
@@ -330,7 +341,48 @@
 
             </div>
 
-            <div id="revenue" class="col s12">Revenue</div>
+            <div id="revenue" class="col s12">
+                <table id="shoptable">
+                    <thead>
+                    <tr>
+                        <th>Shop ID</th>
+                        <th>Shop Name</th>
+                        <th>City</th>
+                        <th>Contact</th>
+                        <th>Total No Orders</th>
+                        <th>Total Revenue</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>S0564784</td>
+                        <td>Shandong</td>
+                        <td>Rajagiriya, Colombo</td>
+                        <td>0117845985</td>
+                        <td>45</td>
+                        <td>$1500.87</td>
+                    </tr>
+                    <tr>
+                        <td>S0564784</td>
+                        <td>Chinease Dragon</td>
+                        <td>Bambalapitiya, Colombo</td>
+                        <td>0112547896</td>
+                        <td>25</td>
+                        <td>$1009.00</td>
+                    </tr>
+                    <tr>
+                        <td>S0564785</td>
+                        <td>Pizza Hut</td>
+                        <td>Malabe, Colombo</td>
+                        <td>0112729729</td>
+                        <td>41</td>
+                        <td>$1800.00</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
             <div id="topselling" class="col s12">
                 <ul class="collection" id="smallcart">
                     #1
@@ -374,6 +426,15 @@
             </div>
 
 
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel green darken-3 white-text center-align">
+                    <i class="material-icons">store</i><br>
+                    <span class="white-text"><h4>Manage Store</h4></span>
+
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col s12">
