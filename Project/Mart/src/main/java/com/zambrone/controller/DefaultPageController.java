@@ -1,9 +1,11 @@
 package com.zambrone.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,22 +23,12 @@ public class DefaultPageController {
         return "store";
     }
 
-    @GetMapping
-    @RequestMapping(path = "/items")
-    public String getItemsView() {
-        return "items";
+}
+@Controller
+class HelloController {
+    @RequestMapping("/hello")
+    public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
+        model.addAttribute("name", name);
+        return "hello";
     }
-
-    @GetMapping
-    @RequestMapping(path = "/login")
-    public String getLoginView() {
-        return "login";
-    }
-
-    @GetMapping(path = "/logout")
-    public String logout(HttpServletRequest request) throws ServletException {
-        request.logout();
-        return "store";
-    }
-
 }

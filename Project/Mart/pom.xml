@@ -37,8 +37,7 @@
 			<groupId>org.keycloak.bom</groupId>
 			<artifactId>keycloak-adapter-bom</artifactId>
 			<version>3.1.0.Final</version>
-			<type>pom</type>
-			<scope>import</scope>
+
 		</dependency>
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
