@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90681d5c-9225-4784-9c6d-d685ada7417c" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/products.html" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/products.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documetation/FC6P01 Project.docx" afterPath="$PROJECT_DIR$/Documetation/FC6P01 Project.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/pom.xml" afterPath="$PROJECT_DIR$/Project/Mart/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/DefaultPageController.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/DefaultPageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/items.html" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/items.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/addcourier.html" afterPath="$PROJECT_DIR$/UI/addcourier.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/addcustomer.html" afterPath="$PROJECT_DIR$/UI/addcustomer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/addproduct.html" afterPath="$PROJECT_DIR$/UI/addproduct.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/addshop.html" afterPath="$PROJECT_DIR$/UI/addshop.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/admin.html" afterPath="$PROJECT_DIR$/UI/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/delivery.html" afterPath="$PROJECT_DIR$/UI/delivery.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/merchent.html" afterPath="$PROJECT_DIR$/UI/merchent.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/placeorder.html" afterPath="$PROJECT_DIR$/UI/placeorder.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/products.html" afterPath="$PROJECT_DIR$/UI/products.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/shops.html" afterPath="$PROJECT_DIR$/UI/shops.html" />
-    </list>
+    <list default="true" id="90681d5c-9225-4784-9c6d-d685ada7417c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -404,15 +384,15 @@
       <workItem from="1498069343086" duration="5881000" />
       <workItem from="1498076658705" duration="1862000" />
       <workItem from="1498108257658" duration="5248000" />
-      <workItem from="1498157647806" duration="1539000" />
+      <workItem from="1498157647806" duration="3935000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71745000" />
+    <option name="totallyTimeSpent" value="74141000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1032" extended-state="0" />
+    <frame x="960" y="0" width="960" height="1032" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48301485" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
