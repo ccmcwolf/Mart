@@ -27,7 +27,10 @@
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-             <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             </li>
         </ul>
@@ -55,7 +58,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-     <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -73,100 +79,113 @@
             </div>
 
         </div>
-        <form>
+        <div class="row">
+        <div class="col s3">
 
-            <div class="input-field">
-
+            <div class="collection">
+                <a href="#!" onclick="filtermethodcall(this);" class="collection-item">Alvin</a>
+                <a href="#!" class="collection-item active">Alvin</a>
+                <a href="#!" class="collection-item">Alvin</a>
+                <a href="#!" class="collection-item">Alvin</a>
             </div>
-            <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category" type="text"
-                   class="validate">
+        </div>
+        <div class="col s9">
+            <form>
 
-            <ul class="list row">
-                <li class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="img/food-h-c-150-400-1.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h5 class="name"><a href="products.html">Cafe Fort</a></h5>
-                            <p>Fort, Colombo. Pizza</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="rateYo"></div>
-                            <a href="#">More info</a>
-                        </div>
-                    </div>
+                <div class="input-field">
 
-                </li>
-                <li class="col s6 card horizontal">
+                </div>
+                <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category" type="text"
+                       class="validate">
 
-                    <div class="card-image">
-                        <img src="img/food-h-c-150-400-3.jpg">
+                <ul class="list row">
+                    <li class="col s6 card horizontal">
+                        <div class="card-image">
+                            <img src="img/food-h-c-150-400-1.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="name"><a href="products.html">Cafe Fort</a></h5>
+                                <p>Fort, Colombo. Pizza</p>
+                            </div>
+                            <div class="card-action">
+                                <div class="rateYo"></div>
+                                <a href="#">More info</a>
+                            </div>
+                        </div>
 
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h5 class="name"><a href="products.html">Aasife</a></h5>
-                            <p>Rajagiriya, Colombo. Casual Dining</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="rateYo"></div>
-                            <a href="#">More info</a>
-                        </div>
-                    </div>
+                    </li>
+                    <li class="col s6 card horizontal">
 
-                </li>
-                <li class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="img/food-h-c-150-400-6.jpg">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h5 class="name"><a href="products.html">Shandong</a></h5>
-                            <p>Rajagiriya, Colombo. Casual Dining</p>
-                        </div>
-                        <div class="card-action">
-                            <div class="rateYo"></div>
-                            <a href="#">More info</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="img/food-h-c-150-400-9.jpg">
-
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h5 class="name"><a href="products.html">Chinese Dragon</a></h5>
-                            <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+                        <div class="card-image">
+                            <img src="img/food-h-c-150-400-3.jpg">
 
                         </div>
-                        <div class="card-action">
-                            <div class="rateYo"></div>
-                            <a href="#modal1">More info</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="name"><a href="products.html">Aasife</a></h5>
+                                <p>Rajagiriya, Colombo. Casual Dining</p>
+                            </div>
+                            <div class="card-action">
+                                <div class="rateYo"></div>
+                                <a href="#">More info</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li class="col s6 card horizontal">
-                    <div class="card-image">
-                        <img src="img/food-h-c-150-400-7.jpg">
 
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>
-                            <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+                    </li>
+                    <li class="col s6 card horizontal">
+                        <div class="card-image">
+                            <img src="img/food-h-c-150-400-6.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="name"><a href="products.html">Shandong</a></h5>
+                                <p>Rajagiriya, Colombo. Casual Dining</p>
+                            </div>
+                            <div class="card-action">
+                                <div class="rateYo"></div>
+                                <a href="#">More info</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col s6 card horizontal">
+                        <div class="card-image">
+                            <img src="img/food-h-c-150-400-9.jpg">
 
                         </div>
-                        <div class="card-action">
-                            <div class="rateYo"></div>
-                            <a href="#modal1">More info</a>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="name"><a href="products.html">Chinese Dragon</a></h5>
+                                <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+
+                            </div>
+                            <div class="card-action">
+                                <div class="rateYo"></div>
+                                <a href="#modal1">More info</a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-        </form>
+                    </li>
+                    <li class="col s6 card horizontal">
+                        <div class="card-image">
+                            <img src="img/food-h-c-150-400-7.jpg">
+
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>
+                                <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+
+                            </div>
+                            <div class="card-action">
+                                <div class="rateYo"></div>
+                                <a href="#modal1">More info</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        </div>
     </div>
     <!-- Modal Structure -->
     <div id="modal1" class="modal">
@@ -230,6 +249,19 @@
 $(document).ready(function () {
     $('.modal').modal();
 });
+
+
+function filtermethodcall() {
+    var ul = document.getElementById('bulk'); // Parent
+
+    ul.addEventListener('click', function (e) {
+        var target = e.target; // Clicked element
+
+        if (target.tagName === 'LI'){
+            alert(target.id); // Check if the element is a LI
+        }
+    });
+}
 
 $(function () {
 
