@@ -1,139 +1,59 @@
 package com.zambrone.entity;
 
-import lombok.ToString;
-
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Chamith on 02/07/2017.
  */
-@ToString
 @Entity
 public class Customer {
-    private Integer customerId;
-    private String city;
-    private String customerAddress;
-    private String customerEmail;
-    private String customerName;
-    private String district;
-    private Long mobileNo;
-    private String province;
 
     @Id
+    @NotNull
     @Column(name = "customerId")
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer customerId;
 
     @Basic
     @Column(name = "city")
-    public String getCity() {
-        return city;
-    }
+    private String city;
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    @Basic
+    @Column(name = "geolocation")
+    private String geolocation;
 
     @Basic
     @Column(name = "customerAddress")
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
+    private String customerAddress;
 
     @Basic
+    @NotNull
     @Column(name = "customerEmail")
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
+    private String customerEmail;
 
     @Basic
+    @NotNull
     @Column(name = "customerName")
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
+    private String customerName;
 
     @Basic
     @Column(name = "district")
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
+    private String district;
 
     @Basic
+    @NotNull
     @Column(name = "mobileNo")
-    public Long getMobileNo() {
-        return mobileNo;
-    }
-
-    public void setMobileNo(Long mobileNo) {
-        this.mobileNo = mobileNo;
-    }
+    private Long mobileNo;
 
     @Basic
     @Column(name = "province")
-    public String getProvince() {
-        return province;
-    }
+    private String province;
 
-    public void setProvince(String province) {
-        this.province = province;
-    }
+    @Basic
+    @Column(name = "imagepath")
+    private String imagepath;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Customer customer = (Customer) o;
 
-        if (customerId != null ? !customerId.equals(customer.customerId) : customer.customerId != null) return false;
-        if (city != null ? !city.equals(customer.city) : customer.city != null) return false;
-        if (customerAddress != null ? !customerAddress.equals(customer.customerAddress) : customer.customerAddress != null)
-            return false;
-        if (customerEmail != null ? !customerEmail.equals(customer.customerEmail) : customer.customerEmail != null)
-            return false;
-        if (customerName != null ? !customerName.equals(customer.customerName) : customer.customerName != null)
-            return false;
-        if (district != null ? !district.equals(customer.district) : customer.district != null) return false;
-        if (mobileNo != null ? !mobileNo.equals(customer.mobileNo) : customer.mobileNo != null) return false;
-        if (province != null ? !province.equals(customer.province) : customer.province != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = customerId != null ? customerId.hashCode() : 0;
-        result = 31 * result + (city != null ? city.hashCode() : 0);
-        result = 31 * result + (customerAddress != null ? customerAddress.hashCode() : 0);
-        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
-        result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
-        result = 31 * result + (district != null ? district.hashCode() : 0);
-        result = 31 * result + (mobileNo != null ? mobileNo.hashCode() : 0);
-        result = 31 * result + (province != null ? province.hashCode() : 0);
-        return result;
-    }
 }

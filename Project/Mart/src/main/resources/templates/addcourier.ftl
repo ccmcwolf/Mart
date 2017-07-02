@@ -6,7 +6,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/style.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
 
 
@@ -14,7 +14,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
-
 <body>
 
 <nav class="grey darken-4" role="navigation">
@@ -87,12 +86,12 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="shop_id" name ="courierId" type="text" class="validate">
-                        <label for="shop_id"></label>
+                        <input id="shop_id" name="courierId" type="text" class="validate" required>
+                        <label for="shop_id">Courier ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" name ="courierName" type="tel" class="validate">
+                        <input id="name" name="courierName" type="tel" class="validate" required>
                         <label for="name">Courier Name</label>
                     </div>
                 </div>
@@ -100,21 +99,21 @@
 
 
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">email</i>
-                        <input id="nic"  type="number" class="validate">
+                        <i class="material-icons prefix">verified_user</i>
+                        <input id="nic" name="nic" type="number" class="validate" required>
                         <label for="nic">National Identity Card</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="vehicleno" type="text" class="validate">
-                        <label for="vehicleno">Vehicle No</label>
+                        <input id="vehicleNo" name="vehicleNo" type="text" class="validate">
+                        <label for="vehicleNo">Vehicle No</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="address" name="courierAddress" type="text" class="validate">
+                        <input id="address" name="address" type="text" class="validate" required>
                         <label for="address">Address</label>
                     </div>
 
@@ -129,24 +128,34 @@
 
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="Province"  name="province" type="tel" class="validate">
+                        <input id="Province" name="province" type="tel" class="validate">
                         <label for="Province">Province</label>
                     </div>
                 </div>
 
                 <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="contactNo" name="contactNo" type="tel" class="validate" required>
+                        <label for="contactNo">Phone Contact</label>
+                    </div>
 
-
-                    <div class="input-field col s12">
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
-                        <input id="Email" name ="email" type="email" class="validate">
+                        <input id="Email" name="email" type="email" class="validate" required>
                         <label for="Email">Email</label>
                     </div>
 
                 </div>
                 <div class="row">
 
-                    <div class="input-field col s12 center-align">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="imagepath" name="imagepath" accept="image/*" type="file" class="validate">
+                        <label for="imagepath">Profile Picture</label>
+                    </div>
+
+                    <div class="input-field col s6">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
@@ -187,8 +196,10 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 <#--<script type="text/javascript" src="js/materialize.min.js"></script>-->
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>$('.button-collapse').sideNav({
             menuWidth: 300, // Default is 300
             edge: 'right', // Choose the horizontal origin
@@ -197,23 +208,45 @@
         }
 );
 
-$("#addcourierform").submit(function(e) {
+    var urlv = "/savec"; // the script where you handle the form input.
 
-    var url = "/add"; // the script where you handle the form input.
+    $('#addcourierform').validate({
+//        rules: {
+//            field: {
+//                required: true,
+//                minlength: 3
+//            }
+//        }
 
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: $("#addcourierform").serialize(), // serializes the form's elements.
-        success: function(data)
-        {
-            Materialize.toast(data, 4000); // show response from the php script.
-
+        errorElement : "div",
+        errorPlacement : function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                type: "POST",
+                url: "/savec",
+                data: $("#addcourierform").serialize(), // serializes the form's elements.
+                success: function (response) {
+                    if (response.status == "SUCCESS") {
+                        Materialize.toast(response.status, 4000);
+                    } else {
+                        Materialize.toast(response.status, 4000);
+                    }
+                },
+                error: function (e) {
+                    Materialize.toast("Error", 4000);
+                }
+            });
         }
     });
 
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-});
+
 
 </script>
 

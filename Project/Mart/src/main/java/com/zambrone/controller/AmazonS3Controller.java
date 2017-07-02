@@ -45,14 +45,14 @@ public class AmazonS3Controller {
     @RequestMapping(value = "upload", method = RequestMethod.POST)
     public
     @ResponseBody
-    String handleFileUpload(@RequestParam("name") String name,
-                            @RequestParam("file") MultipartFile file) {
+    String handleFileUpload(@RequestParam("file") MultipartFile file) {
+        String fileid = UUID.randomUUID().toString();
         if (!file.isEmpty()) {
             try {
                 ObjectMetadata objectMetadata = new ObjectMetadata();
                 objectMetadata.setContentType(file.getContentType());
 
-                String fileid = UUID.randomUUID().toString();
+
 
                 // Upload the file for public read
                 amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, file.getInputStream(), objectMetadata)
@@ -62,10 +62,10 @@ public class AmazonS3Controller {
                return "You successfully uploaded " + fileid + "!"+"\thttps://s3-ap-southeast-1.amazonaws.com/martonline/"+fileid;
             } catch (Exception e) {
                 System.out.println(e);
-                return "You failed to upload " + name + " => " + e.getMessage();
+                return "You failed to upload " + fileid + " => " + e.getMessage();
             }
         } else {
-            return "You failed to upload " + name + " because the file was empty.";
+            return "You failed to upload " + fileid + " because the file was empty.";
         }
     }
 }

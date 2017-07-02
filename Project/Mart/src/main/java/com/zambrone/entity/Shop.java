@@ -1,16 +1,14 @@
 package com.zambrone.entity;
 
-import lombok.ToString;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Time;
 
 /**
  * Created by Chamith on 02/07/2017.
  */
-@ToString
 @Entity
 public class Shop {
     private Integer shopNo;
@@ -22,6 +20,13 @@ public class Shop {
     private String shopName;
     private String province;
     private String category;
+    private String shoplogopath;
+    private String shopcoverpath;
+    private Time opentime;
+    private Time closetime;
+    private String opendayfrom;
+    private String opendayto;
+    private String description;
 
     @Id
     @Column(name = "shopNo")
@@ -113,6 +118,76 @@ public class Shop {
         this.category = category;
     }
 
+    @Basic
+    @Column(name = "shoplogopath")
+    public String getShoplogopath() {
+        return shoplogopath;
+    }
+
+    public void setShoplogopath(String shoplogopath) {
+        this.shoplogopath = shoplogopath;
+    }
+
+    @Basic
+    @Column(name = "shopcoverpath")
+    public String getShopcoverpath() {
+        return shopcoverpath;
+    }
+
+    public void setShopcoverpath(String shopcoverpath) {
+        this.shopcoverpath = shopcoverpath;
+    }
+
+    @Basic
+    @Column(name = "opentime")
+    public Time getOpentime() {
+        return opentime;
+    }
+
+    public void setOpentime(Time opentime) {
+        this.opentime = opentime;
+    }
+
+    @Basic
+    @Column(name = "closetime")
+    public Time getClosetime() {
+        return closetime;
+    }
+
+    public void setClosetime(Time closetime) {
+        this.closetime = closetime;
+    }
+
+    @Basic
+    @Column(name = "opendayfrom")
+    public String getOpendayfrom() {
+        return opendayfrom;
+    }
+
+    public void setOpendayfrom(String opendayfrom) {
+        this.opendayfrom = opendayfrom;
+    }
+
+    @Basic
+    @Column(name = "opendayto")
+    public String getOpendayto() {
+        return opendayto;
+    }
+
+    public void setOpendayto(String opendayto) {
+        this.opendayto = opendayto;
+    }
+
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,6 +204,14 @@ public class Shop {
         if (shopName != null ? !shopName.equals(shop.shopName) : shop.shopName != null) return false;
         if (province != null ? !province.equals(shop.province) : shop.province != null) return false;
         if (category != null ? !category.equals(shop.category) : shop.category != null) return false;
+        if (shoplogopath != null ? !shoplogopath.equals(shop.shoplogopath) : shop.shoplogopath != null) return false;
+        if (shopcoverpath != null ? !shopcoverpath.equals(shop.shopcoverpath) : shop.shopcoverpath != null)
+            return false;
+        if (opentime != null ? !opentime.equals(shop.opentime) : shop.opentime != null) return false;
+        if (closetime != null ? !closetime.equals(shop.closetime) : shop.closetime != null) return false;
+        if (opendayfrom != null ? !opendayfrom.equals(shop.opendayfrom) : shop.opendayfrom != null) return false;
+        if (opendayto != null ? !opendayto.equals(shop.opendayto) : shop.opendayto != null) return false;
+        if (description != null ? !description.equals(shop.description) : shop.description != null) return false;
 
         return true;
     }
@@ -144,6 +227,13 @@ public class Shop {
         result = 31 * result + (shopName != null ? shopName.hashCode() : 0);
         result = 31 * result + (province != null ? province.hashCode() : 0);
         result = 31 * result + (category != null ? category.hashCode() : 0);
+        result = 31 * result + (shoplogopath != null ? shoplogopath.hashCode() : 0);
+        result = 31 * result + (shopcoverpath != null ? shopcoverpath.hashCode() : 0);
+        result = 31 * result + (opentime != null ? opentime.hashCode() : 0);
+        result = 31 * result + (closetime != null ? closetime.hashCode() : 0);
+        result = 31 * result + (opendayfrom != null ? opendayfrom.hashCode() : 0);
+        result = 31 * result + (opendayto != null ? opendayto.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 }

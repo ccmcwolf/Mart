@@ -1,7 +1,5 @@
 package com.zambrone.entity;
 
-import lombok.ToString;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,14 +10,13 @@ import java.util.Arrays;
  * Created by Chamith on 02/07/2017.
  */
 @Entity
-@ToString
 public class Product {
     private Integer productId;
     private String name;
     private String description;
     private String otherName;
     private byte[] imagePath;
-    private Integer stripSize;
+    private String size;
     private Double unitPrice;
     private Integer typeId;
 
@@ -74,13 +71,13 @@ public class Product {
     }
 
     @Basic
-    @Column(name = "stripSize")
-    public Integer getStripSize() {
-        return stripSize;
+    @Column(name = "size")
+    public String getSize() {
+        return size;
     }
 
-    public void setStripSize(Integer stripSize) {
-        this.stripSize = stripSize;
+    public void setSize(String size) {
+        this.size = size;
     }
 
     @Basic
@@ -115,7 +112,7 @@ public class Product {
         if (description != null ? !description.equals(product.description) : product.description != null) return false;
         if (otherName != null ? !otherName.equals(product.otherName) : product.otherName != null) return false;
         if (!Arrays.equals(imagePath, product.imagePath)) return false;
-        if (stripSize != null ? !stripSize.equals(product.stripSize) : product.stripSize != null) return false;
+        if (size != null ? !size.equals(product.size) : product.size != null) return false;
         if (unitPrice != null ? !unitPrice.equals(product.unitPrice) : product.unitPrice != null) return false;
         if (typeId != null ? !typeId.equals(product.typeId) : product.typeId != null) return false;
 
@@ -129,7 +126,7 @@ public class Product {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (otherName != null ? otherName.hashCode() : 0);
         result = 31 * result + Arrays.hashCode(imagePath);
-        result = 31 * result + (stripSize != null ? stripSize.hashCode() : 0);
+        result = 31 * result + (size != null ? size.hashCode() : 0);
         result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
         result = 31 * result + (typeId != null ? typeId.hashCode() : 0);
         return result;

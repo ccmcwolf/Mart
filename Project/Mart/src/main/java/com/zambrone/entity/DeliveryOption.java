@@ -1,13 +1,10 @@
 package com.zambrone.entity;
 
-import lombok.ToString;
-
 import javax.persistence.*;
 
 /**
  * Created by Chamith on 02/07/2017.
  */
-@ToString
 @Entity
 @Table(name = "delivery_option", schema = "mart", catalog = "")
 public class DeliveryOption {
