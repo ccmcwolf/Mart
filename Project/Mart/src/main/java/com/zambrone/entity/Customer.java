@@ -1,5 +1,7 @@
 package com.zambrone.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -7,6 +9,7 @@ import javax.validation.constraints.NotNull;
  * Created by Chamith on 02/07/2017.
  */
 @Entity
+@Data
 public class Customer {
 
     @Id
