@@ -1,11 +1,14 @@
 package com.zambrone.entity;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 /**
- * Created by Chamith on 22/06/2017.
+ * Created by Chamith on 02/07/2017.
  */
 @Entity
+@ToString
 @Table(name = "product_order", schema = "mart", catalog = "")
 public class ProductOrder {
     private Integer productOrderId;

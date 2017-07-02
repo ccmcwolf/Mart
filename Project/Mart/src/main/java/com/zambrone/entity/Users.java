@@ -1,16 +1,21 @@
 package com.zambrone.entity;
 
+import lombok.ToString;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 22/06/2017.
+ * Created by Chamith on 02/07/2017.
  */
 @Entity
+@ToString
 public class Users {
+
     private String email;
     private Timestamp deliverTime;
     private String firstName;

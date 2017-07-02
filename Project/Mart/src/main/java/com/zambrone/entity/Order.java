@@ -1,5 +1,7 @@
 package com.zambrone.entity;
 
+import lombok.ToString;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,9 +9,10 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 22/06/2017.
+ * Created by Chamith on 02/07/2017.
  */
 @Entity
+@ToString
 public class Order {
     private Integer orderNo;
     private Double amount;
