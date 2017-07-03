@@ -35,11 +35,10 @@ public class CourierDAOImpl implements CourierDAO {
 
     @Override
     public boolean addCourier(Courier courier) {
-        Session session;
-        System.out.println("Courier @ DAOImpl 1 "+courier);
-        session = this.getSessionFactory().openSession();
+        Session session = this.getSessionFactory().openSession();
         session.save(courier);
-        System.out.println("Courier @ DAOImpl 2 "+courier);
+        session.close();
+
         return true;
     }
 }

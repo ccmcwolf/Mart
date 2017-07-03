@@ -84,12 +84,12 @@
             <form id="addcourierform" method="post" class="col s12">
 
                 <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="shop_id" name="courierId" type="text" class="validate" required>
-                        <label for="shop_id">Courier ID</label>
-                    </div>
-                    <div class="input-field col s6">
+                <#--<div class="input-field col s6">-->
+                <#--<i class="material-icons prefix">account_circle</i>-->
+                <#--<input id="shop_id" name="courierId" type="text" class="validate" required>-->
+                <#--<label for="shop_id">Courier ID</label>-->
+                <#--</div>-->
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">store</i>
                         <input id="name" name="courierName" type="tel" class="validate" required>
                         <label for="name">Courier Name</label>
@@ -136,7 +136,8 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
-                        <input id="contactNo" name="contactNo" type="tel" class="validate" required>
+                        <input id="contactNo" name="contactNo" type="tel" minlength="10" maxlength="10" class="validate"
+                               required>
                         <label for="contactNo">Phone Contact</label>
                     </div>
 
@@ -148,13 +149,21 @@
 
                 </div>
                 <div class="row">
-
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="imagepath" name="imagepath" accept="image/*" type="file" class="validate">
-                        <label for="imagepath">Profile Picture</label>
+                        <form id="fileUploadForm">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="proimage" class="button" name="proimage" accept="image/*" type="file"
+                                       class="validate">
+                                <label for="proimage">Profile Picture</label>
+                            </div>
+                            <#--<div class="input-field col s3">-->
+                                <#--<button id="btnUpload" class="btn waves-effect waves-light" name="action">Submit-->
+                                    <#--<i class="material-icons right">send</i>-->
+                                <#--</button>-->
+                            <#--</div>-->
+                        </form>
                     </div>
-
                     <div class="input-field col s6">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
@@ -208,9 +217,47 @@
         }
 );
 
-    var urlv = "/savec"; // the script where you handle the form input.
 
-    $('#addcourierform').validate({
+$(document).ready(function () {
+
+    $("#btnUpload").click(function (event) {
+        //stop submit the form, we will post it manually.
+
+        fire_ajax_submit();
+
+    });
+
+});
+
+function fire_ajax_submit() {
+    // Get form
+    var form = $('#fileUploadForm');
+
+    var data = new FormData(form);
+
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/s3/upload",
+        data: data,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            alert("Success" + data);
+        },
+        error: function (e) {
+            alert("error"+e);
+
+        }
+    });
+
+}
+
+
+var urlv = "/courier/add"; // the script where you handle the form input.
+
+$('#addcourierform').validate({
 //        rules: {
 //            field: {
 //                required: true,
@@ -218,34 +265,33 @@
 //            }
 //        }
 
-        errorElement : "div",
-        errorPlacement : function(error, element) {
-            var placement = $(element).data('error');
-            if (placement) {
-                $(placement).append(error)
-            } else {
-                error.insertAfter(element);
-            }
-        },
-        submitHandler: function (form) {
-            $.ajax({
-                type: "POST",
-                url: "/savec",
-                data: $("#addcourierform").serialize(), // serializes the form's elements.
-                success: function (response) {
-                    if (response.status == "SUCCESS") {
-                        Materialize.toast(response.status, 4000);
-                    } else {
-                        Materialize.toast(response.status, 4000);
-                    }
-                },
-                error: function (e) {
-                    Materialize.toast("Error", 4000);
-                }
-            });
+    errorElement: "div",
+    errorPlacement: function (error, element) {
+        var placement = $(element).data('error');
+        if (placement) {
+            $(placement).append(error)
+        } else {
+            error.insertAfter(element);
         }
-    });
-
+    },
+    submitHandler: function (form) {
+        $.ajax({
+            type: "POST",
+            url: urlv,
+            data: $("#addcourierform").serialize(), // serializes the form's elements.
+            success: function (response) {
+                if (response.status == "SUCCESS") {
+                    Materialize.toast(response.status, 4000);
+                } else {
+                    Materialize.toast(response.status, 4000);
+                }
+            },
+            error: function (e) {
+                Materialize.toast("Error", 4000);
+            }
+        });
+    }
+});
 
 
 </script>

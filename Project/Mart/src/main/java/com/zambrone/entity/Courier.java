@@ -30,7 +30,7 @@ public class Courier {
     private String nic;
 
 
-    @NotNull(message = "number should be valid")
+
     @Id
     @Column(name = "courierId")
     @GeneratedValue(strategy= GenerationType.AUTO)

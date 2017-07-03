@@ -1,5 +1,7 @@
 package com.zambrone.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -7,6 +9,7 @@ import java.sql.Timestamp;
  * Created by Chamith on 02/07/2017.
  */
 @Entity
+@Data
 public class Users {
 
     @Id

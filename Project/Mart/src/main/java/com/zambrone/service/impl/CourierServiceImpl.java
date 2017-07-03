@@ -38,7 +38,6 @@ public class CourierServiceImpl implements CourierService {
 
     @Override
     public boolean addCourier(Courier courier) {
-        System.out.println("Courier @ ServiceImpl "+courier);
         return this.getCourierDAO().addCourier(courier);
 
     }

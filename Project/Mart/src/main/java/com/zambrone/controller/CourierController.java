@@ -1,5 +1,6 @@
 package com.zambrone.controller;
 
+import com.zambrone.Util.ImageUpload;
 import com.zambrone.config.JsonResponse;
 import com.zambrone.entity.Courier;
 import com.zambrone.service.CourierService;
@@ -20,20 +21,20 @@ import java.util.Set;
  * Created by Chamith on 02/07/2017.
  */
 @Controller
+@RequestMapping("/courier")
 public class CourierController {
 
     @Autowired
     CourierService courierService;
 
-    @RequestMapping(value = "/savec", method = RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public @ResponseBody
-    JsonResponse addCourier(@ModelAttribute(value = "courier") Courier courier, BindingResult result) {
+    JsonResponse addCourier(@Valid @ModelAttribute(value = "courier") Courier courier, BindingResult result) {
 
         JsonResponse res = new JsonResponse();
         if (!result.hasErrors()) {
             res.setStatus("SUCCESS");
             res.setResult("courier added successfully "+courier.getCourierId());
-            System.out.println("Courier @ Controller "+courier);
             courierService.addCourier(courier);
 
         } else {
