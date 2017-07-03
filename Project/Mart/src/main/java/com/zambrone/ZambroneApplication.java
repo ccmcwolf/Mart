@@ -23,18 +23,3 @@ public class ZambroneApplication {
 
 }
 
-@Controller
-class ProductController {
-
-	@GetMapping(path = "/products")
-	public String getProducts(Model model){
-		model.addAttribute("products", Arrays.asList("iPad","iPhone","iPod"));
-		return "products";
-	}
-
-	@GetMapping(path = "/logout")
-	public String logout(HttpServletRequest request) throws ServletException {
-		request.logout();
-		return "/";
-	}
-}

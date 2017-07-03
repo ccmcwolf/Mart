@@ -76,66 +76,125 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="shop_id" type="text" class="validate">
-                        <label for="shop_id">Shop ID</label>
+                        <input id="shopNo" name="shopNo" type="text" class="validate">
+                        <label for="shopNo">Shop ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" type="tel" class="validate">
-                        <label for="name">Shop Name</label>
+                        <input id="shopName" name="shopName" type="text" class="validate" required>
+                        <label for="shopName">Shop Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="address" type="text" class="validate">
+                        <input id="description" name="description" type="text" class="validate" required>
+                        <label for="description">Description</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">business</i>
+                        <input id="city" name="city" type="text" class="validate" required>
+                        <label for="city">City</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">business</i>
+                        <input id="district" name="province" type="text" class="validate" required>
+                        <label for="district">District</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">person_pin</i>
+                        <input id="address" name="address" type="text" class="validate" required>
                         <label for="address">Address</label>
                     </div>
-
-                </div>
-
-                <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="City" type="text" class="validate">
-                        <label for="City">City</label>
-                    </div>
-
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">business</i>
-                        <input id="Province" type="tel" class="validate">
-                        <label for="Province">Province</label>
+                        <input id="province" name="province" type="text" class="validate" required>
+                        <label for="province">Province</label>
                     </div>
                 </div>
 
                 <div class="row">
-
-
                     <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
-                        <input id="Email" type="email" class="validate">
-                        <label for="Email">Email</label>
+                        <input id="email" name="email" type="text" class="validate" required>
+                        <label for="email">Email</label>
                     </div>
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="Category" type="text" class="validate">
-                        <label for="Category">Category</label>
+                        <i class="material-icons prefix">phone</i>
+                        <input id="contactNo" name="contactNo" type="tel" class="validate" required>
+                        <label for="contactNo">Contact No</label>
+                    </div>
+                </div>
+                <!--<div class="row">-->
+                <!--<div class="input-field col s12">-->
+                <!--<select>-->
+                <!--<option value="" selected>Select Shop</option>-->
+                <!--<option value="1">Cat 1</option>-->
+                <!--<option value="2">Shop 2</option>-->
+                <!--<option value="3">Shop 3</option>-->
+                <!--</select>-->
+                <!--<label>Select Category</label>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        Shop Logo
+                        <input id="shoplogopathPic" name="shoplogopathPic" class="button" name="shoplogopath" accept="image/*" type="file"
+                               class="validate">
+
+                    </div>
+                    <div class="input-field col s6">
+                        Cover Picture
+                        <input id="shopcoverpathPic" class="button" name="shopcoverpathPic" accept="image/*" type="file"
+                               class="validate">
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <input id="opendayfrom" name="opendayfrom" type="text" class="validate" required>
+                        <label for="opendayfrom">Open From</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <input id="opendayto" name="opendayto" type="text" class="validate" required>
+                        <label for="opendayto">Open To</label>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">av_timer</i>
+                        <input id="opentime" name="opentime" type="time" class="validate" required>
+                        <label for="opentime">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">av_timer</i>
+                        <input id="closetime" name="closetime" type="time" class="validate" required>
+                        <label for="closetime">Contact No</label>
+                    </div>
+                </div>
 
+
+                <div class="row">
                     <div class="input-field col s12 center-align">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
-
-
                 </div>
-
             </form>
         </div>
-    </div>
 </div>
 <footer class="page-footer">
     <div class="container">

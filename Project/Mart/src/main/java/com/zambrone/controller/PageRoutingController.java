@@ -14,4 +14,21 @@ public class PageRoutingController {
     public String showaddCourier(){
     return "addcourier";
     }
+
+    @GetMapping(path = "/addcustomer")
+    public String showaddCustomer(){
+        return "addcustomer";
+    }
+
+    @GetMapping(path = "/admin/addmerchant")
+    public String showAddShop(){
+        return "addshop";
+    }
+
+    @GetMapping(path = "/merchant/addproduct")
+    public String showaddProduct(){
+        return "addproduct";
+    }
+
+
 }

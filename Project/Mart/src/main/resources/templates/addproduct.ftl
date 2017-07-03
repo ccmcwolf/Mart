@@ -72,48 +72,66 @@
 
         </div>
         <div class="row">
-            <form class="col s12">
+            <form id="addproductform" class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="shop_id" type="text" class="validate">
-                        <label for="shop_id">Product ID</label>
+                        <input id="productId" name="productId" type="text" class="validate">
+                        <label for="productId">Product ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" type="tel" class="validate">
+                        <input id="name" name="name" type="tel" class="validate">
                         <label for="name">Product Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="address" type="text" class="validate">
-                        <label for="address">Description</label>
+                        <input id="description" name="description" type="text" class="validate">
+                        <label for="description">Description</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">email</i>
-                        <input id="nic" type="email" class="validate">
-                        <label for="nic">Other name</label>
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="otherId" name="otherId" type="text" class="validate">
+                        <label for="otherId">Other ID</label>
                     </div>
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="vehicleno" type="text" class="validate">
-                        <label for="vehicleno">Size</label>
+                        <i class="material-icons prefix">open_with</i>
+                        <input id="size"  name="size" type="text" class="validate">
+                        <label for="size">Size</label>
                     </div>
                 </div>
+
 
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="City" type="text" class="validate">
-                        <label for="City">Unit Price</label>
+                        <input id="unitPrice" name="unitPrice" type="text" class="validate">
+                        <label for="unitPrice">Unit Price</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">business</i>
+                        <input id="availablilty" name="availablilty" type="text" class="validate">
+                        <label for="availablilty">Availablilty</label>
                     </div>
 
 
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Select Shop</option>
+                            <option value="1">Shop 1</option>
+                            <option value="2">Shop 2</option>
+                            <option value="3">Shop 3</option>
+                        </select>
+                        <label>Select Shop</label>
+                    </div>
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Choose Catergory</option>
@@ -123,17 +141,18 @@
                         </select>
                         <label>Select Category</label>
                     </div>
+
                 </div>
-
-
                 <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">textsms</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">Autocomplete</label>
+                    <div class="input-field col s6">
+                        Product Image
+                        <input id="productImagePic" name="productImagePic" class="button" accept="image/*" type="file"
+                               class="validate">
+
                     </div>
 
                 </div>
+
                 <div class="row">
 
                     <div class="input-field col s12 center-align">
@@ -177,23 +196,13 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script><script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>
     $(document).ready(function() {
         $('select').material_select();
 
-        $('input.autocomplete').autocomplete({
-            data: {
-                "Apple": 'id',
-                "Microsoft": null,
-                "Google": 'http://placehold.it/250x250'
-            },
-            limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-            onAutocomplete: function(val) {
-                alert(val);
-            },
-            minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
-        });
+
     });
 
     $('.button-collapse').sideNav({
@@ -202,7 +211,47 @@
                 closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 draggable: true // Choose whether you can drag to open on touch screens
             }
-    );</script>
+    );
+
+    var urlv = "/product/add"; // the script where you handle the form input.
+
+    $('#addproductform').validate({
+//        rules: {
+//            field: {
+//                required: true,
+//                minlength: 3
+//            }
+//        }
+
+        errorElement: "div",
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                type: "POST",
+                url: urlv,
+                data: $("#addproductform").serialize(), // serializes the form's elements.
+                success: function (response) {
+                    if (response.status == "SUCCESS") {
+                        Materialize.toast(response.status, 4000);
+                    } else {
+                        Materialize.toast(response.status, 4000);
+                    }
+                },
+                error: function (e) {
+                    Materialize.toast("Error", 4000);
+                }
+            });
+        }
+    });
+
+</script>
 
 </body>
 </html>

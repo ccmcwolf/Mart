@@ -37,7 +37,7 @@
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Admin</a>
         <a href="#!" class="breadcrumb">Shops</a>
-        <a href="#!" class="breadcrumb">Add Item</a>
+        <a href="#!" class="breadcrumb">Add Product</a>
     </div>
 </div>
 <ul id="slide-out" class="side-nav">
@@ -75,35 +75,35 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="shop_id" type="text" class="validate">
-                        <label for="shop_id">Product ID</label>
+                        <input id="productId" name="productId" type="text" class="validate">
+                        <label for="productId">Product ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" type="tel" class="validate">
+                        <input id="name" name="name" type="tel" class="validate">
                         <label for="name">Product Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="address" type="text" class="validate">
-                        <label for="address">Description</label>
+                        <input id="description" name="description" type="text" class="validate">
+                        <label for="description">Description</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">email</i>
-                        <input id="nic" type="email" class="validate">
-                        <label for="nic">Other name</label>
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="otherId" name="otherId" type="text" class="validate">
+                        <label for="otherId">Other ID</label>
                     </div>
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="vehicleno" type="text" class="validate">
-                        <label for="vehicleno">Size</label>
+                        <i class="material-icons prefix">open_with</i>
+                        <input id="size"  name="size" type="text" class="validate">
+                        <label for="size">Size</label>
                     </div>
                 </div>
+
 
                 <div class="row">
                     <div class="input-field col s6">
@@ -111,8 +111,26 @@
                         <input id="City" type="text" class="validate">
                         <label for="City">Unit Price</label>
                     </div>
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">business</i>
+                        <input id="availablilty" name="availablilty" type="text" class="validate">
+                        <label for="availablilty">Availablilty</label>
+                    </div>
 
 
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Select Shop</option>
+                            <option value="1">Shop 1</option>
+                            <option value="2">Shop 2</option>
+                            <option value="3">Shop 3</option>
+                        </select>
+                        <label>Select Shop</label>
+                    </div>
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Choose Catergory</option>
@@ -122,17 +140,18 @@
                         </select>
                         <label>Select Category</label>
                     </div>
+
                 </div>
-
-
                 <div class="row">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">textsms</i>
-                        <input type="text" id="autocomplete-input" class="autocomplete">
-                        <label for="autocomplete-input">Autocomplete</label>
+                    <div class="input-field col s6">
+                        Product Image
+                        <input id="productImagePic" name="productImagePic" class="button" accept="image/*" type="file"
+                               class="validate">
+
                     </div>
 
                 </div>
+
                 <div class="row">
 
                     <div class="input-field col s12 center-align">
