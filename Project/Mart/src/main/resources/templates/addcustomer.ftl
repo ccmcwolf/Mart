@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,8 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/mystyle.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,11 +21,17 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             </li>
         </ul>
@@ -51,7 +58,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -79,7 +89,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" type="text" class="validate" >
+                        <input id="name" type="text" class="validate">
                         <label for="name">Customer Name</label>
                     </div>
                 </div>
@@ -130,7 +140,7 @@
                         </div>
 
                         <div class="file-path-wrapper">
-                            <input id="lblpro" class="file-path validate" type="text" >
+                            <input id="lblpro" class="file-path validate" type="text">
                             <label for="lblpro">Select Profile Picture</label>
                         </div>
                     </div>
@@ -178,7 +188,8 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>$('.button-collapse').sideNav({
             menuWidth: 300, // Default is 300
             edge: 'right', // Choose the horizontal origin
