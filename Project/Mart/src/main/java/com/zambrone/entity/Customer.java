@@ -3,18 +3,16 @@ package com.zambrone.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
- * Created by Chamith on 02/07/2017.
+ * Created by Chamith on 04/07/2017.
  */
 @Entity
 @Data
 public class Customer {
 
     @Id
-    @NotNull
-    @Column(name = "customerId")
+    @Column(name = "customer_id")
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer customerId;
 
@@ -25,38 +23,28 @@ public class Customer {
     @Basic
     @Column(name = "geolocation")
     private String geolocation;
-
     @Basic
-    @Column(name = "customerAddress")
+    @Column(name = "customer_address")
     private String customerAddress;
-
     @Basic
-    @NotNull
-    @Column(name = "customerEmail")
+    @Column(name = "customer_email")
     private String customerEmail;
-
     @Basic
-    @NotNull
-    @Column(name = "customerName")
+    @Column(name = "customer_name")
     private String customerName;
-
     @Basic
     @Column(name = "district")
     private String district;
-
     @Basic
-    @NotNull
-    @Column(name = "mobileNo")
+    @Column(name = "mobile_no")
     private Long mobileNo;
 
     @Basic
     @Column(name = "province")
     private String province;
-
     @Basic
-    @Column(name = "imagepath")
-    private String imagepath;
-
+    @Column(name = "image_path")
+    private String imagePath;
 
 
 }

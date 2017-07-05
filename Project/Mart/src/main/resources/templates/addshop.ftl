@@ -72,11 +72,11 @@
 
         </div>
         <div class="row">
-            <form class="col s12">
+            <form id="addshopform" class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="shopNo" name="shopNo" type="text" class="validate">
+                        <input id="shopNo" name="shopNo" type="text" class="validate" disabled>
                         <label for="shopNo">Shop ID</label>
                     </div>
                     <div class="input-field col s6">
@@ -103,7 +103,7 @@
 
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="district" name="province" type="text" class="validate" required>
+                        <input id="district" name="district" type="text" class="validate" required>
                         <label for="district">District</label>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="province" name="province" type="text" class="validate" required>
+                        <input id="province" name="province" type="text" class="validate" >
                         <label for="province">Province</label>
                     </div>
                 </div>
@@ -145,42 +145,42 @@
                 <!--</div>-->
                 <!--</div>-->
 
-                <div class="row">
-                    <div class="input-field col s6">
-                        Shop Logo
-                        <input id="shoplogopathPic" name="shoplogopathPic" class="button" name="shoplogopath" accept="image/*" type="file"
-                               class="validate">
+                <#--<div class="row">-->
+                    <#--<div class="input-field col s6">-->
+                        <#--Shop Logo-->
+                        <#--<input id="shoplogopathPic" name="shoplogopathPic" class="button" name="shoplogopath" accept="image/*" type="file"-->
+                               <#--class="validate">-->
 
-                    </div>
-                    <div class="input-field col s6">
-                        Cover Picture
-                        <input id="shopcoverpathPic" class="button" name="shopcoverpathPic" accept="image/*" type="file"
-                               class="validate">
+                    <#--</div>-->
+                    <#--<div class="input-field col s6">-->
+                        <#--Cover Picture-->
+                        <#--<input id="shopcoverpathPic" class="button" name="shopcoverpathPic" accept="image/*" type="file"-->
+                               <#--class="validate">-->
 
-                    </div>
-                </div>
+                    <#--</div>-->
+                <#--</div>-->
 
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_contact_calendar</i>
-                        <input id="opendayfrom" name="opendayfrom" type="text" class="validate" required>
+                        <input id="opendayfrom" name="opendayfrom" type="text" class="validate" >
                         <label for="opendayfrom">Open From</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_contact_calendar</i>
-                        <input id="opendayto" name="opendayto" type="text" class="validate" required>
+                        <input id="opendayto" name="opendayto" type="text" class="validate" >
                         <label for="opendayto">Open To</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">av_timer</i>
-                        <input id="opentime" name="opentime" type="time" class="validate" required>
+                        <input id="opentime" name="opentime" type="time" class="validate" >
                         <label for="opentime">Email</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">av_timer</i>
-                        <input id="closetime" name="closetime" type="time" class="validate" required>
+                        <input id="closetime" name="closetime" type="time" class="validate" >
                         <label for="closetime">Contact No</label>
                     </div>
                 </div>
@@ -223,16 +223,51 @@
 </footer>
 
 <!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script><script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
-<script>$('.button-collapse').sideNav({
-            menuWidth: 300, // Default is 300
-            edge: 'right', // Choose the horizontal origin
-            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            draggable: true // Choose whether you can drag to open on touch screens
-        }
-);</script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+    <script>$('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 300
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
+            }
+    );
 
+    var urlv = "/shop/add"; // the script where you handle the form input.
+
+
+
+    $('#addshopform').validate({
+        errorElement: "div",
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            $.ajax({
+                type: "POST",
+                url: urlv,
+                data: $("#addshopform").serialize(), // serializes the form's elements.
+                success: function (response) {
+                    if (response.status == "SUCCESS") {
+                        Materialize.toast(response.status, 4000);
+                    } else {
+                        Materialize.toast(response.status, 4000);
+                    }
+                },
+                error: function (e) {
+                    Materialize.toast("Error", 4000);
+                }
+            });
+        }
+    });
+
+</script>
 
 </body>
 </html>

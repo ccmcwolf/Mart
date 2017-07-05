@@ -80,32 +80,32 @@
 
         </div>
         <div class="row">
-            <form class="col s12">
+            <form id="customerform" class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="customer_id" type="text" class="validate">
-                        <label for="customer_id">Customer ID</label>
+                        <input id="customerId" name="customerId" type="text" class="validate" disabled>
+                        <label for="customerId">Customer ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" type="text" class="validate">
-                        <label for="name">Customer Name</label>
+                        <input id="customerName" name="customerName" type="text" class="validate" required>
+                        <label for="customerName">Customer Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="address" type="text" class="validate">
-                        <label for="address">Address</label>
+                        <input id="customer_address" name="customer_address" type="text" class="validate">
+                        <label for="customer_address">Address</label>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
-                        <input id="Email" type="email" class="validate">
-                        <label for="Email">Email</label>
+                        <input id="customerEmail" name="customerEmail" type="email" class="validate" required>
+                        <label for="customerEmail">Email</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
@@ -116,21 +116,21 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="City" type="text" class="validate">
-                        <label for="City">City</label>
+                        <input id="city" name="city" type="text" class="validate" required>
+                        <label for="city">City</label>
                     </div>
 
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="Province" type="tel" class="validate">
-                        <label for="Province">Province</label>
+                        <input id="district" name="district" type="tel" class="validate" >
+                        <label for="district">District</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
-                        <input id="phone" type="text" class="validate">
-                        <label for="phone">Mobile Number</label>
+                        <input id="mobileNo" name="mobileNo" type="number" minlength="10" maxlength="10" class="validate" required>
+                        <label for="mobileNo">Mobile Number</label>
                     </div>
 
                     <div class="file-field input-field col s6">
@@ -196,7 +196,48 @@
             closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             draggable: true // Choose whether you can drag to open on touch screens
         }
-);</script>
+);
+
+var urlv = "/customer/add"; // the script where you handle the form input.
+
+$('#customerform').validate({
+//        rules: {
+//            field: {
+//                required: true,
+//                minlength: 3
+//            }
+//        }
+
+    errorElement: "div",
+    errorPlacement: function (error, element) {
+        var placement = $(element).data('error');
+        if (placement) {
+            $(placement).append(error)
+        } else {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function (form) {
+        $.ajax({
+            type: "POST",
+            url: urlv,
+            data: $("#customerform").serialize(), // serializes the form's elements.
+            success: function (response) {
+                if (response.status == "SUCCESS") {
+                    Materialize.toast(response.status, 4000);
+                } else {
+                    Materialize.toast(response.status, 4000);
+                }
+            },
+            error: function (e) {
+                Materialize.toast("Error", 4000);
+            }
+        });
+    }
+});
+
+
+</script>
 
 </body>
 </html>

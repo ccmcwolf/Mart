@@ -20,7 +20,7 @@ public class PageRoutingController {
         return "addcustomer";
     }
 
-    @GetMapping(path = "/admin/addmerchant")
+    @GetMapping(path = "/admin/addshop")
     public String showAddShop(){
         return "addshop";
     }
@@ -30,5 +30,8 @@ public class PageRoutingController {
         return "addproduct";
     }
 
-
+//    @GetMapping(path = "/shops")
+//    public String getShops(){
+//        return "shops";
+//    }
 }

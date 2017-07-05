@@ -6,27 +6,26 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 02/07/2017.
+ * Created by Chamith on 04/07/2017.
  */
 @Entity
 @Data
 public class Users {
 
     @Id
-    @Column(name = "email")
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "email")
     private String email;
-
     @Basic
-    @Column(name = "deliverTime")
+    @Column(name = "deliver_time")
     private Timestamp deliverTime;
 
     @Basic
-    @Column(name = "firstName")
+    @Column(name = "first_name")
     private String firstName;
 
     @Basic
-    @Column(name = "lastName")
+    @Column(name = "last_name")
     private String lastName;
 
     @Basic
@@ -34,11 +33,12 @@ public class Users {
     private String password;
 
     @Basic
-    @Column(name = "securityCode")
+    @Column(name = "security_code")
     private String securityCode;
 
     @Basic
-    @Column(name = "userType")
+    @Column(name = "user_type")
     private String userType;
+
 
 }

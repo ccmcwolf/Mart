@@ -76,19 +76,19 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="productId" name="productId" type="text" class="validate">
+                        <input id="productId" name="productId" type="text" class="validate" disabled>
                         <label for="productId">Product ID</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
-                        <input id="name" name="name" type="tel" class="validate">
+                        <input id="name" name="name" type="tel" class="validate" required>
                         <label for="name">Product Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person_pin</i>
-                        <input id="description" name="description" type="text" class="validate">
+                        <input id="description" name="description" type="text" class="validate" required>
                         <label for="description">Description</label>
                     </div>
                 </div>
@@ -98,30 +98,25 @@
                         <input id="otherId" name="otherId" type="text" class="validate">
                         <label for="otherId">Other ID</label>
                     </div>
+
                     <div class="input-field col s6">
-                        <i class="material-icons prefix">open_with</i>
-                        <input id="size"  name="size" type="text" class="validate">
-                        <label for="size">Size</label>
+                        Product Image
+                        <input id="productImagePic" name="productImagePic" class="button" accept="image/*" type="file"
+                               class="validate">
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="unitPrice" name="unitPrice" type="text" class="validate">
+                        <input id="unitPrice" name="unitPrice" type="text" class="validate" required>
                         <label for="unitPrice">Unit Price</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="availablilty" name="availablilty" type="text" class="validate">
+                        <input id="availablilty" name="availablilty" type="text" class="validate" required>
                         <label for="availablilty">Availablilty</label>
                     </div>
-
-
                 </div>
-
-
                 <div class="row">
                     <div class="input-field col s6">
                         <select>
@@ -141,29 +136,26 @@
                         </select>
                         <label>Select Category</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        Product Image
-                        <input id="productImagePic" name="productImagePic" class="button" accept="image/*" type="file"
-                               class="validate">
-
+                        <i class="material-icons prefix">open_with</i>
+                        <input id="size"  name="size" type="text" class="validate" required>
+                        <label for="size">Size</label>
                     </div>
-
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">open_with</i>
+                        <input id="weight"  name="weight" type="number" class="validate" required>
+                        <label for="weight">Weight</label>
+                    </div>
                 </div>
-
                 <div class="row">
-
                     <div class="input-field col s12 center-align">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
-
-
                 </div>
-
             </form>
         </div>
     </div>

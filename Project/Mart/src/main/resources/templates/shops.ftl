@@ -6,6 +6,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/shopcss.css'/>" media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
@@ -82,32 +83,36 @@
         </div>
         <div class="row">
             <div class="col s3">
-
                 <div class="collection">
-                    <a href="#!" onclick="filtermethodcall(this);" class="collection-item">Alvin</a>
-                    <a href="#!" class="collection-item active">Alvin</a>
-                    <a href="#!" class="collection-item">Alvin</a>
-                    <a href="#!" class="collection-item">Alvin</a>
+                <#list shops as shop>
+                    <a href="#!" class="collection-item">${shop.shopName}</a>
+                </#list>
                 </div>
             </div>
+
             <div class="col s9">
                 <form>
 
                     <div class="input-field">
 
                     </div>
-                    <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category" type="text"
+
+                    <input id="filter" placeholder="Search Ex - Area, Price, Food Name, Description, Category"
+                           type="text"
                            class="validate">
 
                     <ul class="list row">
+                    <#list shops as shop>
                         <li class="col s6 card horizontal">
                             <div class="card-image">
-                                <img src="img/food-h-c-150-400-1.jpg">
+                                <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
                             </div>
                             <div class="card-stacked">
                                 <div class="card-content">
-                                    <h5 class="name"><a href="products.html">Cafe Fort</a></h5>
-                                    <p>Fort, Colombo. Pizza</p>
+                                    <h5 class="name"><a href="products.html">${shop.shopName}</a></h5>
+                                    <p>${shop.city}</p>
+                                    ${shop.contactNo}
+
                                 </div>
                                 <div class="card-action">
                                     <div class="rateYo"></div>
@@ -116,73 +121,74 @@
                             </div>
 
                         </li>
-                        <li class="col s6 card horizontal">
+                    </#list>
+                    <#--<li class="col s6 card horizontal">-->
 
-                            <div class="card-image">
-                                <img src="img/food-h-c-150-400-3.jpg">
+                    <#--<div class="card-image">-->
+                    <#--<img src="<@spring.url '/img/food-h-c-150-400-3.jpg'/>">-->
 
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5 class="name"><a href="products.html">Aasife</a></h5>
-                                    <p>Rajagiriya, Colombo. Casual Dining</p>
-                                </div>
-                                <div class="card-action">
-                                    <div class="rateYo"></div>
-                                    <a href="#">More info</a>
-                                </div>
-                            </div>
+                    <#--</div>-->
+                    <#--<div class="card-stacked">-->
+                    <#--<div class="card-content">-->
+                    <#--<h5 class="name"><a href="products.html">Aasife</a></h5>-->
+                    <#--<p>Rajagiriya, Colombo. Casual Dining</p>-->
+                    <#--</div>-->
+                    <#--<div class="card-action">-->
+                    <#--<div class="rateYo"></div>-->
+                    <#--<a href="#">More info</a>-->
+                    <#--</div>-->
+                    <#--</div>-->
 
-                        </li>
-                        <li class="col s6 card horizontal">
-                            <div class="card-image">
-                                <img src="img/food-h-c-150-400-6.jpg">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5 class="name"><a href="products.html">Shandong</a></h5>
-                                    <p>Rajagiriya, Colombo. Casual Dining</p>
-                                </div>
-                                <div class="card-action">
-                                    <div class="rateYo"></div>
-                                    <a href="#">More info</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col s6 card horizontal">
-                            <div class="card-image">
-                                <img src="img/food-h-c-150-400-9.jpg">
+                    <#--</li>-->
+                    <#--<li class="col s6 card horizontal">-->
+                    <#--<div class="card-image">-->
+                    <#--<img src="<@spring.url '/img/food-h-c-150-400-6.jpg'/>">-->
+                    <#--</div>-->
+                    <#--<div class="card-stacked">-->
+                    <#--<div class="card-content">-->
+                    <#--<h5 class="name"><a href="products.html">Shandong</a></h5>-->
+                    <#--<p>Rajagiriya, Colombo. Casual Dining</p>-->
+                    <#--</div>-->
+                    <#--<div class="card-action">-->
+                    <#--<div class="rateYo"></div>-->
+                    <#--<a href="#">More info</a>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</li>-->
+                    <#--<li class="col s6 card horizontal">-->
+                    <#--<div class="card-image">-->
+                    <#--<img src="<@spring.url '/img/food-h-c-150-400-9.jpg'/>">-->
 
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5 class="name"><a href="products.html">Chinese Dragon</a></h5>
-                                    <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+                    <#--</div>-->
+                    <#--<div class="card-stacked">-->
+                    <#--<div class="card-content">-->
+                    <#--<h5 class="name"><a href="products.html">Chinese Dragon</a></h5>-->
+                    <#--<p>Bambalapitiya, Colombo 04· Casual Dining</p>-->
 
-                                </div>
-                                <div class="card-action">
-                                    <div class="rateYo"></div>
-                                    <a href="#modal1">More info</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col s6 card horizontal">
-                            <div class="card-image">
-                                <img src="img/food-h-c-150-400-7.jpg">
+                    <#--</div>-->
+                    <#--<div class="card-action">-->
+                    <#--<div class="rateYo"></div>-->
+                    <#--<a href="#modal1">More info</a>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</li>-->
+                    <#--<li class="col s6 card horizontal">-->
+                    <#--<div class="card-image">-->
+                    <#--<img src="<@spring.url '/img/food-h-c-150-400-7.jpg'/>">-->
 
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>
-                                    <p>Bambalapitiya, Colombo 04· Casual Dining</p>
+                    <#--</div>-->
+                    <#--<div class="card-stacked">-->
+                    <#--<div class="card-content">-->
+                    <#--<h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>-->
+                    <#--<p>Bambalapitiya, Colombo 04· Casual Dining</p>-->
 
-                                </div>
-                                <div class="card-action">
-                                    <div class="rateYo"></div>
-                                    <a href="#modal1">More info</a>
-                                </div>
-                            </div>
-                        </li>
+                    <#--</div>-->
+                    <#--<div class="card-action">-->
+                    <#--<div class="rateYo"></div>-->
+                    <#--<a href="#modal1">More info</a>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</li>-->
                     </ul>
                 </form>
             </div>
@@ -235,8 +241,10 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script><script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="js/jquery.filterList.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>">
+</script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 
 <script>$('.button-collapse').sideNav({
@@ -258,7 +266,7 @@ function filtermethodcall() {
     ul.addEventListener('click', function (e) {
         var target = e.target; // Clicked element
 
-        if (target.tagName === 'LI'){
+        if (target.tagName === 'LI') {
             alert(target.id); // Check if the element is a LI
         }
     });
