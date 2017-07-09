@@ -21,11 +21,17 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             </li>
         </ul>
@@ -53,7 +59,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -116,7 +125,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="province" name="province" type="text" class="validate" >
+                        <input id="province" name="province" type="text" class="validate">
                         <label for="province">Province</label>
                     </div>
                 </div>
@@ -145,46 +154,60 @@
                 <!--</div>-->
                 <!--</div>-->
 
-                <#--<div class="row">-->
-                    <#--<div class="input-field col s6">-->
-                        <#--Shop Logo-->
-                        <#--<input id="shoplogopathPic" name="shoplogopathPic" class="button" name="shoplogopath" accept="image/*" type="file"-->
-                               <#--class="validate">-->
 
-                    <#--</div>-->
-                    <#--<div class="input-field col s6">-->
-                        <#--Cover Picture-->
-                        <#--<input id="shopcoverpathPic" class="button" name="shopcoverpathPic" accept="image/*" type="file"-->
-                               <#--class="validate">-->
+                <div class="row">
+                    <div class="input-field col s6">
+                        Shop Logo
+                        <input id="shoplogopathPic" name="shoplogopathPic" class="button" accept="image/*" type="file"
+                              >
+                    </div>
 
-                    <#--</div>-->
-                <#--</div>-->
+                    <div class="input-field col s6">
+                        Shop Cover
+                        <input id="shopcoverpathPic" name="shopcoverpathPic" class="button" accept="image/*" type="file"
+                              >
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_contact_calendar</i>
-                        <input id="opendayfrom" name="opendayfrom" type="text" class="validate" >
+                        <input id="opendayfrom" name="opendayfrom" type="text" class="validate">
                         <label for="opendayfrom">Open From</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">perm_contact_calendar</i>
-                        <input id="opendayto" name="opendayto" type="text" class="validate" >
+                        <input id="opendayto" name="opendayto" type="text" class="validate">
                         <label for="opendayto">Open To</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">av_timer</i>
-                        <input id="opentime" name="opentime" type="time" class="validate" >
+                        <input id="opentime" name="opentime" type="time" class="validate">
                         <label for="opentime">Email</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">av_timer</i>
-                        <input id="closetime" name="closetime" type="time" class="validate" >
+                        <input id="closetime" name="closetime" type="time" class="validate">
                         <label for="closetime">Contact No</label>
                     </div>
                 </div>
-
+                <div id="spinneritem" class="row center">
+                    <div align="center" id="spinmap" class="preloader-wrapper active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="input-field col s12 center-align">
@@ -195,34 +218,34 @@
                 </div>
             </form>
         </div>
-</div>
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Mart Online Shopping</h5>
-                <p class="grey-text text-lighten-4">@2017</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Foods</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Shops</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Merchant Area</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-    <div class="footer-copyright">
+    <footer class="page-footer">
         <div class="container">
-
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Mart Online Shopping</h5>
+                    <p class="grey-text text-lighten-4">@2017</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Explore Foods</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Explore Shops</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Merchant Area</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+        <div class="footer-copyright">
+            <div class="container">
 
-<!--Import jQuery before materialize.js-->
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
     <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
@@ -236,38 +259,73 @@
 
     var urlv = "/shop/add"; // the script where you handle the form input.
 
+    $(document).ready(function() {
+//        $('select').material_select();
+        $("#spinneritem").hide();
+    });
 
 
     $('#addshopform').validate({
+//        rules: {
+//            field: {
+//                required: true,
+//                minlength: 3
+//            }
+//        }
         errorElement: "div",
         errorPlacement: function (error, element) {
             var placement = $(element).data('error');
             if (placement) {
-                $(placement).append(error);
+                $(placement).append(error)
             } else {
                 error.insertAfter(element);
             }
         },
         submitHandler: function (form) {
+
+            event.preventDefault();
+
+            // Get form
+            var form = $('#addshopform')[0];
+
+            // Create an FormData object
+            var data = new FormData(form);
+
+            // If you want to add an extra field for the FormData
+            data.append("courierField", "This is some extra data, testing");
+
+            // disabled the submit button
+            $("#addshopform").prop("disabled", true);
+            $("#spinneritem").show();
+
             $.ajax({
                 type: "POST",
+                enctype: 'multipart/form-data',
                 url: urlv,
-                data: $("#addshopform").serialize(), // serializes the form's elements.
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
                 success: function (response) {
                     if (response.status == "SUCCESS") {
                         Materialize.toast(response.status, 4000);
+                        $("#spinneritem").hide();
+                        $("#addshopform")[0].reset();
                     } else {
+                        $("#spinneritem").hide();
                         Materialize.toast(response.status, 4000);
                     }
                 },
                 error: function (e) {
                     Materialize.toast("Error", 4000);
+
                 }
             });
         }
     });
 
-</script>
+    </script>
 
 </body>
 </html>

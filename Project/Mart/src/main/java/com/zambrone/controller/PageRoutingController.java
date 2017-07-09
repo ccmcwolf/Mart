@@ -30,6 +30,11 @@ public class PageRoutingController {
         return "addproduct";
     }
 
+    @GetMapping(path = "/fileupload")
+    public String showFileUpload(){
+        return "fileupload";
+    }
+
 //    @GetMapping(path = "/shops")
 //    public String getShops(){
 //        return "shops";

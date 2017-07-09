@@ -1,17 +1,21 @@
 package com.zambrone.controller;
 
+import amazon.s3.AmazonS3Template;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.zambrone.config.JsonResponse;
 import com.zambrone.entity.Product;
 import com.zambrone.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 /**
  * Created by Chamith on 03/07/2017.
@@ -21,25 +25,68 @@ import javax.validation.Valid;
 @RequestMapping("/product")
 public class ProductController {
 
+
+    private AmazonS3Template amazonS3Template;
+    private String bucketName;
+
     @Autowired
     ProductService productService;
 
+    @Autowired
+    public ProductController(AmazonS3Template amazonS3Template, @Value("${amazon.s3.default-bucket}") String bucketName) {
+        System.out.println("template name " + amazonS3Template);
+        System.out.println("bucket name " + bucketName);
+        this.amazonS3Template = amazonS3Template;
+        this.bucketName = bucketName;
+
+    }
+
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public @ResponseBody
-    JsonResponse addProduct(@Valid @ModelAttribute(value = "product") Product product, BindingResult result) {
+    JsonResponse addProduct(@Valid @ModelAttribute(value = "product") Product product, @RequestParam(value = "productImagePic") MultipartFile file, BindingResult result) {
 
+        System.out.println("multipart file name " + file.getName());
+        String fileid = UUID.randomUUID().toString();
         JsonResponse res = new JsonResponse();
-        if (!result.hasErrors()) {
-            res.setStatus("SUCCESS");
-            res.setResult("courier added successfully "+product.getProductId());
-            System.out.println(product);
-            productService.addNewProduct(product);
+
+
+        if (!file.isEmpty()) {
+            if (!result.hasErrors()) {
+
+                try {
+                    ObjectMetadata objectMetadata = new ObjectMetadata();
+                    objectMetadata.setContentType(file.getContentType());
+
+                    // Upload the file for public read
+                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, file.getInputStream(), objectMetadata)
+                            .withCannedAcl(CannedAccessControlList.PublicRead));
+                    System.out.println("upload success");
+                    System.out.println("You successfully uploaded " + fileid + "!" + "\thttps://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+                    res.setStatus("SUCCESS");
+                    product.setImagePath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+                    res.setResult("courier added successfully " + product.getProductId());
+                    System.out.println(product);
+                    productService.addNewProduct(product);
+
+                } catch (Exception e) {
+                    System.out.println("You failed to upload " + fileid + " => " + e.getMessage());
+                }
+
+
+            } else {
+                res.setStatus("FAIL");
+                res.setResult("Data Not Submitted");
+                System.out.println("Submission errors" + result.getFieldError());
+            }
 
         } else {
             res.setStatus("FAIL");
             res.setResult("Data Not Submitted");
             System.out.println("Submission errors" + result.getFieldError());
         }
+
+
         return res;
     }
 }

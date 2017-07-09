@@ -80,7 +80,7 @@
 
         </div>
         <div class="row">
-            <form id="customerform" class="col s12">
+            <form id="customerform" class="col s12" enctype="multipart/form-data">
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
@@ -122,14 +122,15 @@
 
                     <div class="input-field col s6">
                         <i class="material-icons prefix">business</i>
-                        <input id="district" name="district" type="tel" class="validate" >
+                        <input id="district" name="district" type="tel" class="validate">
                         <label for="district">District</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
-                        <input id="mobileNo" name="mobileNo" type="number" minlength="10" maxlength="10" class="validate" required>
+                        <input id="mobileNo" name="mobileNo" type="number" minlength="10" maxlength="10"
+                               class="validate" required>
                         <label for="mobileNo">Mobile Number</label>
                     </div>
 
@@ -145,6 +146,21 @@
                         </div>
                     </div>
                 </div>
+                <div id="spinneritem" class="row center">
+                    <div align="center" id="spinmap" class="preloader-wrapper active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
 
                     <div class="input-field col s12 center-align">
@@ -157,7 +173,11 @@
                 </div>
 
             </form>
+
         </div>
+
+
+
     </div>
 </div>
 <footer class="page-footer">
@@ -190,7 +210,13 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
-<script>$('.button-collapse').sideNav({
+<script>
+
+    $(document).ready(function(){
+        $("#spinneritem").hide();
+    });
+
+    $('.button-collapse').sideNav({
             menuWidth: 300, // Default is 300
             edge: 'right', // Choose the horizontal origin
             closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
@@ -207,7 +233,6 @@ $('#customerform').validate({
 //                minlength: 3
 //            }
 //        }
-
     errorElement: "div",
     errorPlacement: function (error, element) {
         var placement = $(element).data('error');
@@ -218,15 +243,41 @@ $('#customerform').validate({
         }
     },
     submitHandler: function (form) {
+
+        event.preventDefault();
+
+        // Get form
+        var form = $('#customerform')[0];
+
+        // Create an FormData object
+        var data = new FormData(form);
+
+        // If you want to add an extra field for the FormData
+        data.append("CustomField", "This is some extra data, testing");
+
+        // disabled the submit button
+        $("#customerform").prop("disabled", true);
+        $("#spinneritem").show();
+
+
         $.ajax({
             type: "POST",
+            enctype: 'multipart/form-data',
             url: urlv,
-            data: $("#customerform").serialize(), // serializes the form's elements.
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
             success: function (response) {
                 if (response.status == "SUCCESS") {
                     Materialize.toast(response.status, 4000);
+                    $("#spinneritem").hide();
+                    $("#customerform")[0].reset();
                 } else {
+                    $("#spinneritem").hide();
                     Materialize.toast(response.status, 4000);
+
                 }
             },
             error: function (e) {

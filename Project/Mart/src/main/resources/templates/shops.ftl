@@ -105,7 +105,14 @@
                     <#list shops as shop>
                         <li class="col s6 card horizontal">
                             <div class="card-image">
-                                <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
+                                <#if shop.shoplogoPath?has_content>
+
+                                    <img src="<@spring.url "${shop.shoplogoPath}"/>">
+                                <#else>
+                                    <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
+
+                                </#if>
+
                             </div>
                             <div class="card-stacked">
                                 <div class="card-content">

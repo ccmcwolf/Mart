@@ -149,6 +149,21 @@
                         <label for="weight">Weight</label>
                     </div>
                 </div>
+                <div id="spinneritem" class="row center">
+                    <div align="center" id="spinmap" class="preloader-wrapper active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="input-field col s12 center-align">
                         <button class="btn waves-effect waves-light" type="submit" name="action">Submit
@@ -191,11 +206,6 @@
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>
-    $(document).ready(function() {
-        $('select').material_select();
-
-
-    });
 
     $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300
@@ -207,6 +217,12 @@
 
     var urlv = "/product/add"; // the script where you handle the form input.
 
+    $(document).ready(function() {
+        $('select').material_select();
+        $("#spinneritem").hide();
+    });
+
+
     $('#addproductform').validate({
 //        rules: {
 //            field: {
@@ -214,7 +230,6 @@
 //                minlength: 3
 //            }
 //        }
-
         errorElement: "div",
         errorPlacement: function (error, element) {
             var placement = $(element).data('error');
@@ -225,14 +240,38 @@
             }
         },
         submitHandler: function (form) {
+
+            event.preventDefault();
+
+            // Get form
+            var form = $('#addproductform')[0];
+
+            // Create an FormData object
+            var data = new FormData(form);
+
+            // If you want to add an extra field for the FormData
+            data.append("courierField", "This is some extra data, testing");
+
+            // disabled the submit button
+            $("#addproductform").prop("disabled", true);
+            $("#spinneritem").show();
+
             $.ajax({
                 type: "POST",
+                enctype: 'multipart/form-data',
                 url: urlv,
-                data: $("#addproductform").serialize(), // serializes the form's elements.
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
                 success: function (response) {
                     if (response.status == "SUCCESS") {
                         Materialize.toast(response.status, 4000);
+                        $("#spinneritem").hide();
+                        $("#addproductform")[0].reset();
                     } else {
+                        $("#spinneritem").hide();
                         Materialize.toast(response.status, 4000);
                     }
                 },

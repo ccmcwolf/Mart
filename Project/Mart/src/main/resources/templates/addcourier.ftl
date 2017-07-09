@@ -149,33 +149,41 @@
 
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <form id="fileUploadForm">
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="proimage" class="button" name="proimage" accept="image/*" type="file"
-                                       class="validate">
-                                <label for="proimage">Profile Picture</label>
-                            </div>
-                            <#--<div class="input-field col s3">-->
-                                <#--<button id="btnUpload" class="btn waves-effect waves-light" name="action">Submit-->
-                                    <#--<i class="material-icons right">send</i>-->
-                                <#--</button>-->
-                            <#--</div>-->
-                        </form>
-                    </div>
-                    <div class="input-field col s6">
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-
-
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="proimage" class="button" name="proimage" accept="image/*" type="file"
+                           class="validate">
+                    <label for="proimage">Profile Picture</label>
                 </div>
 
-            </form>
+
+                <div id="spinneritem" class="row center">
+                    <div align="center" id="spinmap" class="preloader-wrapper active">
+                        <div class="spinner-layer spinner-red-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-field col s6">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+
         </div>
+
+        </form>
     </div>
+</div>
 </div>
 <footer class="page-footer">
     <div class="container">
@@ -217,45 +225,12 @@
         }
 );
 
+var urlv = "/courier/add"; // the script where you handle the form input.
 
 $(document).ready(function () {
-
-    $("#btnUpload").click(function (event) {
-        //stop submit the form, we will post it manually.
-
-        fire_ajax_submit();
-
-    });
-
+    $("#spinneritem").hide();
 });
 
-function fire_ajax_submit() {
-    // Get form
-    var form = $('#fileUploadForm');
-
-    var data = new FormData(form);
-
-    $.ajax({
-        type: "POST",
-        enctype: 'multipart/form-data',
-        url: "/s3/upload",
-        data: data,
-        contentType: false,
-        cache: false,
-        timeout: 600000,
-        success: function (data) {
-            alert("Success" + data);
-        },
-        error: function (e) {
-            alert("error"+e);
-
-        }
-    });
-
-}
-
-
-var urlv = "/courier/add"; // the script where you handle the form input.
 
 $('#addcourierform').validate({
 //        rules: {
@@ -264,7 +239,6 @@ $('#addcourierform').validate({
 //                minlength: 3
 //            }
 //        }
-
     errorElement: "div",
     errorPlacement: function (error, element) {
         var placement = $(element).data('error');
@@ -275,15 +249,41 @@ $('#addcourierform').validate({
         }
     },
     submitHandler: function (form) {
+
+        event.preventDefault();
+
+        // Get form
+        var form = $('#addcourierform')[0];
+
+        // Create an FormData object
+        var data = new FormData(form);
+
+        // If you want to add an extra field for the FormData
+        data.append("courierField", "This is some extra data, testing");
+
+        // disabled the submit button
+        $("#addcourierform").prop("disabled", true);
+        $("#spinneritem").show();
+
+
         $.ajax({
             type: "POST",
+            enctype: 'multipart/form-data',
             url: urlv,
-            data: $("#addcourierform").serialize(), // serializes the form's elements.
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
             success: function (response) {
                 if (response.status == "SUCCESS") {
                     Materialize.toast(response.status, 4000);
+                    $("#spinneritem").hide();
+                    $("#addcourierform")[0].reset();
                 } else {
+                    $("#spinneritem").hide();
                     Materialize.toast(response.status, 4000);
+
                 }
             },
             error: function (e) {
@@ -295,6 +295,5 @@ $('#addcourierform').validate({
 
 
 </script>
-
 </body>
 </html>
