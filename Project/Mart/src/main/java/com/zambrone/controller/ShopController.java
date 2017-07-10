@@ -5,7 +5,9 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.zambrone.config.JsonResponse;
+import com.zambrone.entity.Category;
 import com.zambrone.entity.Shop;
+import com.zambrone.service.CategoryService;
 import com.zambrone.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,7 +30,8 @@ public class ShopController {
     @Autowired
     ShopService shopService;
 
-
+    @Autowired
+    CategoryService categoryService;
 
     private AmazonS3Template amazonS3Template;
     private String bucketName;
@@ -95,14 +98,14 @@ public class ShopController {
     @GetMapping(path = "/explore")
     public String getProducts(Model model){
 
+        List<Category> allCategory = categoryService.getAllCategory();
         List<Shop> allShop = shopService.getAllShop();
 
+        model.addAttribute("categories",allCategory);
         model.addAttribute("shops",allShop);
+
         return "shops";
     }
 
-//    @GetMapping(path = "/load")
-//    public String getShops(){
-//        return "shops";
-//    }
+
 }

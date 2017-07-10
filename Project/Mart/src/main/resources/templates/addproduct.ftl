@@ -8,6 +8,8 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/jquery.searchableSelect.css'/>"
+          media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -21,11 +23,17 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             </li>
         </ul>
@@ -53,7 +61,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -119,33 +130,36 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <select>
-                            <option value="" disabled selected>Select Shop</option>
-                            <option value="1">Shop 1</option>
-                            <option value="2">Shop 2</option>
-                            <option value="3">Shop 3</option>
+                       Select Shop
+                        <select name="shopId" class="col s6">
+                        <#list allshop as shop>
+                            <#if shop.shopName?has_content>
+                                <option value="${shop.shopNo}">${shop.shopName}</option>
+                            </#if>
+                        </#list>
                         </select>
-                        <label>Select Shop</label>
                     </div>
                     <div class="input-field col s6">
+                        Choose Catergory
+
                         <select>
                             <option value="" disabled selected>Choose Catergory</option>
                             <option value="1">Option 1</option>
                             <option value="2">Option 2</option>
                             <option value="3">Option 3</option>
                         </select>
-                        <label>Select Category</label>
+
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">open_with</i>
-                        <input id="size"  name="size" type="text" class="validate" required>
+                        <input id="size" name="size" type="text" class="validate" required>
                         <label for="size">Size</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">open_with</i>
-                        <input id="weight"  name="weight" type="number" class="validate" required>
+                        <input id="weight" name="weight" type="number" class="validate" required>
                         <label for="weight">Weight</label>
                     </div>
                 </div>
@@ -205,6 +219,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.searchableSelect.js'/>"></script>
 <script>
 
     $('.button-collapse').sideNav({
@@ -217,11 +232,14 @@
 
     var urlv = "/product/add"; // the script where you handle the form input.
 
-    $(document).ready(function() {
-        $('select').material_select();
+    $(document).ready(function () {
+
         $("#spinneritem").hide();
     });
 
+    $(function () {
+        $('select').searchableSelect();
+    });
 
     $('#addproductform').validate({
 //        rules: {

@@ -5,16 +5,22 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.zambrone.config.JsonResponse;
+import com.zambrone.entity.Category;
 import com.zambrone.entity.Product;
+import com.zambrone.entity.Shop;
+import com.zambrone.service.CategoryService;
 import com.zambrone.service.ProductService;
+import com.zambrone.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -25,6 +31,10 @@ import java.util.UUID;
 @RequestMapping("/product")
 public class ProductController {
 
+    @Autowired
+    ShopService shopService;
+    @Autowired
+    CategoryService categoryService;
 
     private AmazonS3Template amazonS3Template;
     private String bucketName;
@@ -88,5 +98,16 @@ public class ProductController {
 
 
         return res;
+    }
+
+    @GetMapping(path = "/add")
+    public String showaddProduct(Model model){
+
+        List<Category> allCategory = categoryService.getAllCategory();
+        model.addAttribute("categories",allCategory);
+        List<Shop> allShop = shopService.getAllShop();
+        model.addAttribute("allshop",allShop);
+
+        return "addproduct";
     }
 }

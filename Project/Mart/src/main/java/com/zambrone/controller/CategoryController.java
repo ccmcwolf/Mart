@@ -4,11 +4,13 @@ import amazon.s3.AmazonS3Template;
 import com.amazonaws.services.s3.model.*;
 import com.zambrone.config.JsonResponse;
 import com.zambrone.entity.Category;
+import com.zambrone.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,18 +27,20 @@ import java.util.stream.Collectors;
 public class CategoryController {
 
 
+    @Autowired
+    CategoryService categoryService;
+
     private AmazonS3Template amazonS3Template;
     private String bucketName;
 
     @Autowired
     public CategoryController(AmazonS3Template amazonS3Template, @Value("${amazon.s3.default-bucket}") String bucketName) {
-        System.out.println("template name "+ amazonS3Template);
-        System.out.println("bucket name "+ bucketName);
+        System.out.println("template name " + amazonS3Template);
+        System.out.println("bucket name " + bucketName);
         this.amazonS3Template = amazonS3Template;
         this.bucketName = bucketName;
 
     }
-
 
 
     @RequestMapping(method = RequestMethod.GET)
@@ -72,10 +76,10 @@ public class CategoryController {
                         .withCannedAcl(CannedAccessControlList.PublicRead));
                 System.out.println("upload success");
 
-                return "You successfully uploaded " + fileid + "!"+"\thttps://s3-ap-southeast-1.amazonaws.com/martonline/"+fileid;
+                return "You successfully uploaded " + fileid + "!" + "\thttps://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid;
             } catch (Exception e) {
 
-                System.out.println("error"+e);
+                System.out.println("error" + e);
                 return "You failed to upload " + fileid + " => " + e.getMessage();
             }
         } else {
@@ -83,4 +87,13 @@ public class CategoryController {
         }
 
     }
+
+//    @GetMapping(path = "/getall")
+//    public String getProducts(Model model){
+//
+//        List<Category> allShop = categoryService.getAllCategory();
+//
+//        model.addAttribute("category",allShop);
+//        return "shops";
+//    }
 }

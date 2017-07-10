@@ -1,6 +1,7 @@
 package com.zambrone.dao;
 
 import com.zambrone.entity.Category;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -9,17 +10,17 @@ import java.util.List;
  */
 public interface CategoryDAO {
 
-    boolean addCategory(Category category);
+    boolean addCategory(Category category) throws DataAccessException;
 
-    boolean deleteCategoryByName(String name);
+    boolean deleteCategoryByName(String name) throws DataAccessException;
 
-    boolean deleteCategoryById(Integer id);
+    boolean deleteCategoryById(Integer id) throws DataAccessException;
 
-    Category searchCategoryById(Integer id);
+    Category searchCategoryById(Integer id) throws DataAccessException;
 
-    List<Category> loadAllCategory();
+    List<Category> getAllCategory() throws DataAccessException;
 
-    Integer searchCategoryCount();
+    Integer searchCategoryCount() throws DataAccessException;
 
-    Category searchCategoryByName(String name);
+    Category searchCategoryByName(String name) throws DataAccessException;
 }

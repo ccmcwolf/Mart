@@ -25,10 +25,7 @@ public class PageRoutingController {
         return "addshop";
     }
 
-    @GetMapping(path = "/merchant/addproduct")
-    public String showaddProduct(){
-        return "addproduct";
-    }
+
 
     @GetMapping(path = "/fileupload")
     public String showFileUpload(){

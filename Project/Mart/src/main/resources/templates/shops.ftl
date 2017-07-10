@@ -84,8 +84,13 @@
         <div class="row">
             <div class="col s3">
                 <div class="collection">
-                <#list shops as shop>
-                    <a href="#!" class="collection-item">${shop.shopName}</a>
+                <#list categories as category>
+                    <#if category.categoryName?has_content>
+                        <a href="#!" class="collection-item">${category.categoryName}</a>
+                    <#else>
+                        <a href="#!" class="collection-item">"Hello"</a>
+                    </#if>
+
                 </#list>
                 </div>
             </div>
@@ -118,7 +123,7 @@
                                 <div class="card-content">
                                     <h5 class="name"><a href="products.html">${shop.shopName}</a></h5>
                                     <p>${shop.city}</p>
-                                    ${shop.contactNo}
+                                ${shop.contactNo}
 
                                 </div>
                                 <div class="card-action">
