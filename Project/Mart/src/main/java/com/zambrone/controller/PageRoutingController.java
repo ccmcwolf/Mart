@@ -11,24 +11,31 @@ public class PageRoutingController {
 
 
     @GetMapping(path = "/admin/addcourier")
-    public String showaddCourier(){
-    return "addcourier";
+    public String showaddCourier() {
+        return "addcourier";
     }
 
     @GetMapping(path = "/addcustomer")
-    public String showaddCustomer(){
+    public String showaddCustomer() {
         return "addcustomer";
     }
 
     @GetMapping(path = "/admin/addshop")
-    public String showAddShop(){
+    public String showAddShop() {
         return "addshop";
     }
 
 
 
+
+    @GetMapping(path = "/")
+    public String showIndex() {
+        return "index";
+    }
+
+
     @GetMapping(path = "/fileupload")
-    public String showFileUpload(){
+    public String showFileUpload() {
         return "fileupload";
     }
 

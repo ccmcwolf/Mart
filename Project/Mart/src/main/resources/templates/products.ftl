@@ -107,7 +107,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
+                                <span class="new badge red item_price" data-badge-caption="price">145.00</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                                 <p>Soft and chewy fresh Sub Bun.with polish sausage</p><br>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
+                                <span class="new badge red item_price" data-badge-caption="price">150.00</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                                 <p class="item_price">12.50</p><br>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
+                                <span class="new badge red item_price" data-badge-caption="price">75.00</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
+                                <span class="new badge red item_price" data-badge-caption="price">398.00</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                                 </p>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
+                                <span class="new badge red item_price" data-badge-caption="price">300.00</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
@@ -308,9 +308,11 @@
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script><script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="js/jquery.filterList.js"></script>
-<script type="text/javascript" src="js/simpleCart.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/simpleCart.js'/>"</script>
+
 <script>
     $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 300

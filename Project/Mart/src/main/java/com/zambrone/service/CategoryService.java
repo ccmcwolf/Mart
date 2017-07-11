@@ -12,15 +12,15 @@ public interface CategoryService{
 
         boolean addCategory(Category courier) throws DataAccessException;
 
-        public List<Category> getAllCategory() throws DataAccessException;
+         List<Category> getAllCategory() throws DataAccessException;
 
-        public Category getCategoryByName(String name) throws DataAccessException;
+         Category getCategoryByName(String name) throws DataAccessException;
 
-        public Category getCategoryByID(Integer id) throws DataAccessException;
+         Category getCategoryByID(Integer id) throws DataAccessException;
 
-        public void updateCategory(Category courier) throws DataAccessException;
+         void updateCategory(Category courier) throws DataAccessException;
 
-        public void removeCategory(Integer id) throws DataAccessException;
+         void removeCategory(Integer id) throws DataAccessException;
 
 }
 

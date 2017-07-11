@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,8 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/mystyle.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,8 +20,8 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3 active" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3 active" src="<@spring.url '/shop/explore'/>">Explore Shops</a></li>
+            <li><a class="text-lighten-3" src="<@spring.url '/products'/>">Explore Foods</a></li>
             <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
             <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a class="text-lighten-3" href="login.html">Login</a></li>
@@ -28,8 +29,8 @@
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" src="<@spring.url '/explore'/>">Explore Shops</a></li>
+            <li><a class="text-lighten-3" src="<@spring.url '/products'/>">Explore Foods</a></li>
             <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
             <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 
@@ -63,10 +64,10 @@
 </div>
 
 <!--<form method="POST" enctype="multipart/form-data"-->
-      <!--action="/s3/upload">-->
-    <!--File to upload: <input type="file" name="file"><br /> Name: <input-->
-        <!--type="text" name="name"><br /> <br /> <input type="submit"-->
-                                                     <!--value="Upload"> Press here to upload the file!-->
+<!--action="/s3/upload">-->
+<!--File to upload: <input type="file" name="file"><br /> Name: <input-->
+<!--type="text" name="name"><br /> <br /> <input type="submit"-->
+<!--value="Upload"> Press here to upload the file!-->
 <!--</form>-->
 
 <div class="container">
@@ -136,7 +137,8 @@
     </div>
 </footer>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $(document).ready(function () {

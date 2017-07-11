@@ -94,6 +94,10 @@ public class ShopController {
         return res;
     }
 
+    @GetMapping(path = "/products")
+    public String showProducts() {
+        return "products";
+    }
 
     @GetMapping(path = "/explore")
     public String getProducts(Model model){
