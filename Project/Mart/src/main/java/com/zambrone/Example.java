@@ -9,7 +9,7 @@ import com.sendgrid.*;
 import java.io.IOException;
 
 public class Example {
-//    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 //        Email from = new Email("westuser38@gmail.com");
 //        String subject = "Sending with SendGrid is Fun";
 //        Email to = new Email("ccmcwolf@gmail.com");
@@ -29,5 +29,5 @@ public class Example {
 //        } catch (IOException ex) {
 //            throw ex;
 //        }
-//    }
+    }
 }
