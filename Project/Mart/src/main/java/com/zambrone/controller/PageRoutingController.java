@@ -3,6 +3,9 @@ package com.zambrone.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by Chamith on 02/07/2017.
  */
@@ -26,7 +29,11 @@ public class PageRoutingController {
     }
 
 
-
+    @GetMapping(path = "/logout")
+    public String logout(HttpServletRequest request) throws ServletException {
+        request.logout();
+        return "/";
+    }
 
     @GetMapping(path = "/")
     public String showIndex() {
