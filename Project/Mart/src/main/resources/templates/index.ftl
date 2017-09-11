@@ -15,33 +15,7 @@
 </head>
 
 <body>
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
-
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3 active" src="<@spring.url '/shop/explore'/>">Explore Shops</a></li>
-            <li><a class="text-lighten-3" src="<@spring.url '/products'/>">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a class="text-lighten-3" href="login.html">Login</a></li>
-            <li><a class="text-lighten-3" href="signup.html">Signup</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" src="<@spring.url '/explore'/>">Explore Shops</a></li>
-            <li><a class="text-lighten-3" src="<@spring.url '/products'/>">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
+<#include "navbar.ftl">
 <div class="carousel carousel-slider center" data-indicators="true">
     <div class="carousel-fixed-item center">
         <h4 class="white-text">Delivering</h4>
@@ -111,31 +85,7 @@
     </div>
     <br><br>
 </div>
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Mart Online Shopping</h5>
-                <p class="grey-text text-lighten-4">@2017</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Foods</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Shops</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Merchant Area</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-    </div>
-</footer>
+<#include "footer.ftl">
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
