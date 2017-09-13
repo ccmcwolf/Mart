@@ -13,6 +13,8 @@ public interface ProductService {
 
     public List<Product> getAllProduct() throws DataAccessException;
 
+    public List<Product> getProductByShopId(int shopId) throws DataAccessException;
+
     public Product getProductByName(String name) throws DataAccessException;
 
     public Product getProductByID(Integer id) throws DataAccessException;

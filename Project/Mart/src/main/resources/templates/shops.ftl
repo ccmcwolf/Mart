@@ -11,7 +11,6 @@
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/shopcss.css'/>" media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 
-
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -19,28 +18,7 @@
 
 <body>
 
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
-
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
+<#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Explore</a>
@@ -66,10 +44,7 @@
     <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
-
 <div class="section no-pad-bot" id="index-banner">
-
-
     <div class="container">
         <br><br>
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -87,8 +62,6 @@
                 <#list categories as category>
                     <#if category.categoryName?has_content>
                         <a href="#!" class="collection-item">${category.categoryName}</a>
-                    <#else>
-                        <a href="#!" class="collection-item">"Hello"</a>
                     </#if>
 
                 </#list>
@@ -121,109 +94,73 @@
                             </div>
                             <div class="card-stacked">
                                 <div class="card-content">
-                                    <h5 class="name"><a href="products.html">${shop.shopName}</a></h5>
+                                    <h5 class="name"><a href="/product/${shop.shopNo}">${shop.shopName}</a></h5>
                                     <p>${shop.city}</p>
                                 ${shop.contactNo}
 
                                 </div>
                                 <div class="card-action">
                                     <div class="rateYo"></div>
-                                    <a href="#">More info</a>
+                                    <a href="#modal${shop.shopName}">More info</a>
                                 </div>
                             </div>
 
                         </li>
+                        <!-- Modal Structure -->
+                        <div id="modal${shop.shopName}" class="modal">
+                            <div class="modal-content">
+                                <h3>
+                                    <#if shop.shopName??>
+                                     ${shop.shopName}
+                                    </#if>
+                                    <br>
+                                    </h3>
+                                    <h4>
+                                        <#if shop.opendayFrom??>
+                                        ${shop.opendayFrom}
+                                        </#if>
+                                        -
+                                        <#if shop.opendayTo??>
+                                             ${shop.opendayTo}
+                                        </#if>
+
+                                    <#if shop.openTime??>
+                                       ${shop.openTime}
+                                    </#if>
+                                    <#if shop.closeTime??>
+                                        - ${shop.closeTime}
+                                    </#if>
+                                    </h4>
+                                <div>
+                                    <#if shop.shoplogoPath?has_content>
+                                    <img class="responsive-img"
+                                         src="<@spring.url "${shop.shoplogoPath}"/>">
+                                    <#else>
+                                        <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
+
+                                    </#if>
+                                    <div>
+                                        <#if shop.description??>
+                                            - ${shop.description}
+                                        </#if>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!"
+                                   class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                            </div>
+                        </div>
                     </#list>
-                    <#--<li class="col s6 card horizontal">-->
 
-                    <#--<div class="card-image">-->
-                    <#--<img src="<@spring.url '/img/food-h-c-150-400-3.jpg'/>">-->
-
-                    <#--</div>-->
-                    <#--<div class="card-stacked">-->
-                    <#--<div class="card-content">-->
-                    <#--<h5 class="name"><a href="products.html">Aasife</a></h5>-->
-                    <#--<p>Rajagiriya, Colombo. Casual Dining</p>-->
-                    <#--</div>-->
-                    <#--<div class="card-action">-->
-                    <#--<div class="rateYo"></div>-->
-                    <#--<a href="#">More info</a>-->
-                    <#--</div>-->
-                    <#--</div>-->
-
-                    <#--</li>-->
-                    <#--<li class="col s6 card horizontal">-->
-                    <#--<div class="card-image">-->
-                    <#--<img src="<@spring.url '/img/food-h-c-150-400-6.jpg'/>">-->
-                    <#--</div>-->
-                    <#--<div class="card-stacked">-->
-                    <#--<div class="card-content">-->
-                    <#--<h5 class="name"><a href="products.html">Shandong</a></h5>-->
-                    <#--<p>Rajagiriya, Colombo. Casual Dining</p>-->
-                    <#--</div>-->
-                    <#--<div class="card-action">-->
-                    <#--<div class="rateYo"></div>-->
-                    <#--<a href="#">More info</a>-->
-                    <#--</div>-->
-                    <#--</div>-->
-                    <#--</li>-->
-                    <#--<li class="col s6 card horizontal">-->
-                    <#--<div class="card-image">-->
-                    <#--<img src="<@spring.url '/img/food-h-c-150-400-9.jpg'/>">-->
-
-                    <#--</div>-->
-                    <#--<div class="card-stacked">-->
-                    <#--<div class="card-content">-->
-                    <#--<h5 class="name"><a href="products.html">Chinese Dragon</a></h5>-->
-                    <#--<p>Bambalapitiya, Colombo 04· Casual Dining</p>-->
-
-                    <#--</div>-->
-                    <#--<div class="card-action">-->
-                    <#--<div class="rateYo"></div>-->
-                    <#--<a href="#modal1">More info</a>-->
-                    <#--</div>-->
-                    <#--</div>-->
-                    <#--</li>-->
-                    <#--<li class="col s6 card horizontal">-->
-                    <#--<div class="card-image">-->
-                    <#--<img src="<@spring.url '/img/food-h-c-150-400-7.jpg'/>">-->
-
-                    <#--</div>-->
-                    <#--<div class="card-stacked">-->
-                    <#--<div class="card-content">-->
-                    <#--<h5 class="name"><a href="products.html">Hotel de Pillawoos</a></h5>-->
-                    <#--<p>Bambalapitiya, Colombo 04· Casual Dining</p>-->
-
-                    <#--</div>-->
-                    <#--<div class="card-action">-->
-                    <#--<div class="rateYo"></div>-->
-                    <#--<a href="#modal1">More info</a>-->
-                    <#--</div>-->
-                    <#--</div>-->
-                    <#--</li>-->
                     </ul>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Pilawoos (Open: 09:00 AM - 03:00 AM)</h4>
-            <div><img class="responsive-img"
-                      src="https://s3-ap-southeast-1.amazonaws.com/cdn.quickee.lk/4619/conversions/profile_thumb.jpg"/>
-                <div>Hotel De Pilawoos (Colombo -3) is one of the most popular 24 hours eateries in
-                    Colombo which has been
-                    serving customers for over 20 years!
-                </div>
-            </div>
 
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-    </div>
 </div>
 <#include "footer.ftl">
 

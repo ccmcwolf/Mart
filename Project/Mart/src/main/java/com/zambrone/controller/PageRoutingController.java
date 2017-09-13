@@ -1,5 +1,9 @@
 package com.zambrone.controller;
 
+import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -23,6 +27,13 @@ public class PageRoutingController {
         return "addcustomer";
     }
 
+    @GetMapping(path = "/login")
+    public String showlogin() {
+        return "login";
+    }
+
+
+
     @GetMapping(path = "/admin/addshop")
     public String showAddShop() {
         return "addshop";
@@ -37,6 +48,13 @@ public class PageRoutingController {
 
     @GetMapping(path = "/")
     public String showIndex() {
+
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+//            String currentUserName = authentication.getName();
+//            System.out.println("currentUserName : "+currentUserName);
+//            return currentUserName;
+//        }
         return "index";
     }
 

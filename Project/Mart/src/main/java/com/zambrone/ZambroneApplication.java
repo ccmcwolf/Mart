@@ -2,6 +2,9 @@ package com.zambrone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +22,10 @@ public class ZambroneApplication {
 
 		SpringApplication.run(ZambroneApplication.class, args);
 	}
-
+	@Bean
+	public EmbeddedServletContainerCustomizer exceptionHandling() {
+		return container -> container.addErrorPages(new ErrorPage("/exception"));
+	}
 
 }
 

@@ -30,16 +30,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/service/test").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/css/*").permitAll()
+                .antMatchers("/img/*").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/js/*").permitAll()
+                .antMatchers("/shop/explore").permitAll()
+                .antMatchers("/product/**").permitAll()
                 .antMatchers("/service/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
 
         http.formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/homepage.html",true)
-                .failureUrl("/login.html?error=true");
+                .loginPage("/login")
+//                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/",true)
+                .failureUrl("/login?error=true");
 
     }
 

@@ -53,6 +53,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false, isolation = Isolation.READ_COMMITTED)
+    public List<Product> getProductByShopId(int shopId) throws DataAccessException {
+        return productDAO.getProductByShopId(shopId);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false, isolation = Isolation.READ_COMMITTED)
     public Product getProductByName(String name) throws DataAccessException {
         return null;
     }

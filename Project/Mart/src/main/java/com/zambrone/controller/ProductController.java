@@ -110,4 +110,19 @@ public class ProductController {
 
         return "addproduct";
     }
+
+    @GetMapping(path="/{shopId}")
+    public String showProducts(Model model,@PathVariable("shopId") int shopId){
+        System.out.println("shop id !!!!!" + shopId);
+        if(shopId!=0) {
+            List<Product> allShopProducts = productService.getProductByShopId(shopId);
+            System.out.println(allShopProducts);
+            model.addAttribute("products", allShopProducts);
+            return "products";
+        }
+        else{
+
+            return "shops";
+        }
+    }
 }

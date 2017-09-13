@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,24 +16,7 @@
 
 <body>
 
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
-
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
+<#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Explore</a>
@@ -41,20 +24,6 @@
         <a href="#!" class="breadcrumb">Products</a>
     </div>
 </div>
-<ul id="slide-out" class="side-nav">
-    <li>
-        <div class="userView">
-            <div class="background">
-                <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg">
-            </div>
-            <a href="#!user"><img class="circle"
-                                  src="https://s3-ap-southeast-1.amazonaws.com/martonline/sample1.jpg"></a>
-            <a href="#!name"><span class="white-text name">Chamith Chathuka</span></a>
-            <a href="#!email"><span class="white-text email">chamithc@gmail.com</span></a>
-        </div>
-    </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-</ul>
 
 
 <div class="section no-pad-bot" id="index-banner">
@@ -78,12 +47,13 @@
             <div class="col s3 center grey darken-4 white-text">
                 <a class="white-text"><i class="material-icons white-text">shopping_cart</i>Small Cart</a>
                 <span id="smallcartbadge" class="new badge red" data-badge-caption="Items in cart"></span>
-                <div id='grandtotal'class ="green">
+                <div id='grandtotal' class="green">
                 </div>
-                <a href="placeorder.html" ><div class="blue-grey white-text">Checkout</div></a>
+                <a href="placeorder.html">
+                    <div class="blue-grey white-text">Checkout</div>
+                </a>
 
             </div>
-
 
 
             <div id="test1" class="col s9 ">
@@ -93,25 +63,7 @@
                 <input id="filter" placeholder="Search" type="text" class="validate">
 
                 <ul class="list row">
-                    <li class="col s4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="http://lorempixel.com/output/food-q-c-640-480-4.jpg">
 
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                        class="material-icons">add</i></a>
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title item_name">Rice & Curry</span>
-                                <p>Simpe lunch non veg
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">145.00</span>
-                                <a href="#modal1"> More info </a>
-                            </div>
-                        </div>
-                    </li>
                     <li class="col s4">
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
@@ -128,70 +80,50 @@
                                 <p>Soft and chewy fresh Sub Bun.with polish sausage</p><br>
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">150.00</span>
+                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
                     </li>
+
+                <#list products as product>
                     <li class="col s4">
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
-                                <img src="http://lorempixel.com/output/food-q-c-640-480-10.jpg">
+                                <#if product.imagePath?has_content>
+                                      <img class="item_path"  src="<@spring.url "${product.imagePath}"/>">
+                                <#else>
+                                    <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
+
+                                </#if>
+
 
                                 <a href="javascript:;"
                                    class="btn-floating halfway-fab waves-effect waves-light red item_add"><i
                                         class="material-icons">add</i></a>
                             </div>
                             <div class="card-content">
-                                <span class="card-title item_name">Dry Bun</span>
-                                <br>
-                                <p class="item_price">12.50</p><br>
+                                <#if product.name??>
+                                    <span class="card-title item_name">${product.name}</span>
+                                </#if>
+
+                                <#if product.description??>
+                                    <p> ${product.description}</span>
+                                    </p><br>
+                                </#if>
+
                             </div>
                             <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">75.00</span>
+                                <span class="new badge red item_price" data-badge-caption="price">
+                                    <#if product.unitPrice??>
+                                    ${product.unitPrice}
+                                    </#if>
+                                    </span>
                                 <a href="#modal1"> More info </a>
                             </div>
                         </div>
                     </li>
-                    <li class="col s4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="http://lorempixel.com/output/food-q-c-640-480-1.jpg">
-
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                        class="material-icons">add</i></a>
-                            </div>
-
-                            <div class="card-content">
-                                <span class="card-title ">Eggplant Curry</span>
-                                <p>Curry made with Egg plant.
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">398.00</span>
-                                <a href="#modal1"> More info </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col s4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="http://lorempixel.com/output/food-q-c-640-480-8.jpg">
-
-                                <a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                        class="material-icons">add</i></a>
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title item_name">Sushi</span>
-                                <p>I am a very simple card. I am good at containing small bits of information.
-                                </p>
-                            </div>
-                            <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">300.00</span>
-                                <a href="#modal1"> More info </a>
-                            </div>
-                        </div>
-                    </li>
+                </#list>
 
 
                 </ul>
@@ -267,9 +199,13 @@
         <h5>Ingredients</h5>
         <p>
 
-            Enriched bleached flour (wheat flour, malted barley flour, niacin, reduced iron, thiamin mononitrate, riboflavin, folic acid), water, high fructose corn syrup, soybean oil, contains less than 2% of yeast, salt, mono- and diglycerides,
-            hydroxylated soy lecithin, cultured wheat flour, vinegar, enzymes, calcium sulfate, ascorbic acid, calcium peroxide,
-            azodicarbonamide, fumaric acid, acetic acid, citric acid, lactic acid, sodium stearoyl lactylate, wheat gluten, calcium propionate (preservative), soy lecithin.
+            Enriched bleached flour (wheat flour, malted barley flour, niacin, reduced iron, thiamin mononitrate,
+            riboflavin, folic acid), water, high fructose corn syrup, soybean oil, contains less than 2% of yeast, salt,
+            mono- and diglycerides,
+            hydroxylated soy lecithin, cultured wheat flour, vinegar, enzymes, calcium sulfate, ascorbic acid, calcium
+            peroxide,
+            azodicarbonamide, fumaric acid, acetic acid, citric acid, lactic acid, sodium stearoyl lactylate, wheat
+            gluten, calcium propionate (preservative), soy lecithin.
             Contains soy, wheat.
             May contain milk.
         </p>
@@ -287,169 +223,8 @@
 <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/simpleCart.js'/>"</script>
+<script type="text/javascript" src="<@spring.url '/js/simpleCart.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/productscript.js'/>"></script>
 
-<script>
-    $('.button-collapse').sideNav({
-                menuWidth: 300, // Default is 300
-                edge: 'right', // Choose the horizontal origin
-                closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                draggable: true // Choose whether you can drag to open on touch screens
-            }
-    );
-    simpleCart({
-        // array representing the format and columns of the cart,
-        // see the cart columns documentation
-        cartColumns: [
-            {attr: "name", label: "Name"},
-            {attr: "id", label: "ID"},
-            {view: 'image', attr: 'thumb', label: false},
-            {view: "currency", attr: "price", label: "Price"},
-            {view: "decrement", label: false},
-            {attr: "quantity", label: "Qty"},
-            {view: "increment", label: false},
-            {view: "currency", attr: "total", label: "SubTotal"},
-            {view: "remove", text: "Remove", label: false}
-        ],
-
-        // "div" or "table" - builds the cart as a
-        // table or collection of divs
-        cartStyle: "div",
-
-        // how simpleCart should checkout, see the
-        // checkout reference for more info
-        checkout: {
-            type: "PayPal",
-            email: "you@yours.com"
-        },
-
-        // set the currency, see the currency
-        // reference for more info
-        currency: "USD",
-
-        // collection of arbitrary data you may want to store
-        // with the cart, such as customer info
-        data: {},
-
-        // set the cart langauge
-        // (may be used for checkout)
-        language: "english-us",
-
-        // array of item fields that will not be
-        // sent to checkout
-        excludeFromCheckout: [],
-
-        // custom function to add shipping cost
-        shippingCustom: null,
-
-        // flat rate shipping option
-        shippingFlatRate: 0,
-
-        // added shipping based on this value
-        // multiplied by the cart quantity
-        shippingQuantityRate: 0,
-
-        // added shipping based on this value
-        // multiplied by the cart subtotal
-        shippingTotalRate: 0,
-
-        // tax rate applied to cart subtotal
-        taxRate: 0,
-
-        // true if tax should be applied to shipping
-        taxShipping: false,
-
-        // event callbacks
-        beforeAdd: null,
-        afterAdd: null,
-        load: null,
-        beforeSave: null,
-        afterSave: null,
-        update: null,
-        ready: null,
-        checkoutSuccess: null,
-        checkoutFail: null,
-        beforeCheckout: null,
-        beforeRemove: null
-    });
-
-    simpleCart.bind("afterAdd", function (item) {
-
-        Materialize.toast(item.get("name") +" was added to the cart!", 4000);
-
-        loaditemtocart();
-    });
-    function loaditemtocart() {
-        $('.collection-item').remove();
-        var badge = document.getElementById('smallcartbadge');
-        badge.innerHTML = simpleCart.quantity();
-        var grandtotalele = document.getElementById('grandtotal');
-        grandtotalele.innerHTML = 'Grand Total : Rs .'+ simpleCart.grandTotal().toFixed(2);
-        simpleCart.each(function (item) {
-
-
-            var ulElement = document.getElementById('smallcart');
-            var liElement = document.createElement('li');
-
-            liElement.setAttribute('class', 'collection-item avatar');
-            var spanelement = document.createElement('span');
-            spanelement.setAttribute('class', 'title');
-            spanelement.innerHTML = item.get('name');
-            var p = document.createElement('p');
-            p.innerHTML = item.get('quantity') + ' X ' + item.get('price').toFixed(2);
-            var totp = document.createElement('p');
-            totp.setAttribute('align', 'right');
-            var price = item.get('price').toFixed(2);
-            var textnode = document.createTextNode(item.get('quantity') * price);
-            totp.appendChild(textnode);
-            var aremove = document.createElement('a');
-            aremove.setAttribute('class', 'secondary-content');
-            var itemremovelogo = document.createElement('i');
-            itemremovelogo.setAttribute('class', 'material-icons');
-            itemremovelogo.innerHTML = 'close';
-            //itemremovelogo.setAttribute('onclick','removeitem('+item+');');
-            itemremovelogo.setAttribute('onclick', 'removeitem("' + item.id() + '");');
-            aremove.appendChild(itemremovelogo);
-
-
-            liElement.appendChild(spanelement);
-            liElement.appendChild(p);
-            liElement.appendChild(totp);
-            liElement.appendChild(aremove);
-            ulElement.appendChild(liElement);
-
-            console.log(item.get('quantity') + ' x ' + item.get('name'));
-        });
-
-    }
-
-
-    function removeitem(itemid) {
-
-        var item = simpleCart.find(itemid);
-
-
-        var qty = item.get('quantity');
-        if (qty > 0) {
-            qty--;
-            item.set('quantity', qty);
-        }
-        else {
-
-            item.remove();
-        }
-        loaditemtocart();
-    }
-    $(document).ready(function () {
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal').modal();
-    });
-    $(window).load(function () {
-        // executes when HTML-Document is loaded and DOM is ready
-        loaditemtocart();
-
-    });
-    $('#filter').filterList();
-</script>
 </body>
 </html>
