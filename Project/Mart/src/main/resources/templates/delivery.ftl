@@ -261,7 +261,7 @@
                 </tr>
                 <tr>
                     <td colspan="3">
-                        <div class="center-align" onclick="alert('Order Completed');"> Select all and
+                        <div class="center-align" onclick="alert('Orders Completed');"> Select all and
                             Mark
                             as Order Delivered
                         </div>

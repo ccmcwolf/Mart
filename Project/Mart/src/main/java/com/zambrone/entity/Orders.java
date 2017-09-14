@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * Created by Chamith on 04/07/2017.
  */
 @Entity
-public class Order {
+public class Orders {
     private Integer orderNo;
     private Double amount;
     private String city;
@@ -297,49 +297,81 @@ public class Order {
     }
 
     @Override
+    public String toString() {
+        return "Orders{" +
+                "orderNo=" + orderNo +
+                ", amount=" + amount +
+                ", city='" + city + '\'' +
+                ", courierCharj=" + courierCharj +
+                ", courierPaymentSettledDate=" + courierPaymentSettledDate +
+                ", courierTrackingNo='" + courierTrackingNo + '\'' +
+                ", date=" + date +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryEmail='" + deliveryEmail + '\'' +
+                ", deliveryName='" + deliveryName + '\'' +
+                ", deliveryTelephoneNo='" + deliveryTelephoneNo + '\'' +
+                ", delveryCost=" + delveryCost +
+                ", delveryVat=" + delveryVat +
+                ", district='" + district + '\'' +
+                ", shopPaymentSettledDate=" + shopPaymentSettledDate +
+                ", province='" + province + '\'' +
+                ", serviceCharg=" + serviceCharg +
+                ", specialRequest='" + specialRequest + '\'' +
+                ", statusCourier='" + statusCourier + '\'' +
+                ", statusDescription='" + statusDescription + '\'' +
+                ", statusShop='" + statusShop + '\'' +
+                ", vat=" + vat +
+                ", courierId=" + courierId +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", deliveryOptionid=" + deliveryOptionid +
+                ", shopNo=" + shopNo +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Order order = (Order) o;
+        Orders orders = (Orders) o;
 
-        if (orderNo != null ? !orderNo.equals(order.orderNo) : order.orderNo != null) return false;
-        if (amount != null ? !amount.equals(order.amount) : order.amount != null) return false;
-        if (city != null ? !city.equals(order.city) : order.city != null) return false;
-        if (courierCharj != null ? !courierCharj.equals(order.courierCharj) : order.courierCharj != null) return false;
-        if (courierPaymentSettledDate != null ? !courierPaymentSettledDate.equals(order.courierPaymentSettledDate) : order.courierPaymentSettledDate != null)
+        if (orderNo != null ? !orderNo.equals(orders.orderNo) : orders.orderNo != null) return false;
+        if (amount != null ? !amount.equals(orders.amount) : orders.amount != null) return false;
+        if (city != null ? !city.equals(orders.city) : orders.city != null) return false;
+        if (courierCharj != null ? !courierCharj.equals(orders.courierCharj) : orders.courierCharj != null) return false;
+        if (courierPaymentSettledDate != null ? !courierPaymentSettledDate.equals(orders.courierPaymentSettledDate) : orders.courierPaymentSettledDate != null)
             return false;
-        if (courierTrackingNo != null ? !courierTrackingNo.equals(order.courierTrackingNo) : order.courierTrackingNo != null)
+        if (courierTrackingNo != null ? !courierTrackingNo.equals(orders.courierTrackingNo) : orders.courierTrackingNo != null)
             return false;
-        if (date != null ? !date.equals(order.date) : order.date != null) return false;
-        if (deliveryAddress != null ? !deliveryAddress.equals(order.deliveryAddress) : order.deliveryAddress != null)
+        if (date != null ? !date.equals(orders.date) : orders.date != null) return false;
+        if (deliveryAddress != null ? !deliveryAddress.equals(orders.deliveryAddress) : orders.deliveryAddress != null)
             return false;
-        if (deliveryEmail != null ? !deliveryEmail.equals(order.deliveryEmail) : order.deliveryEmail != null)
+        if (deliveryEmail != null ? !deliveryEmail.equals(orders.deliveryEmail) : orders.deliveryEmail != null)
             return false;
-        if (deliveryName != null ? !deliveryName.equals(order.deliveryName) : order.deliveryName != null) return false;
-        if (deliveryTelephoneNo != null ? !deliveryTelephoneNo.equals(order.deliveryTelephoneNo) : order.deliveryTelephoneNo != null)
+        if (deliveryName != null ? !deliveryName.equals(orders.deliveryName) : orders.deliveryName != null) return false;
+        if (deliveryTelephoneNo != null ? !deliveryTelephoneNo.equals(orders.deliveryTelephoneNo) : orders.deliveryTelephoneNo != null)
             return false;
-        if (delveryCost != null ? !delveryCost.equals(order.delveryCost) : order.delveryCost != null) return false;
-        if (delveryVat != null ? !delveryVat.equals(order.delveryVat) : order.delveryVat != null) return false;
-        if (district != null ? !district.equals(order.district) : order.district != null) return false;
-        if (shopPaymentSettledDate != null ? !shopPaymentSettledDate.equals(order.shopPaymentSettledDate) : order.shopPaymentSettledDate != null)
+        if (delveryCost != null ? !delveryCost.equals(orders.delveryCost) : orders.delveryCost != null) return false;
+        if (delveryVat != null ? !delveryVat.equals(orders.delveryVat) : orders.delveryVat != null) return false;
+        if (district != null ? !district.equals(orders.district) : orders.district != null) return false;
+        if (shopPaymentSettledDate != null ? !shopPaymentSettledDate.equals(orders.shopPaymentSettledDate) : orders.shopPaymentSettledDate != null)
             return false;
-        if (province != null ? !province.equals(order.province) : order.province != null) return false;
-        if (serviceCharg != null ? !serviceCharg.equals(order.serviceCharg) : order.serviceCharg != null) return false;
-        if (specialRequest != null ? !specialRequest.equals(order.specialRequest) : order.specialRequest != null)
+        if (province != null ? !province.equals(orders.province) : orders.province != null) return false;
+        if (serviceCharg != null ? !serviceCharg.equals(orders.serviceCharg) : orders.serviceCharg != null) return false;
+        if (specialRequest != null ? !specialRequest.equals(orders.specialRequest) : orders.specialRequest != null)
             return false;
-        if (statusCourier != null ? !statusCourier.equals(order.statusCourier) : order.statusCourier != null)
+        if (statusCourier != null ? !statusCourier.equals(orders.statusCourier) : orders.statusCourier != null)
             return false;
-        if (statusDescription != null ? !statusDescription.equals(order.statusDescription) : order.statusDescription != null)
+        if (statusDescription != null ? !statusDescription.equals(orders.statusDescription) : orders.statusDescription != null)
             return false;
-        if (statusShop != null ? !statusShop.equals(order.statusShop) : order.statusShop != null) return false;
-        if (vat != null ? !vat.equals(order.vat) : order.vat != null) return false;
-        if (courierId != null ? !courierId.equals(order.courierId) : order.courierId != null) return false;
-        if (customerEmail != null ? !customerEmail.equals(order.customerEmail) : order.customerEmail != null)
+        if (statusShop != null ? !statusShop.equals(orders.statusShop) : orders.statusShop != null) return false;
+        if (vat != null ? !vat.equals(orders.vat) : orders.vat != null) return false;
+        if (courierId != null ? !courierId.equals(orders.courierId) : orders.courierId != null) return false;
+        if (customerEmail != null ? !customerEmail.equals(orders.customerEmail) : orders.customerEmail != null)
             return false;
-        if (deliveryOptionid != null ? !deliveryOptionid.equals(order.deliveryOptionid) : order.deliveryOptionid != null)
+        if (deliveryOptionid != null ? !deliveryOptionid.equals(orders.deliveryOptionid) : orders.deliveryOptionid != null)
             return false;
-        if (shopNo != null ? !shopNo.equals(order.shopNo) : order.shopNo != null) return false;
+        if (shopNo != null ? !shopNo.equals(orders.shopNo) : orders.shopNo != null) return false;
 
         return true;
     }

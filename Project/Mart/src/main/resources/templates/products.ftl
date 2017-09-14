@@ -19,7 +19,7 @@
 <#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
-        <a href="#!" class="breadcrumb">Explore</a>
+        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Explore</a>
         <a href="#!" class="breadcrumb">Shops</a>
         <a href="#!" class="breadcrumb">Products</a>
     </div>
@@ -49,7 +49,7 @@
                 <span id="smallcartbadge" class="new badge red" data-badge-caption="Items in cart"></span>
                 <div id='grandtotal' class="green">
                 </div>
-                <a href="placeorder.html">
+                    <a href="javascript:;" class="simpleCart_checkout">
                     <div class="blue-grey white-text">Checkout</div>
                 </a>
 
@@ -64,34 +64,13 @@
 
                 <ul class="list row">
 
-                    <li class="col s4">
-                        <div class="card simpleCart_shelfItem">
-                            <div class="card-image">
-                                <img class="item_path" src="http://lorempixel.com/output/food-q-c-640-480-9.jpg">
-
-                                <a href="javascript:;"
-                                   class="btn-floating halfway-fab waves-effect waves-light red item_add"><i
-                                        class="material-icons">add</i></a>
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title item_name">Submarine</span>
-
-
-                                <p>Soft and chewy fresh Sub Bun.with polish sausage</p><br>
-                            </div>
-                            <div class="card-action">
-                                <span class="new badge red item_price" data-badge-caption="price">14.50</span>
-                                <a href="#modal1"> More info </a>
-                            </div>
-                        </div>
-                    </li>
-
-                <#list products as product>
+                    <#list products as product>
                     <li class="col s4">
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
                                 <#if product.imagePath?has_content>
                                       <img class="item_path"  src="<@spring.url "${product.imagePath}"/>">
+
                                 <#else>
                                     <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
 
@@ -101,10 +80,14 @@
                                 <a href="javascript:;"
                                    class="btn-floating halfway-fab waves-effect waves-light red item_add"><i
                                         class="material-icons">add</i></a>
+
                             </div>
                             <div class="card-content">
                                 <#if product.name??>
+
                                     <span class="card-title item_name">${product.name}</span>
+                                    <#--<input type="hidden" class="item_no" value="${product.productId}"/>-->
+                                    <span class="item_itemId hiddendiv">${product.productId}</span>
                                 </#if>
 
                                 <#if product.description??>
@@ -119,10 +102,42 @@
                                     ${product.unitPrice}
                                     </#if>
                                     </span>
-                                <a href="#modal1"> More info </a>
+                                <#if product.name??>
+                                    <a href="#modal${product.name}"> More info </a>
+                                </#if>
                             </div>
                         </div>
                     </li>
+                        <#if product.name??>
+
+
+
+                        <!-- Modal Structure -->
+                        <div id="modal${product.name}" class="modal">
+                            <div class="modal-content">
+                                <h4>${product.name}</h4>
+                                <#if product.description??>
+                                <p>${product.description}</p>
+                                </#if>
+                                <h5>Ingredients</h5>
+                                <p>
+
+                                    Enriched bleached flour (wheat flour, malted barley flour, niacin, reduced iron, thiamin mononitrate,
+                                    riboflavin, folic acid), water, high fructose corn syrup, soybean oil, contains less than 2% of yeast, salt,
+                                    mono- and diglycerides,
+                                    hydroxylated soy lecithin, cultured wheat flour, vinegar, enzymes, calcium sulfate, ascorbic acid, calcium
+                                    peroxide,
+                                    azodicarbonamide, fumaric acid, acetic acid, citric acid, lactic acid, sodium stearoyl lactylate, wheat
+                                    gluten, calcium propionate (preservative), soy lecithin.
+                                    Contains soy, wheat.
+                                    May contain milk.
+                                </p></#if>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                            </div>
+                        </div>
+
                 </#list>
 
 
@@ -188,33 +203,7 @@
 
     </div>
 </div>
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Submarine</h4>
-        <p>Hoagies, grinders, subs...whatever you call them, the secret to making them great is Gonnella Bread. Nothing
-            is more delectable to complement your favorite sandwich than this soft and chewy fresh Sub Bun. Ideal for
-            bratwurst and polish sausage too, this delicious addition to the Gonnella Bread family is perfect for any of
-            your culinary creations.</p>
-        <h5>Ingredients</h5>
-        <p>
 
-            Enriched bleached flour (wheat flour, malted barley flour, niacin, reduced iron, thiamin mononitrate,
-            riboflavin, folic acid), water, high fructose corn syrup, soybean oil, contains less than 2% of yeast, salt,
-            mono- and diglycerides,
-            hydroxylated soy lecithin, cultured wheat flour, vinegar, enzymes, calcium sulfate, ascorbic acid, calcium
-            peroxide,
-            azodicarbonamide, fumaric acid, acetic acid, citric acid, lactic acid, sodium stearoyl lactylate, wheat
-            gluten, calcium propionate (preservative), soy lecithin.
-            Contains soy, wheat.
-            May contain milk.
-        </p>
-
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-    </div>
-</div>
 
 <#include "footer.ftl">
 

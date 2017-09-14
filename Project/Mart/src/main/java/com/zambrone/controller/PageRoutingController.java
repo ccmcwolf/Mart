@@ -46,6 +46,12 @@ public class PageRoutingController {
         return "/";
     }
 
+    @GetMapping(path = "/place")
+    public String getProducts() {
+
+//        allRequestParams.get()
+        return "placeorder";
+    }
     @GetMapping(path = "/")
     public String showIndex() {
 

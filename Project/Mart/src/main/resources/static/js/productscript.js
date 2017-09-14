@@ -14,6 +14,7 @@ simpleCart({
     cartColumns: [
         {attr: "name", label: "Name"},
         {attr: "id", label: "ID"},
+        { attr: "itemId" , label: "itemId" },
         {view: 'image', attr: 'thumb', label: false},
         {view: "currency", attr: "price", label: "Price"},
         {view: "decrement", label: false},
@@ -27,11 +28,17 @@ simpleCart({
     // table or collection of divs
     cartStyle: "div",
 
+
     // how simpleCart should checkout, see the
     // checkout reference for more info
     checkout: {
-        type: "PayPal",
-        email: "you@yours.com"
+        type: "SendForm" ,
+        method: "GET" ,
+        url: "http://localhost:8081/order/add",
+        extra_data: {
+            totals: simpleCart.total()
+        }
+
     },
 
     // set the currency, see the currency
@@ -41,6 +48,7 @@ simpleCart({
     // collection of arbitrary data you may want to store
     // with the cart, such as customer info
     data: {},
+
 
     // set the cart langauge
     // (may be used for checkout)
@@ -83,6 +91,13 @@ simpleCart({
     beforeCheckout: null,
     beforeRemove: null
 });
+
+// simpleCart.bind( 'beforeAdd' , function( item ){
+//
+// alert( item.get("num"));
+//
+// });
+
 
 simpleCart.bind("afterAdd", function (item) {
 
@@ -161,3 +176,4 @@ $(window).load(function () {
 
 });
 $('#filter').filterList();
+

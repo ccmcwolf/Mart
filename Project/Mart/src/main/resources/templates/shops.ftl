@@ -21,9 +21,8 @@
 <#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
-        <a href="#!" class="breadcrumb">Explore</a>
+        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Explore</a>
         <a href="#!" class="breadcrumb">Shops</a>
-
     </div>
 </div>
 <ul id="slide-out" class="side-nav">

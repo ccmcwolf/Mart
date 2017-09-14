@@ -171,7 +171,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>
@@ -212,7 +212,7 @@
 
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>
@@ -266,7 +266,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('order completed');"> Select all and
+                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>

@@ -54,8 +54,6 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> getProductByShopId(int shopId) throws DataAccessException {
 
-
-
         return (List<Product>) getSessionFactory().openSession()
                 .createCriteria(Product.class)
                 .add(Restrictions.eq("shopId", shopId))
