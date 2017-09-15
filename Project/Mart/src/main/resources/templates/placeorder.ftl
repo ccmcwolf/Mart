@@ -20,9 +20,9 @@
 
 <div class="col s12 grey darken-4">
     <div class="container col s12">
-        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Explore</a>
-        <a href="#!" class="breadcrumb">Shops</a>
-        <a href="#!" class="breadcrumb">Products</a>
+        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Shops</a>
+        <a href="javascript:;" onclick="goBack();" class="breadcrumb">Products</a>
+
         <a href="#!" class="breadcrumb">Checkout</a>
     </div>
 </div>
@@ -38,7 +38,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -48,25 +51,27 @@
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
         <div class="row">
+        <#if orderid??>
             <div class="col s9">
                 <div class="grey center-align darken-3 white-text">
-                    <h5>Place My Order</h5>
+                    <h5>Update Order Details</h5>
                 </div>
 
-                <form>
+                <form id="addplaceorder" method="post">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">shopping_basket</i>
                             <if></if>
-                        <#if orderid??>
+
                             <input id="order_id" type="text" value="ORDID_${orderid}" disabled class="validate">
                             <label for="order_id">Order ID</label>
-                        </#if>
+
 
                         </div>
+
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="name" type="tel" class="validate">
+                            <input id="deliveryName" name="deliveryName" type="text" class="validate">
                             <label for="name">Recipient Name</label>
 
                         </div>
@@ -74,23 +79,22 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person_pin</i>
-                            <input id="address" type="text" class="validate">
+                            <input id="deliveryAddress" name="deliveryAddress" type="text" class="validate">
                             <label for="address">Address</label>
                         </div>
-
                     </div>
 
                     <div class="row">
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">business</i>
-                            <input id="City" type="text" class="validate">
+                            <input id="district" name="district" type="text" class="validate">
                             <label for="City">City</label>
                         </div>
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">email</i>
-                            <input id="Email" type="email" class="validate">
+                            <input id="deliveryEmail" name="deliveryEmail" type="email" class="validate">
                             <label for="Email">Email</label>
                         </div>
 
@@ -98,10 +102,9 @@
                     </div>
 
                     <div class="row">
-
                         <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="phone" type="tel" class="validate">
+                            <input id="deliveryTelephoneNo" name="deliveryTelephoneNo" type="tel" class="validate">
                             <label for="phone">Phone</label>
                         </div>
 
@@ -112,16 +115,15 @@
 
                         <div class="input-field col s6">
 
-                            Delivery Date  <i class="material-icons prefix">today</i>
-                            <input id="date" type="date" class="validate">
+                            Delivery Date <i class="material-icons prefix">today</i>
+                            <input id="date" name="date" type="date" class="validate">
 
                         </div>
 
 
                         <div class="input-field col s6">
-
                             Delivery Time <i class="material-icons prefix">av_timer</i>
-                            <input id="time" type="time" class="validate">
+                            <input id="deliveryTime" name="deliveryTime" type="time" class="validate">
                         </div>
                     </div>
 
@@ -136,8 +138,15 @@
                     </div>
 
                 </form>
+
             </div>
+        </#if>
+
             <div id="map_canvas"></div>
+        <#if result??>
+        <div class="s12 m6">
+
+        <#else>
             <div class="s3">
                 <div class="col s3 center grey darken-4 ">
                     <a><i class="material-icons white-text">shopping_cart</i>Small Cart</a>
@@ -160,30 +169,91 @@
                         </li>
                     </ul>
 
-                <a href="javascript:;" class="simpleCart_checkout">
-                    <div class="blue-grey white-text">Checkout</div>
-                </a>
+                    <a href="javascript:;" onclick="validateForCheckout()">
+                        <div class="blue-grey white-text">Checkout</div>
+                    </a>
                 </div>
             </div>
+        </#if>
+        </div>
         </div>
     </div>
-</div>
 <#include "footer.ftl">
 
-<!--Import jQuery before materialize.js-->
+    <!--Import jQuery before materialize.js-->
 
 
-
-<script type="text/javascript" src="js/simpleCart.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/material-datetime-picker.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/simpleCart.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/productscript.js'/>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script type="text/javascript" src="js/simpleCart.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/material-datetime-picker.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/simpleCart.js'/>"></script>
+    <script type="text/javascript" src="<@spring.url '/js/productscript.js'/>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
 </body>
+
+<script>
+    var urlv = "/order/update"; // the script where you handle the form input.
+
+    $('#savedeliveryinfo').validate({
+
+        errorElement: "div",
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error)
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+
+            event.preventDefault();
+
+            // Get form
+            var form = $('#savedeliveryinfo')[0];
+
+            // Create an FormData object
+            var data = new FormData(form);
+
+            // If you want to add an extra field for the FormData
+            data.append("courierField", "This is some extra data, testing");
+
+            // disabled the submit button
+            $("#savedeliveryinfo").prop("disabled", true);
+            $("#spinneritem").show();
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: urlv,
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (response) {
+                    if (response.status == "SUCCESS") {
+                        Materialize.toast(response.status, 4000);
+                        $("#spinneritem").hide();
+                        $("#savedeliveryinfo")[0].reset();
+                    } else {
+                        $("#spinneritem").hide();
+                        Materialize.toast(response.status, 4000);
+
+                    }
+                },
+                error: function (e) {
+                    Materialize.toast("Error", 4000);
+                }
+            });
+        }
+    });
+
+
+</script>
 </html>

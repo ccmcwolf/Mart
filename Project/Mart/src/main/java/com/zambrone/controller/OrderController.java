@@ -71,6 +71,8 @@ public class OrderController {
         Orders orders = new Orders();
         orderService.addOrder(orders);
         modelAndView.addObject("orderid", orders.getOrderNo());
+
+
         List<ProductOrder> productOrders = new ArrayList<>();
         for (Map.Entry<String, String> entry : allRequestParams.entrySet()) {
 
@@ -120,21 +122,20 @@ public class OrderController {
 
         if (!productOrders.isEmpty()) {
             orderService.saveOrderDetails(orders.getOrderNo(), productOrders);
-        } else
-
-        {
-             orderService.deleteOrder(orders.getOrderNo());
-           //System.out.println("product orders is null");
+            modelAndView.addObject("result","Sucess");
         }
+        //below else-block for the purpose of deleting the created order id if the order is not placed by the customer user
+        //
+//        else
+//
+//        {
+//             orderService.deleteOrder(orders.getOrderNo());
+//           //System.out.println("product orders is null");
+//        }
 
-       // return allRequestParams.toString();
+
         return modelAndView;
     }
 
-    @GetMapping(path = "/place")
-    public String getProducts() {
-        //@RequestParam Map<String,String> allRequestParams,Model model
-//        allRequestParams.get()
-        return "placeorder";
-    }
+
 }

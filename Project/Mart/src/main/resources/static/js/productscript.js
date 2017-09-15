@@ -14,7 +14,7 @@ simpleCart({
     cartColumns: [
         {attr: "name", label: "Name"},
         {attr: "id", label: "ID"},
-        { attr: "numb" , label: "Number" },
+        {attr: "numb", label: "Number"},
 
         {view: "currency", attr: "price", label: "Price"},
         {view: "decrement", label: false},
@@ -32,12 +32,14 @@ simpleCart({
     // how simpleCart should checkout, see the
     // checkout reference for more info
     checkout: {
-        type: "SendForm" ,
-        method: "GET" ,
+        type: "SendForm",
+        method: "GET",
         url: "http://localhost:8081/order/add",
         extra_data: {
             totals: simpleCart.total()
         }
+
+
 
     },
 
@@ -101,7 +103,7 @@ simpleCart({
 
 simpleCart.bind("afterAdd", function (item) {
 
-    Materialize.toast(item.get("name") +" was added to the cart!", 4000);
+    Materialize.toast(item.get("name") + " was added to the cart!", 4000);
 
     loaditemtocart();
 });
@@ -110,7 +112,7 @@ function loaditemtocart() {
     var badge = document.getElementById('smallcartbadge');
     badge.innerHTML = simpleCart.quantity();
     var grandtotalele = document.getElementById('grandtotal');
-    grandtotalele.innerHTML = 'Grand Total : Rs .'+ simpleCart.grandTotal().toFixed(2);
+    grandtotalele.innerHTML = 'Grand Total : Rs .' + simpleCart.grandTotal().toFixed(2);
     simpleCart.each(function (item) {
 
 
@@ -166,6 +168,36 @@ function removeitem(itemid) {
     }
     loaditemtocart();
 }
+
+
+function validateOrder() {
+    if (simpleCart.quantity() == 0) {
+        Materialize.toast('Can t checkout! Your cart is Empty!', 4000, '', function () {
+            alert('Please add some products to cart')
+        })
+    } else {
+
+        window.location.href = '/order/checkout';
+    }
+
+}
+function validateForCheckout() {
+    if (simpleCart.quantity() == 0) {
+        Materialize.toast('Can t checkout! Your cart is Empty!', 4000, '', function () {
+            alert('Please add some products to cart')
+        })
+    } else {
+        simpleCart.checkout();
+        simpleCart.checkoutSuccess(alert("Checkout Successfully"));
+        simpleCart.checkoutFail(alert("Checkout fail"));
+
+    }
+
+}
+function goBack() {
+    window.history.back();
+}
+
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();

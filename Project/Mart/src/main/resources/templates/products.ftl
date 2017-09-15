@@ -19,8 +19,7 @@
 <#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
-        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Explore</a>
-        <a href="#!" class="breadcrumb">Shops</a>
+        <a href="<@spring.url '/shop/explore'/>" class="breadcrumb">Shops</a>
         <a href="#!" class="breadcrumb">Products</a>
     </div>
 </div>
@@ -49,8 +48,9 @@
                 <span id="smallcartbadge" class="new badge red" data-badge-caption="Items in cart"></span>
                 <div id='grandtotal' class="green">
                 </div>
-                    <a href="javascript:;" class="simpleCart_checkout">
-                    <div class="blue-grey white-text">Checkout</div>
+                    <#--<a href="<@spring.url '/order/checkout'/>" class="simpleCart_checkout" onclick="validateOrder();">-->
+                    <a href="javascript:;" onclick="validateOrder();">
+                    <div class="blue-grey white-text">Proceed to Checkout</div>
                 </a>
 
             </div>

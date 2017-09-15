@@ -1,10 +1,11 @@
 package com.zambrone.entity;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 04/07/2017.
+ * Created by Chamith on 15/09/2017.
  */
 @Entity
 public class Orders {
@@ -30,14 +31,11 @@ public class Orders {
     private String statusDescription;
     private String statusShop;
     private Double vat;
-    private Integer courierId;
-    private String customerEmail;
-    private Integer deliveryOptionid;
-    private Integer shopNo;
+    private Time deliveryTime;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "order_no")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     public Integer getOrderNo() {
         return orderNo;
     }
@@ -257,75 +255,13 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "courier_id")
-    public Integer getCourierId() {
-        return courierId;
+    @Column(name = "delivery_time")
+    public Time getDeliveryTime() {
+        return deliveryTime;
     }
 
-    public void setCourierId(Integer courierId) {
-        this.courierId = courierId;
-    }
-
-    @Basic
-    @Column(name = "customer_email")
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    @Basic
-    @Column(name = "delivery_optionid")
-    public Integer getDeliveryOptionid() {
-        return deliveryOptionid;
-    }
-
-    public void setDeliveryOptionid(Integer deliveryOptionid) {
-        this.deliveryOptionid = deliveryOptionid;
-    }
-
-    @Basic
-    @Column(name = "shop_no")
-    public Integer getShopNo() {
-        return shopNo;
-    }
-
-    public void setShopNo(Integer shopNo) {
-        this.shopNo = shopNo;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderNo=" + orderNo +
-                ", amount=" + amount +
-                ", city='" + city + '\'' +
-                ", courierCharj=" + courierCharj +
-                ", courierPaymentSettledDate=" + courierPaymentSettledDate +
-                ", courierTrackingNo='" + courierTrackingNo + '\'' +
-                ", date=" + date +
-                ", deliveryAddress='" + deliveryAddress + '\'' +
-                ", deliveryEmail='" + deliveryEmail + '\'' +
-                ", deliveryName='" + deliveryName + '\'' +
-                ", deliveryTelephoneNo='" + deliveryTelephoneNo + '\'' +
-                ", delveryCost=" + delveryCost +
-                ", delveryVat=" + delveryVat +
-                ", district='" + district + '\'' +
-                ", shopPaymentSettledDate=" + shopPaymentSettledDate +
-                ", province='" + province + '\'' +
-                ", serviceCharg=" + serviceCharg +
-                ", specialRequest='" + specialRequest + '\'' +
-                ", statusCourier='" + statusCourier + '\'' +
-                ", statusDescription='" + statusDescription + '\'' +
-                ", statusShop='" + statusShop + '\'' +
-                ", vat=" + vat +
-                ", courierId=" + courierId +
-                ", customerEmail='" + customerEmail + '\'' +
-                ", deliveryOptionid=" + deliveryOptionid +
-                ", shopNo=" + shopNo +
-                '}';
+    public void setDeliveryTime(Time deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
     @Override
@@ -338,7 +274,8 @@ public class Orders {
         if (orderNo != null ? !orderNo.equals(orders.orderNo) : orders.orderNo != null) return false;
         if (amount != null ? !amount.equals(orders.amount) : orders.amount != null) return false;
         if (city != null ? !city.equals(orders.city) : orders.city != null) return false;
-        if (courierCharj != null ? !courierCharj.equals(orders.courierCharj) : orders.courierCharj != null) return false;
+        if (courierCharj != null ? !courierCharj.equals(orders.courierCharj) : orders.courierCharj != null)
+            return false;
         if (courierPaymentSettledDate != null ? !courierPaymentSettledDate.equals(orders.courierPaymentSettledDate) : orders.courierPaymentSettledDate != null)
             return false;
         if (courierTrackingNo != null ? !courierTrackingNo.equals(orders.courierTrackingNo) : orders.courierTrackingNo != null)
@@ -348,7 +285,8 @@ public class Orders {
             return false;
         if (deliveryEmail != null ? !deliveryEmail.equals(orders.deliveryEmail) : orders.deliveryEmail != null)
             return false;
-        if (deliveryName != null ? !deliveryName.equals(orders.deliveryName) : orders.deliveryName != null) return false;
+        if (deliveryName != null ? !deliveryName.equals(orders.deliveryName) : orders.deliveryName != null)
+            return false;
         if (deliveryTelephoneNo != null ? !deliveryTelephoneNo.equals(orders.deliveryTelephoneNo) : orders.deliveryTelephoneNo != null)
             return false;
         if (delveryCost != null ? !delveryCost.equals(orders.delveryCost) : orders.delveryCost != null) return false;
@@ -357,7 +295,8 @@ public class Orders {
         if (shopPaymentSettledDate != null ? !shopPaymentSettledDate.equals(orders.shopPaymentSettledDate) : orders.shopPaymentSettledDate != null)
             return false;
         if (province != null ? !province.equals(orders.province) : orders.province != null) return false;
-        if (serviceCharg != null ? !serviceCharg.equals(orders.serviceCharg) : orders.serviceCharg != null) return false;
+        if (serviceCharg != null ? !serviceCharg.equals(orders.serviceCharg) : orders.serviceCharg != null)
+            return false;
         if (specialRequest != null ? !specialRequest.equals(orders.specialRequest) : orders.specialRequest != null)
             return false;
         if (statusCourier != null ? !statusCourier.equals(orders.statusCourier) : orders.statusCourier != null)
@@ -366,12 +305,8 @@ public class Orders {
             return false;
         if (statusShop != null ? !statusShop.equals(orders.statusShop) : orders.statusShop != null) return false;
         if (vat != null ? !vat.equals(orders.vat) : orders.vat != null) return false;
-        if (courierId != null ? !courierId.equals(orders.courierId) : orders.courierId != null) return false;
-        if (customerEmail != null ? !customerEmail.equals(orders.customerEmail) : orders.customerEmail != null)
+        if (deliveryTime != null ? !deliveryTime.equals(orders.deliveryTime) : orders.deliveryTime != null)
             return false;
-        if (deliveryOptionid != null ? !deliveryOptionid.equals(orders.deliveryOptionid) : orders.deliveryOptionid != null)
-            return false;
-        if (shopNo != null ? !shopNo.equals(orders.shopNo) : orders.shopNo != null) return false;
 
         return true;
     }
@@ -400,10 +335,7 @@ public class Orders {
         result = 31 * result + (statusDescription != null ? statusDescription.hashCode() : 0);
         result = 31 * result + (statusShop != null ? statusShop.hashCode() : 0);
         result = 31 * result + (vat != null ? vat.hashCode() : 0);
-        result = 31 * result + (courierId != null ? courierId.hashCode() : 0);
-        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
-        result = 31 * result + (deliveryOptionid != null ? deliveryOptionid.hashCode() : 0);
-        result = 31 * result + (shopNo != null ? shopNo.hashCode() : 0);
+        result = 31 * result + (deliveryTime != null ? deliveryTime.hashCode() : 0);
         return result;
     }
 }
