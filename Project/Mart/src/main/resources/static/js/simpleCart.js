@@ -1908,6 +1908,7 @@
 			sc_BindReady();
 
 			return simpleCart;
+			return simpleCart;
 		};
 
 

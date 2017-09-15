@@ -69,11 +69,10 @@
                         <div class="card simpleCart_shelfItem">
                             <div class="card-image">
                                 <#if product.imagePath?has_content>
-                                      <img class="item_path"  src="<@spring.url "${product.imagePath}"/>">
+                                      <img class="card-image"  src="<@spring.url "${product.imagePath}"/>">
 
                                 <#else>
                                     <img src="<@spring.url '/img/food-h-c-150-400-1.jpg'/>">
-
                                 </#if>
 
 
@@ -87,7 +86,7 @@
 
                                     <span class="card-title item_name">${product.name}</span>
                                     <#--<input type="hidden" class="item_no" value="${product.productId}"/>-->
-                                    <span class="item_itemId hiddendiv">${product.productId}</span>
+                                    <span class="item_numb hiddendiv">${product.productId}</span>
                                 </#if>
 
                                 <#if product.description??>

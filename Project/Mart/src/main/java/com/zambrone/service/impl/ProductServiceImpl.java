@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false, isolation = Isolation.READ_COMMITTED)
     public Product getProductByID(Integer id) throws DataAccessException {
-        return null;
+       return productDAO.getProductByID(id);
     }
 
     @Override

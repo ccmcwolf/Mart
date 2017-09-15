@@ -14,8 +14,8 @@ simpleCart({
     cartColumns: [
         {attr: "name", label: "Name"},
         {attr: "id", label: "ID"},
-        { attr: "itemId" , label: "itemId" },
-        {view: 'image', attr: 'thumb', label: false},
+        { attr: "numb" , label: "Number" },
+
         {view: "currency", attr: "price", label: "Price"},
         {view: "decrement", label: false},
         {attr: "quantity", label: "Qty"},
