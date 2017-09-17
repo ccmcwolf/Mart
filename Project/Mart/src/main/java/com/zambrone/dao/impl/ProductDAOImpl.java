@@ -2,6 +2,8 @@ package com.zambrone.dao.impl;
 
 import com.zambrone.dao.ProductDAO;
 import com.zambrone.entity.Product;
+import com.zambrone.entity.ProductOrder;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -36,9 +38,18 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
 
+    /**
+     *
+     * @return
+     */
+    private Session getSessionFactoryCurrentSession() {
+        return getSessionFactory().openSession();
+    }
+
+
     @Override
     public boolean addNewProduct(Product product) throws DataAccessException {
-        Session session = this.getSessionFactory().openSession();
+        Session session = getSessionFactoryCurrentSession();
         session.save(product);
         session.close();
         return true;
@@ -46,7 +57,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public List<Product> getAllProduct() throws DataAccessException {
-       return (List<Product>) getSessionFactory().openSession()
+       return (List<Product>) getSessionFactoryCurrentSession()
                 .createCriteria(Product.class)
                 .list();
     }
@@ -54,7 +65,7 @@ public class ProductDAOImpl implements ProductDAO {
     @Override
     public List<Product> getProductByShopId(int shopId) throws DataAccessException {
 
-        return (List<Product>) getSessionFactory().openSession()
+        return (List<Product>) getSessionFactoryCurrentSession()
                 .createCriteria(Product.class)
                 .add(Restrictions.eq("shopId", shopId))
                 .list();
@@ -66,21 +77,48 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public Integer getShopIDByProductNo(Integer productID) throws DataAccessException {
+
+        Session currentSession=null;
+        try {
+            System.out.println("productID "+productID);
+            currentSession = getSessionFactoryCurrentSession();
+            ProductOrder productOrder =  (ProductOrder) currentSession.get(ProductOrder.class, productID);
+            System.out.println("product Order "+productOrder);
+            //if(pr)
+            Integer productId = productOrder.getProductId();
+            Product product = getProductByID(productId);
+
+            return product.getShopId();
+
+        } finally {
+        if(currentSession!=null){
+            currentSession.close();
+        }
+        }
+    }
+
+    @Override
     public Product getProductByID(Integer id) throws DataAccessException {
-        return (Product) getSessionFactory().openSession()
-                .createCriteria(Product.class)
-                .add(Restrictions.eq("productId", id))
-                .uniqueResult();
+        Session session = getSessionFactoryCurrentSession();
+        try {
+            return (Product) session
+                    .createCriteria(Product.class)
+                    .add(Restrictions.eq("productId", id))
+                    .uniqueResult();
+        }finally {
+            session.close();
+        }
     }
 
     @Override
     public void updateProduct(Product product) throws DataAccessException {
-        getSessionFactory().openSession().saveOrUpdate(product);
+        getSessionFactoryCurrentSession().saveOrUpdate(product);
     }
 
     @Override
     public void removeProduct(Integer id) throws DataAccessException {
-        getSessionFactory().openSession()
+        getSessionFactoryCurrentSession()
                 .createQuery("delete from Product p where p.productId=:productId")
                 .setParameter("productId", id)
                 .executeUpdate();

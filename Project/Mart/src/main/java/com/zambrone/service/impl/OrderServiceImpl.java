@@ -37,6 +37,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public void updateOrder(Orders orders) throws DataAccessException {
+        orderDAO.update(orders);
+        System.out.println("update Service order called");
+    }
+
+    @Override
+    public Integer getShopIDbyOrderNo(Integer orderNo) throws DataAccessException {
+        return orderDAO.getShopIDbyOrderNo(orderNo);
+    }
+
+    @Override
     public void saveOrderDetails(Integer orderId, List<ProductOrder> productOrders) throws DataAccessException {
         for (ProductOrder productOrder:productOrders) {
             orderDetailDAO.saveOrderDetail(productOrder);

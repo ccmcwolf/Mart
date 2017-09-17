@@ -19,6 +19,8 @@ public interface ProductService {
 
     public Product getProductByID(Integer id) throws DataAccessException;
 
+    public Integer getShopIDByProductNo(Integer id) throws DataAccessException;
+
     public void updateProduct(Product product) throws DataAccessException;
 
     public void removeProduct(Integer id) throws DataAccessException;

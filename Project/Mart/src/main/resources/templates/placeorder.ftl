@@ -57,18 +57,18 @@
                     <h5>Update Order Details</h5>
                 </div>
 
-                <form id="addplaceorder" method="post">
+
+                <form id="savedeliveryinfo" method="GET" action="<@spring.url '/order/updateorder'/>">
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">shopping_basket</i>
                             <if></if>
 
-                            <input id="order_id" type="text" value="ORDID_${orderid}" disabled class="validate">
-                            <label for="order_id">Order ID</label>
-
-
+                            <input  id="orderNo" type="text" value="ORDID_${orderid}" disabled>
+                            <label for="orderNo">Order ID</label>
                         </div>
-
+                        <input type="hidden"  name="orderNo" value="${orderid}"" ></input>
+                        <input type="hidden"  name="shopNo" value="${shopID}"" ></input>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
                             <input id="deliveryName" name="deliveryName" type="text" class="validate">
@@ -88,7 +88,7 @@
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">business</i>
-                            <input id="district" name="district" type="text" class="validate">
+                            <input id="City" name="City" type="text" class="validate">
                             <label for="City">City</label>
                         </div>
 
@@ -97,8 +97,6 @@
                             <input id="deliveryEmail" name="deliveryEmail" type="email" class="validate">
                             <label for="Email">Email</label>
                         </div>
-
-
                     </div>
 
                     <div class="row">
@@ -107,8 +105,6 @@
                             <input id="deliveryTelephoneNo" name="deliveryTelephoneNo" type="tel" class="validate">
                             <label for="phone">Phone</label>
                         </div>
-
-
                     </div>
 
                     <div class="row">
@@ -131,9 +127,11 @@
                     <div class="row">
 
                         <div class="input-field col s12 center-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Save Order Details
+                            <a href="javascript:;">
+                            <button class="btn waves-effect waves-light"  onclick="formOnSubmit();" name="action">Save Order Details
                                 <i class="material-icons right">send</i>
                             </button>
+                            </a>
                         </div>
                     </div>
 
@@ -196,64 +194,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
 </body>
 
-<script>
-    var urlv = "/order/update"; // the script where you handle the form input.
-
-    $('#savedeliveryinfo').validate({
-
-        errorElement: "div",
-        errorPlacement: function (error, element) {
-            var placement = $(element).data('error');
-            if (placement) {
-                $(placement).append(error)
-            } else {
-                error.insertAfter(element);
-            }
-        },
-        submitHandler: function (form) {
-
-            event.preventDefault();
-
-            // Get form
-            var form = $('#savedeliveryinfo')[0];
-
-            // Create an FormData object
-            var data = new FormData(form);
-
-            // If you want to add an extra field for the FormData
-            data.append("courierField", "This is some extra data, testing");
-
-            // disabled the submit button
-            $("#savedeliveryinfo").prop("disabled", true);
-            $("#spinneritem").show();
-
-            $.ajax({
-                type: "POST",
-                enctype: 'multipart/form-data',
-                url: urlv,
-                data: data,
-                processData: false,
-                contentType: false,
-                cache: false,
-                timeout: 600000,
-                success: function (response) {
-                    if (response.status == "SUCCESS") {
-                        Materialize.toast(response.status, 4000);
-                        $("#spinneritem").hide();
-                        $("#savedeliveryinfo")[0].reset();
-                    } else {
-                        $("#spinneritem").hide();
-                        Materialize.toast(response.status, 4000);
-
-                    }
-                },
-                error: function (e) {
-                    Materialize.toast("Error", 4000);
-                }
-            });
-        }
-    });
-
-
-</script>
 </html>

@@ -23,7 +23,6 @@ import java.util.List;
         isolation = Isolation.READ_COMMITTED
 )
 
-
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired

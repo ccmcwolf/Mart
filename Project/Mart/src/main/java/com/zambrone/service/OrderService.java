@@ -15,6 +15,10 @@ import java.util.List;
 public interface OrderService {
     public void addOrder(Orders orders) throws DataAccessException;
 
+    public void updateOrder(Orders orders) throws DataAccessException;
+
+    public Integer getShopIDbyOrderNo(Integer orderNo) throws DataAccessException;
+
     public void saveOrderDetails(Integer orderId, List<ProductOrder> productOrders) throws DataAccessException;
 
     public Orders getOrderByOrderId(Integer orderId) throws DataAccessException;

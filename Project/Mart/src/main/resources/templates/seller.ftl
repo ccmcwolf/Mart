@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +6,8 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/merchant.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/merchant.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
           media="screen,projection"/>
 
@@ -15,24 +16,8 @@
 </head>
 <body>
 
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
+<#include "navbar.ftl">
 
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-             <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-             <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Login</a>
@@ -52,7 +37,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-     <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -279,7 +267,7 @@
 
             </div>
             <div id="completedtab" class="col s12">
-                     <table id="completedorders">
+                <table id="completedorders">
                     <thead>
                     <tr>
                         <th>Order ID</th>
@@ -379,47 +367,20 @@
     </div>
 </div>
 </body>
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Mart Online Shopping</h5>
-                <p class="grey-text text-lighten-4">@2017</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Foods</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Explore Shops</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Merchant Area</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-    </div>
-</footer>
+<#include "footer.ftl">
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.countdown.js'/>"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/jquery.countdown.js"></script>
-
-
-
 
 <script>$('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'right', // Choose the horizontal origin
-        closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-        draggable: true // Choose whether you can drag to open on touch screens
-    }
+            menuWidth: 300, // Default is 300
+            edge: 'right', // Choose the horizontal origin
+            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+            draggable: true // Choose whether you can drag to open on touch screens
+        }
 );
 $(document).ready(function () {
     $('ul.tabs').tabs();
@@ -431,11 +392,11 @@ $(document).ready(function () {
 
 
 $("#getting-started")
-    .countdown("2017/07/01", function (event) {
-        $(this).text(
-            event.strftime('%D days %H:%M:%S')
-        );
-    });
+        .countdown("2017/07/01", function (event) {
+            $(this).text(
+                    event.strftime('%D days %H:%M:%S')
+            );
+        });
 
 </script>
 

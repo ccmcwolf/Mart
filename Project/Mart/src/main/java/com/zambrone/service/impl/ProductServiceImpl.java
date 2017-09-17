@@ -70,6 +70,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Integer getShopIDByProductNo(Integer id) throws DataAccessException {
+        return productDAO.getShopIDByProductNo(id);
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void updateProduct(Product product) throws DataAccessException {
 

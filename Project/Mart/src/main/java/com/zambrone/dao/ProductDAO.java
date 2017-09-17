@@ -18,6 +18,8 @@ public interface ProductDAO {
 
     public Product getProductByName(String name) throws DataAccessException;
 
+    public Integer getShopIDByProductNo(Integer productID) throws DataAccessException;
+
     public Product getProductByID(Integer id) throws DataAccessException;
 
     public void updateProduct(Product product) throws DataAccessException;

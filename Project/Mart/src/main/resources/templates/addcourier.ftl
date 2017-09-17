@@ -16,30 +16,8 @@
 </head>
 <body>
 
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
+<#include "navbar.ftl">
 
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Admin</a>

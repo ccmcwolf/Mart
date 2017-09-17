@@ -12,6 +12,7 @@ public interface OrderDAO {
     public void saveOrder(Orders orders) throws DataAccessException;
     public void update(Orders orders) throws DataAccessException;
     public boolean removeOrder(Integer orderId) throws DataAccessException;
+    public Integer getShopIDbyOrderNo(Integer orderNo) throws  DataAccessException;
 
 //    public List<Orders> getOrdersByShopId(int shopNo)throws DataAccessException;
     public Orders getOrderByOrderId(Integer orderId)throws DataAccessException;

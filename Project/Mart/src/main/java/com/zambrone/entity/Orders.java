@@ -1,21 +1,25 @@
 package com.zambrone.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 15/09/2017.
+ * Created by Chamith on 17/09/2017.
  */
 @Entity
 public class Orders {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "order_no")
     private Integer orderNo;
     private Double amount;
     private String city;
     private Double courierCharj;
     private Timestamp courierPaymentSettledDate;
     private String courierTrackingNo;
-    private Timestamp date;
+    private Date date;
     private String deliveryAddress;
     private String deliveryEmail;
     private String deliveryName;
@@ -31,11 +35,13 @@ public class Orders {
     private String statusDescription;
     private String statusShop;
     private Double vat;
+    private Integer courierId;
+    private String customerEmail;
+    private Integer deliveryOptionid;
+    private Integer shopNo;
     private Time deliveryTime;
 
-    @Id
-    @Column(name = "order_no")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+
     public Integer getOrderNo() {
         return orderNo;
     }
@@ -96,11 +102,11 @@ public class Orders {
 
     @Basic
     @Column(name = "date")
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -255,6 +261,46 @@ public class Orders {
     }
 
     @Basic
+    @Column(name = "courier_id")
+    public Integer getCourierId() {
+        return courierId;
+    }
+
+    public void setCourierId(Integer courierId) {
+        this.courierId = courierId;
+    }
+
+    @Basic
+    @Column(name = "customer_email")
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    @Basic
+    @Column(name = "delivery_optionid")
+    public Integer getDeliveryOptionid() {
+        return deliveryOptionid;
+    }
+
+    public void setDeliveryOptionid(Integer deliveryOptionid) {
+        this.deliveryOptionid = deliveryOptionid;
+    }
+
+    @Basic
+    @Column(name = "shop_no")
+    public Integer getShopNo() {
+        return shopNo;
+    }
+
+    public void setShopNo(Integer shopNo) {
+        this.shopNo = shopNo;
+    }
+
+    @Basic
     @Column(name = "delivery_time")
     public Time getDeliveryTime() {
         return deliveryTime;
@@ -305,6 +351,12 @@ public class Orders {
             return false;
         if (statusShop != null ? !statusShop.equals(orders.statusShop) : orders.statusShop != null) return false;
         if (vat != null ? !vat.equals(orders.vat) : orders.vat != null) return false;
+        if (courierId != null ? !courierId.equals(orders.courierId) : orders.courierId != null) return false;
+        if (customerEmail != null ? !customerEmail.equals(orders.customerEmail) : orders.customerEmail != null)
+            return false;
+        if (deliveryOptionid != null ? !deliveryOptionid.equals(orders.deliveryOptionid) : orders.deliveryOptionid != null)
+            return false;
+        if (shopNo != null ? !shopNo.equals(orders.shopNo) : orders.shopNo != null) return false;
         if (deliveryTime != null ? !deliveryTime.equals(orders.deliveryTime) : orders.deliveryTime != null)
             return false;
 
@@ -335,6 +387,10 @@ public class Orders {
         result = 31 * result + (statusDescription != null ? statusDescription.hashCode() : 0);
         result = 31 * result + (statusShop != null ? statusShop.hashCode() : 0);
         result = 31 * result + (vat != null ? vat.hashCode() : 0);
+        result = 31 * result + (courierId != null ? courierId.hashCode() : 0);
+        result = 31 * result + (customerEmail != null ? customerEmail.hashCode() : 0);
+        result = 31 * result + (deliveryOptionid != null ? deliveryOptionid.hashCode() : 0);
+        result = 31 * result + (shopNo != null ? shopNo.hashCode() : 0);
         result = 31 * result + (deliveryTime != null ? deliveryTime.hashCode() : 0);
         return result;
     }

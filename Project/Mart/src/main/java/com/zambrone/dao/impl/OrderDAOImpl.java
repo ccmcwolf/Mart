@@ -2,15 +2,18 @@ package com.zambrone.dao.impl;
 
 import com.zambrone.dao.OrderDAO;
 import com.zambrone.entity.Orders;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.zambrone.entity.Product;
+import org.hibernate.*;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.hibernate.criterion.Restrictions.eq;
 
 /**
  * Created by Chamith on 13/09/2017.
@@ -50,7 +53,14 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void update(Orders orders) throws DataAccessException {
-        getSessionFactoryCurrentSession().saveOrUpdate(orders);
+
+        Session session = getSessionFactoryCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(orders);
+        transaction.commit();
+        session.flush();
+        session.close();
+        System.out.println("update DAOIMPL order called" +orders.toString());
     }
 
     @Override
@@ -69,6 +79,15 @@ public class OrderDAOImpl implements OrderDAO {
              result = false;
         }
         return result;
+    }
+
+    @Override
+    public Integer getShopIDbyOrderNo(Integer orderNo) throws DataAccessException {
+
+        List list = getSessionFactoryCurrentSession().createSQLQuery("SELECT shop_id FROM product WHERE product_id IN (SELECT product_id FROM product_order WHERE order_id = 157) ").list();
+        System.out.println("! shop found"+list.get(0));
+        Integer shopId = (Integer) list.get(0);
+        return shopId;
     }
 
     @Override

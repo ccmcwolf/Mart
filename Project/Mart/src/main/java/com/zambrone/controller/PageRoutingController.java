@@ -6,9 +6,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Chamith on 02/07/2017.
@@ -18,13 +21,28 @@ public class PageRoutingController {
 
 
     @GetMapping(path = "/admin/addcourier")
-    public String showaddCourier() {
-        return "addcourier";
+    public ModelAndView showaddCourier() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("addcourier");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        return modelAndView;
+
     }
 
     @GetMapping(path = "/addcustomer")
-    public String showaddCustomer() {
-        return "addcustomer";
+    public ModelAndView showaddCustomer() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("addcustomer");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+        return modelAndView;
     }
 
     @GetMapping(path = "/login")
@@ -33,10 +51,17 @@ public class PageRoutingController {
     }
 
 
-
     @GetMapping(path = "/admin/addshop")
-    public String showAddShop() {
-        return "addshop";
+
+    public ModelAndView showAddShop() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("addshop");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        return modelAndView;
     }
 
 
@@ -50,8 +75,16 @@ public class PageRoutingController {
     public String getProducts() {
         return "placeorder";
     }
+
     @GetMapping(path = "/")
-    public String showIndex() {
+    public ModelAndView showIndex() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("index");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
 
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -59,9 +92,14 @@ public class PageRoutingController {
 //            System.out.println("currentUserName : "+currentUserName);
 //            return currentUserName;
 //        }
-        return "index";
+        return modelAndView;
     }
 
+    @GetMapping(path = "/logo")
+    public String myLogoff() {
+        SecurityContextHolder.clearContext();
+        return "/";
+    }
 
     @GetMapping(path = "/fileupload")
     public String showFileUpload() {
