@@ -35,7 +35,6 @@ public class PageRoutingController {
 
     @GetMapping(path = "/addcustomer")
     public ModelAndView showaddCustomer() {
-
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
@@ -50,9 +49,17 @@ public class PageRoutingController {
         return "login";
     }
 
+    @GetMapping(path = "/noaccess")
+    public String accessDenied() {
+        return "403";
+    }
+
+    @GetMapping(path = "/signup")
+    public String showSignUp() {
+        return "signup";
+    }
 
     @GetMapping(path = "/admin/addshop")
-
     public ModelAndView showAddShop() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
@@ -64,6 +71,45 @@ public class PageRoutingController {
         return modelAndView;
     }
 
+    @GetMapping(path = "/admin")
+    public ModelAndView showAdmin() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("admin");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        return modelAndView;
+
+      }
+
+    @GetMapping(path = "/seller")
+    public ModelAndView showSeller() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("seller");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        return modelAndView;
+
+    }
+
+    @GetMapping(path = "/delivery")
+    public ModelAndView showDelivery() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("delivery");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        return modelAndView;
+
+    }
 
     @GetMapping(path = "/logout")
     public String logout(HttpServletRequest request) throws ServletException {
@@ -86,12 +132,6 @@ public class PageRoutingController {
         if (name != null || name.equals(null))
             modelAndView.addObject("username", name);
 
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-//            String currentUserName = authentication.getName();
-//            System.out.println("currentUserName : "+currentUserName);
-//            return currentUserName;
-//        }
         return modelAndView;
     }
 
@@ -106,8 +146,5 @@ public class PageRoutingController {
         return "fileupload";
     }
 
-//    @GetMapping(path = "/shops")
-//    public String getShops(){
-//        return "shops";
-//    }
+
 }

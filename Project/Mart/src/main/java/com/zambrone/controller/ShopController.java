@@ -11,11 +11,14 @@ import com.zambrone.service.CategoryService;
 import com.zambrone.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -97,7 +100,14 @@ public class ShopController {
 
 
     @GetMapping(path = "/explore")
-    public String getProducts(Model model){
+    public ModelAndView getProducts(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("shops");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
 
         List<Category> allCategory = categoryService.getAllCategory();
         List<Shop> allShop = shopService.getAllShop();
@@ -105,7 +115,7 @@ public class ShopController {
         model.addAttribute("categories",allCategory);
         model.addAttribute("shops",allShop);
 
-        return "shops";
+        return modelAndView;
     }
 
 

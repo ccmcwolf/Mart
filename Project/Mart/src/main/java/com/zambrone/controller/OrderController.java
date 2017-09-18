@@ -1,6 +1,8 @@
 
 package com.zambrone.controller;
 
+import com.sendgrid.SendGrid;
+import com.sendgrid.SendGridException;
 import com.zambrone.config.JsonResponse;
 import com.zambrone.entity.Orders;
 import com.zambrone.entity.Product;
@@ -153,7 +155,7 @@ public class OrderController {
 
 
     @RequestMapping(value = "/updateorder", method = RequestMethod.GET)
-    public   @ResponseBody String returntherequest(
+    public   ModelAndView returntherequest(
             @RequestParam Map<String, String> allRequestParams) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -170,8 +172,15 @@ public class OrderController {
         String deliveryTelephoneNo = allRequestParams.get("deliveryTelephoneNo");
         String date = allRequestParams.get("date");
         String deliveryTime = allRequestParams.get("deliveryTime");
-
+        SendGrid.Response response = null;
         System.out.println(allRequestParams);
+
+        ModelAndView modelAndView = new ModelAndView("ordersuccess");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+
+
         try{
 
             Integer orderId = Integer.parseInt(orderNo.trim());
@@ -228,15 +237,31 @@ public class OrderController {
                     }
                 }
                 orderService.updateOrder(orders);
+
+                SendGrid sendgrid = new SendGrid("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");
+
+                SendGrid.Email email = new SendGrid.Email();
+
+                email.addTo(orders.getDeliveryEmail().trim());
+                email.setFrom("noreply@mart.lk");
+                email.setSubject("Your order has been placed");
+                email.setHtml("Order has been placed\n");
+
+                response = sendgrid.send(email);
+
+
             }else{
                 System.out.println("cannot find the order");
             }
+            modelAndView.addObject("orders",orders);
         }catch (NullPointerException ex){
             ex.printStackTrace();
             System.out.println("Null pointer found !!!!!!!");
+        } catch (SendGridException e) {
+            e.printStackTrace();
         }
 
-        return "Success";
+        return modelAndView;
     }
 
 }

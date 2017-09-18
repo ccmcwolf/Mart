@@ -370,10 +370,19 @@
 <#include "footer.ftl">
 
 <!--Import jQuery before materialize.js-->
+<#--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
+<#--<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>-->
+<#--<script type="text/javascript" src="<@spring.url '/js/jquery.countdown.js'/>"></script>-->
+<#--<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>-->
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.countdown.js'/>"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.countdown.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
 
 <script>$('.button-collapse').sideNav({
             menuWidth: 300, // Default is 300

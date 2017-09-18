@@ -1,12 +1,12 @@
+<#import "/spring.ftl" as spring>
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/mystyle.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.min.css'/>" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
 
 </head>
 
@@ -14,7 +14,7 @@
 <div class="section"></div>
 <main>
     <center>
-        <div class="center" style="width: 250px;" ><h3>Mart Shopping</h3></div>
+        <div class="center" ><h3>Mart Shopping</h3></div>
         <div class="section"></div>
 
         <h5 class="indigo-text">Welcome, Signup with Mart</h5>
@@ -46,6 +46,19 @@
                         </label>
                     </div>
 
+                    <div class='row'>
+                        <div class='input-field col s12'>
+
+                            <select name="user_role">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+
+                            <label for='email'>Enter your email</label>
+                        </div>
+                    </div>
+
                     <br />
                     <center>
                         <div class='row'>
@@ -55,7 +68,7 @@
                 </form>
             </div>
         </div>
-        <a href="login.html">Login account</a>
+        <a href="/login">Login account</a>
     </center>
 
     <div class="section"></div>
@@ -63,7 +76,7 @@
 </main>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
 </body>
 
 </html>

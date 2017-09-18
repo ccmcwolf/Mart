@@ -22,7 +22,6 @@ public class ShopServiceImpl implements ShopService {
     @Autowired
     ShopDAO shopDAO;
 
-
     /**
      *
      * @return

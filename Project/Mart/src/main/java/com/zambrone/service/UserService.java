@@ -2,8 +2,6 @@ package com.zambrone.service;
 
 import com.zambrone.entity.User;
 
-import java.util.List;
-
 /**
  * Created by Chamith on 17/09/2017.
  */

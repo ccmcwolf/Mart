@@ -38,10 +38,12 @@
                     </div>
 
                     <div class='row'>
+
                         <div class='input-field col s12'>
                             <input class='validate'  type='password' name='password' id='password' />
                             <label for='password'>Enter your password</label>
                         </div>
+
                         <label style='float: right;'>
                             <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
                         </label>
@@ -56,7 +58,7 @@
                 </form>
             </div>
         </div>
-        <a href="signup.html">Create account</a>
+        <a href="/signup">Create account</a>
     </center>
 
     <div class="section"></div>

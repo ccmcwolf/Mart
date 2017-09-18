@@ -13,11 +13,14 @@ import com.zambrone.service.ProductService;
 import com.zambrone.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -101,28 +104,40 @@ public class ProductController {
     }
 
     @GetMapping(path = "/add")
-    public String showaddProduct(Model model){
+    public ModelAndView showaddProduct(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("addproduct");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
 
         List<Category> allCategory = categoryService.getAllCategory();
         model.addAttribute("categories",allCategory);
         List<Shop> allShop = shopService.getAllShop();
         model.addAttribute("allshop",allShop);
 
-        return "addproduct";
+        return modelAndView;
     }
 
     @GetMapping(path="/{shopId}")
-    public String showProducts(Model model,@PathVariable("shopId") int shopId){
-        System.out.println("shop id !!!!!" + shopId);
+    public ModelAndView showProducts(Model model,@PathVariable("shopId") int shopId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("products");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
         if(shopId!=0) {
             List<Product> allShopProducts = productService.getProductByShopId(shopId);
             System.out.println(allShopProducts);
             model.addAttribute("products", allShopProducts);
-            return "products";
+            return modelAndView;
         }
         else{
-
-            return "shops";
+            modelAndView.setViewName("shops");
+            return modelAndView;
         }
     }
 }

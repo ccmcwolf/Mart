@@ -2,15 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90681d5c-9225-4784-9c6d-d685ada7417c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/DefaultPageController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/ProductController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/StoreController.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Documetation/Final Report.docx" afterPath="$PROJECT_DIR$/Documetation/Final Report.docx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/config/AuthenticationProviderConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/UserController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/service/impl/UserServiceImpl.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/ordersuccess.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/signup.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/pom.xml" afterPath="$PROJECT_DIR$/Project/Mart/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/ZambroneApplication.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/ZambroneApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/application.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/index.html" afterPath="$PROJECT_DIR$/UI/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/config/SecurityConfiguration.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/config/SecurityConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/OrderController.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/OrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/PageRoutingController.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/PageRoutingController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/ProductController.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/ProductController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/ShopController.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/controller/ShopController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/service/UserService.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/service/impl/ShopServiceImpl.java" afterPath="$PROJECT_DIR$/Project/Mart/src/main/java/com/zambrone/service/impl/ShopServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/signup.html" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/static/signup.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/login.ftl" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/login.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/navbar.ftl" afterPath="$PROJECT_DIR$/Project/Mart/src/main/resources/templates/navbar.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/UI/placeorder.html" afterPath="$PROJECT_DIR$/UI/placeorder.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,7 +47,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
+            <state relative-caret-position="210">
               <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -60,7 +69,7 @@
       <file leaf-file-name="shops.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/shops.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4893">
+            <state relative-caret-position="807">
               <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
               <folding />
             </state>
@@ -70,7 +79,7 @@
       <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
+            <state relative-caret-position="807">
               <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
               <folding />
             </state>
@@ -92,8 +101,8 @@
       <file leaf-file-name="placeorder.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/UI/placeorder.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="113" column="32" lean-forward="true" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+            <state relative-caret-position="558">
+              <caret line="82" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -102,7 +111,7 @@
       <file leaf-file-name="addproduct.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/UI/addproduct.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3717">
+            <state relative-caret-position="807">
               <caret line="177" column="4" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="178" selection-end-column="72" />
               <folding />
             </state>
@@ -197,7 +206,6 @@
         <option value="$PROJECT_DIR$/UI/maps.html" />
         <option value="$PROJECT_DIR$/UI/css/merchant.css" />
         <option value="$PROJECT_DIR$/UI/page.html" />
-        <option value="$PROJECT_DIR$/UI/placeorder.html" />
         <option value="$PROJECT_DIR$/UI/addcustomer.html" />
         <option value="$PROJECT_DIR$/UI/addproduct.html" />
         <option value="$PROJECT_DIR$/UI/addshop.html" />
@@ -208,6 +216,7 @@
         <option value="$PROJECT_DIR$/UI/products.html" />
         <option value="$PROJECT_DIR$/UI/shops.html" />
         <option value="$PROJECT_DIR$/UI/index.html" />
+        <option value="$PROJECT_DIR$/UI/placeorder.html" />
       </list>
     </option>
   </component>
@@ -238,8 +247,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,6 +275,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,11 +404,12 @@
       <workItem from="1498472115484" duration="4370000" />
       <workItem from="1498476986748" duration="2298000" />
       <workItem from="1498657270925" duration="655000" />
+      <workItem from="1505699703519" duration="2001000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83436000" />
+    <option name="totallyTimeSpent" value="85437000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -732,14 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/shops.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4893">
-          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI/addshop.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2667">
@@ -748,26 +750,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UI/addproduct.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3717">
-          <caret line="177" column="4" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="178" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/UI/maps.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="9" column="14" lean-forward="false" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UI/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -791,7 +777,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UI/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
+        <state relative-caret-position="210">
           <caret line="21" column="47" lean-forward="false" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -799,10 +785,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UI/shops.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="233" column="0" lean-forward="false" selection-start-line="233" selection-start-column="0" selection-end-line="233" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="42" column="30" lean-forward="false" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UI/addproduct.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="177" column="4" lean-forward="false" selection-start-line="177" selection-start-column="4" selection-end-line="178" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/UI/placeorder.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="113" column="32" lean-forward="true" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+        <state relative-caret-position="558">
+          <caret line="82" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="377" selection-end-column="0" />
           <folding />
         </state>
       </provider>

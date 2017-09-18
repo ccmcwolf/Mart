@@ -20,11 +20,17 @@
 
         <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
         <ul class="right hide-on-med-and-down">
-             <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
-             <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
             <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
             </li>
         </ul>
@@ -36,9 +42,7 @@
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Explore</a>
-        <a href="#!" class="breadcrumb">Shops</a>
-        <a href="#!" class="breadcrumb">Products</a>
-        <a href="#!" class="breadcrumb">Checkout</a>
+        <a href="#!" class="breadcrumb">Success</a>
     </div>
 </div>
 <ul id="slide-out" class="side-nav">
@@ -53,7 +57,10 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-     <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
+    <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
+    <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
+    <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 
@@ -61,23 +68,27 @@
 
     <div class="container">
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
+        <div class="row">
+            <div class="col s12">
+                <div class="grey center-align darken-3 white-text">
+                    <h5>Congratulation! Order Placed Succussfully</h5>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col s9">
-                <div class="grey center-align darken-3 white-text">
-                    <h5>Place My Order</h5>
-                </div>
 
-                <form>
+
+
                     <div class="row">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">shopping_basket</i>
-                            <input id="order_id" type="text" class="validate">
+                            <input id="order_id" type="text" class="validate" disabled>
                             <label for="order_id">Order ID</label>
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="name" type="tel" class="validate">
+                            <input id="name" type="tel" class="validate" disabled>
                             <label for="name">Recipient Name</label>
 
                         </div>
@@ -85,7 +96,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person_pin</i>
-                            <input id="address" type="text" class="validate">
+                            <input id="address" type="text" class="validate" disabled>
                             <label for="address">Address</label>
                         </div>
 
@@ -95,13 +106,13 @@
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">business</i>
-                            <input id="City" type="text" class="validate">
+                            <input id="City" type="text" class="validate" disabled>
                             <label for="City">City</label>
                         </div>
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">email</i>
-                            <input id="Email" type="email" class="validate">
+                            <input id="Email" type="email" class="validate" disabled>
                             <label for="Email">Email</label>
                         </div>
 
@@ -112,7 +123,7 @@
 
                         <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="phone" type="tel" class="validate">
+                            <input id="phone" type="tel" class="validate" disabled>
                             <label for="phone">Phone</label>
                         </div>
 
@@ -123,8 +134,8 @@
 
                         <div class="input-field col s6">
 
-                            Delivery Date  <i class="material-icons prefix">today</i>
-                            <input id="date" type="date" class="validate">
+                            Delivery Date <i class="material-icons prefix">today</i>
+                            <input id="date" type="date" class="validate" disabled>
 
                         </div>
 
@@ -132,21 +143,10 @@
                         <div class="input-field col s6">
 
                             Delivery Time <i class="material-icons prefix">av_timer</i>
-                            <input id="time" type="time" class="validate">
+                            <input id="time" type="time" class="validate" disabled>
                         </div>
                     </div>
 
-
-                    <div class="row">
-
-                        <div class="input-field col s12 center-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
-                            </button>
-                        </div>
-                    </div>
-
-                </form>
             </div>
             <div id="map_canvas"></div>
             <div class="s3">
