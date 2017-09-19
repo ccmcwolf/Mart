@@ -64,11 +64,12 @@
                             <i class="material-icons prefix">shopping_basket</i>
                             <if></if>
 
-                            <input  id="orderNo" type="text" value="ORDID_${orderid}" disabled>
+                            <input id="orderNo" type="text" value="ORDID_${orderid}" disabled>
                             <label for="orderNo">Order ID</label>
                         </div>
-                        <input type="hidden"  name="orderNo" value="${orderid}"" ></input>
-                        <input type="hidden"  name="shopNo" value="${shopID}"" ></input>
+                        <input type="hidden" name="orderNo" value="${orderid}"" ></input>
+                        <input type="hidden" name="shopNo" value="${shopID}"" ></input>
+                        <input type="hidden" id="totalvalue" name="totalvalue"></input>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
                             <input id="deliveryName" name="deliveryName" type="text" class="validate">
@@ -128,9 +129,10 @@
 
                         <div class="input-field col s12 center-align">
                             <a href="javascript:;">
-                            <button class="btn waves-effect waves-light"  onclick="formOnSubmit();" name="action">Save Order Details
-                                <i class="material-icons right">send</i>
-                            </button>
+                                <button class="btn waves-effect waves-light" onclick="formOnSubmit();" name="action">
+                                    Save Order Details
+                                    <i class="material-icons right">send</i>
+                                </button>
                             </a>
                         </div>
                     </div>

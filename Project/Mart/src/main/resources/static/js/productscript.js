@@ -109,10 +109,19 @@ simpleCart.bind("afterAdd", function (item) {
 });
 function loaditemtocart() {
     $('.collection-item').remove();
+    var loaditem = document.getElementById("totalvalue");
+    if(loaditem!=null){
+        loaditem.value = simpleCart.grandTotal().toFixed(2);
+       // alert(simpleCart.grandTotal().toFixed(2));
+        simpleCart.empty();
+    }
     var badge = document.getElementById('smallcartbadge');
     badge.innerHTML = simpleCart.quantity();
     var grandtotalele = document.getElementById('grandtotal');
     grandtotalele.innerHTML = 'Grand Total : Rs .' + simpleCart.grandTotal().toFixed(2);
+
+
+
     simpleCart.each(function (item) {
 
 
@@ -201,6 +210,8 @@ function goBack() {
 $(document).ready(function () {
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
+
+
 });
 $(window).load(function () {
     // executes when HTML-Document is loaded and DOM is ready

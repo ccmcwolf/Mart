@@ -55,7 +55,7 @@
             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
-    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
+    <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li><li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
 </ul>
 
 

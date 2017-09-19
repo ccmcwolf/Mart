@@ -166,6 +166,7 @@ public class OrderController {
         String orderNo = allRequestParams.get("orderNo");
         String shopNo = allRequestParams.get("shopNo");
         String deliveryName = allRequestParams.get("deliveryName");
+        String totalvalue = allRequestParams.get("totalvalue");
         String city = allRequestParams.get("City");
         String deliveryAddress = allRequestParams.get("deliveryAddress");
         String deliveryEmail = allRequestParams.get("deliveryEmail");
@@ -190,11 +191,16 @@ public class OrderController {
                 System.out.println("!!!!!!!!!order found");
                 if (!deliveryName.equals(null) || deliveryName != "") {
                     orders.setDeliveryName(deliveryName.trim());
-
                 }
 
                 if (!city.equals(null) || city != "") {
                     orders.setCity(city.trim());
+
+                }
+                if (!totalvalue.equals(null) || totalvalue != "") {
+                    Double amount = Double.parseDouble(totalvalue);
+                    System.out.println("!!!!!!Amount Total"+totalvalue);
+                    orders.setAmount(amount);
                 }
 
                 if (!deliveryAddress.equals(null) || deliveryAddress != "") {

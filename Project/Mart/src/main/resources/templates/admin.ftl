@@ -104,8 +104,8 @@
                 <div class="card-panel teal white-text center-align">
                     <i class="material-icons">shopping_cart</i><br>
                     <span class="white-text">Sales</span>
-                    <h3>Rs. 300</h3>(This month)
-                    <h3>Rs. 1200</h3>(Total)
+                    <h3>$300</h3>(This month)
+                    <h3>$1200</h3>(Total)
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
 
                                 <div class="center-align">Order Date : 23-06-2017</div>
                                 <div class="center-align">Delivery Time : 05:00 PM</div>
-                                <div class="center-align">Order Total : Rs. 14</div>
+                                <div class="center-align">Order Total : $14</div>
                                 <div id="getting-started"></div>
 
                             </div>
@@ -185,7 +185,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>
@@ -201,7 +201,7 @@
 
                                 <div class="center-align">Order Date : 11-05-2017</div>
                                 <div class="center-align">Delivery Time : 08:00 PM</div>
-                                <div class="center-align">Order Total : Rs. 54</div>
+                                <div class="center-align">Order Total : $54</div>
                                 <span class="countdown highlight"></span>
                             </span>
 
@@ -226,7 +226,7 @@
 
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>
@@ -241,7 +241,7 @@
 
                                 <div class="center-align">Order Date : 21-05-2017</div>
                                 <div class="center-align">Delivery Time : 07:00 PM</div>
-                                <div class="center-align">Order Total : Rs. 24</div>
+                                <div class="center-align">Order Total : $24</div>
 
                             </div>
                             <table id="exporttable" class="container collapsible-body highlight">
@@ -280,7 +280,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <div class="center-align" onclick="alert('orders completed');"> Select all and
+                                        <div class="center-align" onclick="alert('order completed');"> Select all and
                                             Mark
                                             as Order Completed
                                         </div>
@@ -316,7 +316,7 @@
                         <td>05/05/2017</td>
                         <td>17:50</td>
                         <td>Completed</td>
-                        <td>Rs. 10.87</td>
+                        <td>$10.87</td>
                     </tr>
                     <tr>
                         <td>#74645454</td>
@@ -324,7 +324,7 @@
                         <td>05/05/2017</td>
                         <td>17:50</td>
                         <td>Completed</td>
-                        <td>Rs. 25</td>
+                        <td>$25</td>
                     </tr>
                     <tr>
                         <td>#74645454</td>
@@ -332,7 +332,7 @@
                         <td>05/05/2017</td>
                         <td>17:50</td>
                         <td>Completed</td>
-                        <td>Rs. 18.00</td>
+                        <td>$18.00</td>
                     </tr>
 
                     </tbody>
@@ -360,7 +360,7 @@
                         <td>Rajagiriya, Colombo</td>
                         <td>0117845985</td>
                         <td>45</td>
-                        <td>Rs. 1500.87</td>
+                        <td>$1500.87</td>
                     </tr>
                     <tr>
                         <td>S0564784</td>
@@ -368,7 +368,7 @@
                         <td>Bambalapitiya, Colombo</td>
                         <td>0112547896</td>
                         <td>25</td>
-                        <td>Rs. 1009.00</td>
+                        <td>$1009.00</td>
                     </tr>
                     <tr>
                         <td>S0564785</td>
@@ -376,7 +376,7 @@
                         <td>Malabe, Colombo</td>
                         <td>0112729729</td>
                         <td>41</td>
-                        <td>Rs. 1800.00</td>
+                        <td>$1800.00</td>
                     </tr>
 
                     </tbody>
@@ -390,10 +390,10 @@
                         <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg" alt="" class="circle">
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
-                        Rs. 15.25 &nbsp; X &nbsp; 1
+                        $15.25 &nbsp; X &nbsp; 1
                         <span>By Shandong</span>
                         </p>
-                        <p align="right">Rs. 45.00</p>
+                        <p align="right">$45.00</p>
 
                     </li>
 
@@ -403,10 +403,10 @@
                         <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg" alt="" class="circle">
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
-                        Rs. 15.25 &nbsp; X &nbsp; 1
+                        $15.25 &nbsp; X &nbsp; 1
                         <span>By Chinese Dragon</span>
                         </p>
-                        <p align="right">Rs. 45.00</p>
+                        <p align="right">$45.00</p>
 
                     </li>
                     #3
@@ -415,10 +415,10 @@
                         <img src="https://s3-ap-southeast-1.amazonaws.com/martonline/office.jpg" alt="" class="circle">
                         <span class="uid" hidden>office.jpg</span>
                         <span class="title">Item Name</span>
-                        Rs. 15.25 &nbsp; X &nbsp; 1
+                        $15.25 &nbsp; X &nbsp; 1
                         <span>By Pizza Hut</span>
                         </p>
-                        <p align="right">Rs. 45.00</p>
+                        <p align="right">$45.00</p>
 
                     </li>
                 </ul>
@@ -452,35 +452,31 @@
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.countdown.js'/>"></script>
-<script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
+<script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script><script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+<script type="text/javascript" src="js/jquery.filterList.js"></script>
 
-
-<script>Rs. ('.button-collapse').sideNav({
+<script>$('.button-collapse').sideNav({
             menuWidth: 300, // Default is 300
             edge: 'right', // Choose the horizontal origin
             closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
             draggable: true // Choose whether you can drag to open on touch screens
         }
 );
-Rs. (document).ready(function () {
-    Rs. ('ul.tabs').tabs();
-    Rs. ('#completedorders').DataTable();
-    Rs. ('#shoptable').DataTable();
+$(document).ready(function () {
+    $('ul.tabs').tabs();
+    $('#completedorders').DataTable();
+    $('#shoptable').DataTable();
 });
-Rs. (document).ready(function () {
-    Rs. ('ul.tabs').tabs('select_tab', 'tab_id');
+$(document).ready(function () {
+    $('ul.tabs').tabs('select_tab', 'tab_id');
 });
-
-Rs. ('#filter').filterList();
-
-Rs. ("#getting-started")
+$('#filter').filterList();
+$("#getting-started")
         .countdown("2017/07/01", function (event) {
-            Rs. (this).text(
+            $(this).text(
                     event.strftime('%D days %H:%M:%S')
             );
         });

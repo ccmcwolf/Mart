@@ -116,7 +116,7 @@
 
                                 <div class="center-align">Order Date : 23 - 06 - 2017</div>
                                 <div class="center-align">Delivery Time : 05:00 PM</div>
-                                <div class="center-align">Oder Total : $14</div>
+                                <div class="center-align">Order Total : $14</div>
                                 <div id="getting-started"></div>
 
                             </div>
