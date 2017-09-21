@@ -2,11 +2,15 @@ package com.zambrone.config;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 /**
@@ -22,17 +26,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().withUser("user2").password("password2").roles("MERCHANT").and()
                 .withUser("user2@gmail.com").password("password2").roles("USER");
     }
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @Autowired
-    DataSource dataSource;
-    @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username,password, enabled from user where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, role from user_roles where username=?");
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
+
     }
+
+//    @Autowired
+//    DataSource dataSource;
+//    @Autowired
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+//
+//        auth.jdbcAuthentication().
+//        dataSource(dataSource)
+//                .usersByUsernameQuery(
+//                        "select username,password, enabled from user where username=?")
+//                .authoritiesByUsernameQuery(
+//                        "select username, role from user_roles where username=?");
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -50,6 +64,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/addcustomer").hasRole("ADMIN")
                 .antMatchers("/admin/addshop").hasRole("ADMIN")
                 .antMatchers("/order/update").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/shop/add").hasRole("ADMIN")
+                .antMatchers("/shop/add").permitAll()
                 .antMatchers("/seller").hasAnyRole("SELLER", "ADMIN")
                 .antMatchers("/delivery").hasAnyRole("DELIVERY", "ADMIN")
                 .antMatchers("/order/updateorder").hasAnyRole("USER", "ADMIN","SELLER")
@@ -96,7 +112,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //
 //    }
 
-
+    @Bean(name="passwordEncoder")
+    public PasswordEncoder passwordencoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 
 }

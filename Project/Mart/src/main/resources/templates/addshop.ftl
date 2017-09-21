@@ -81,6 +81,7 @@
 
         </div>
         <div class="row">
+            <#--<form id="addshopform" action="<@spring.url '/shop/add'/>" method="GET" class="col s12">-->
             <form id="addshopform" class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
@@ -275,7 +276,7 @@
             $("#spinneritem").show();
 
             $.ajax({
-                type: "POST",
+                type: "GET",
                 enctype: 'multipart/form-data',
                 url: urlv,
                 data: data,

@@ -1,6 +1,11 @@
 /**
  * Created by Chamith on 13/09/2017.
  */
+
+$( function() {
+    $( "#datepicker" ).datepicker();
+} );
+
 $('.button-collapse').sideNav({
         menuWidth: 300, // Default is 300
         edge: 'right', // Choose the horizontal origin

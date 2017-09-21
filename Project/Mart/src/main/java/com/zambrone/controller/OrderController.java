@@ -79,8 +79,6 @@ public class OrderController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
-        System.out.println("logged in user name"+name);
-
         ModelAndView modelAndView = new ModelAndView("placeorder");
         Double unitPrice = new Double(0);
         Integer qty = new Integer(0);
@@ -250,8 +248,9 @@ public class OrderController {
 
                 email.addTo(orders.getDeliveryEmail().trim());
                 email.setFrom("noreply@mart.lk");
-                email.setSubject("Your order has been placed");
-                email.setHtml("Order has been placed\n");
+                email.setSubject("Order has been placed");
+                email.setHtml("Your order has been placed. Order Number is "+ orderNo+ " \n Order Total "+orders.getAmount()+"\n order  ");
+
 
                 response = sendgrid.send(email);
 

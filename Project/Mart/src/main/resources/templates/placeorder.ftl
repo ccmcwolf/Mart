@@ -113,9 +113,16 @@
                         <div class="input-field col s6">
 
                             Delivery Date <i class="material-icons prefix">today</i>
-                            <input id="date" name="date" type="date" class="validate">
+                            <input id="datepicker" name="date"  type="date" class="validate">
 
                         </div>
+
+                        <#--<div class="input-field col s6">-->
+
+                            <#--Delivery Date <i class="material-icons prefix">today</i>-->
+                            <#--<input id="datepicker" name="date"  type="date" class="validate">-->
+
+                        <#--</div>-->
 
 
                         <div class="input-field col s6">
@@ -185,6 +192,7 @@
 
     <script type="text/javascript" src="js/simpleCart.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="<@spring.url '/js/materialize.min.js'/>"></script>
     <script type="text/javascript" src="<@spring.url '/js/jquery.filterList.js'/>"></script>
     <script type="text/javascript" src="<@spring.url '/js/material-datetime-picker.js'/>"></script>
@@ -194,6 +202,7 @@
     <script type="text/javascript" src="<@spring.url '/js/productscript.js'/>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rome/2.1.22/rome.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+
 </body>
 
 </html>

@@ -13,12 +13,12 @@ public class AuthenticationProviderConfig {
     @Autowired
 	DataSource dataSource;
 
-    @Bean(name="userDetailsService")
-    public UserDetailsService userDetailsService(){
-    	JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
-    	jdbcImpl.setDataSource(dataSource);
-    	jdbcImpl.setUsersByUsernameQuery("select username,password, enabled from users where username=?");
-    	jdbcImpl.setAuthoritiesByUsernameQuery("select b.username, a.role from user_roles a, users b where b.username=? and a.userid=b.userid");
-    	return jdbcImpl;
-    }
+	@Bean(name="userDetailsService")
+	public UserDetailsService userDetailsService(){
+		JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+		jdbcImpl.setDataSource(dataSource);
+		jdbcImpl.setUsersByUsernameQuery("select username,password, enabled from users where username=?");
+		jdbcImpl.setAuthoritiesByUsernameQuery("select username, role from user_roles where username=?");
+		return jdbcImpl;
+	}
 }

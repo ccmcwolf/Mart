@@ -1,6 +1,7 @@
 package com.zambrone.dao;
 
-import com.zambrone.entity.User;
+import com.zambrone.entity.Users;
+import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
@@ -9,13 +10,13 @@ import java.util.List;
  */
 public interface UserDAO {
 
-    void addUser(User user);
+    void addUser(Users user)  throws DataAccessException;;
 
-    void deleteUser(Integer userId);
+    void deleteUser(Integer userId)  throws DataAccessException;;
 
-    User searchUser(Integer userId);
+    Users searchUser(String userName)  throws DataAccessException;;
 
-    int searchUserCount();
+    int searchUserCount()  throws DataAccessException;;
 
-    void updateUser(User user, String userName);
+    void updateUser(Users user)  throws DataAccessException;;
 }

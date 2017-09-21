@@ -20,14 +20,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  * Created by Chamith on 05/07/2017.
  */
-@Controller
+@RestController
 @RequestMapping("/shop")
 public class ShopController {
     @Autowired
@@ -49,56 +51,121 @@ public class ShopController {
     }
 
 
-    @RequestMapping(value = "add", method = RequestMethod.POST)
-    public @ResponseBody JsonResponse addShop(@ModelAttribute(value = "shop") Shop shop, @RequestParam(value = "shoplogopathPic")MultipartFile logoFile, @RequestParam(value = "shopcoverpathPic") MultipartFile coverFile ,BindingResult result) {
 
-        System.out.println("Shop logo path"+logoFile.getName());
-        System.out.println("Shop Cover path"+coverFile.getName());
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//    public @ResponseBody JsonResponse addShop(@ModelAttribute(value = "shop") Shop shop, @RequestParam(value = "shoplogopathPic")MultipartFile logoFile, @RequestParam(value = "shopcoverpathPic") MultipartFile coverFile ,BindingResult result) {
+//
+//        System.out.println("Shop logo path"+logoFile.getName());
+//        System.out.println("Shop Cover path"+coverFile.getName());
+//
+//        String fileid = UUID.randomUUID().toString();
+//        JsonResponse res = new JsonResponse();
+//
+//
+//        if (!logoFile.isEmpty()) {
+//            if (!result.hasErrors()) {
+//
+//                try {
+//                    ObjectMetadata objectMetadata = new ObjectMetadata();
+//                    objectMetadata.setContentType(logoFile.getContentType());
+//
+//                    // Upload the file for public read
+//                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, logoFile.getInputStream(), objectMetadata)
+//                            .withCannedAcl(CannedAccessControlList.PublicRead));
+//                    System.out.println("upload success");
+//                    System.out.println("You successfully uploaded " + fileid + "!" + "\thttps://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+//                    res.setStatus("SUCCESS");
+//                    shop.setShoplogoPath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+//                    res.setResult("courier added successfully " + shop.getShopNo());
+//                    System.out.println(shop);
+//                    shopService.registerNewShop(shop);
+//
+//                } catch (Exception e) {
+//                    System.out.println("You failed to upload " + fileid + " => " + e.getMessage());
+//                }
+//
+//
+//            } else {
+//                res.setStatus("FAIL");
+//                res.setResult("Data Not Submitted");
+//                System.out.println("Submission errors" + result.getFieldError());
+//            }
+//
+//        } else {
+//            res.setStatus("FAIL");
+//            res.setResult("Data Not Submitted");
+//            System.out.println("Submission errors" + result.getFieldError());
+//        }
+//
+//        return res;
+//    }
 
-        String fileid = UUID.randomUUID().toString();
-        JsonResponse res = new JsonResponse();
+//
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView addShop(@RequestParam Map<String, String> allRequestParams,HttpSession session) {
 
 
-        if (!logoFile.isEmpty()) {
-            if (!result.hasErrors()) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        System.out.println(allRequestParams);
+        ModelAndView modelAndView = new ModelAndView("index");
 
-                try {
-                    ObjectMetadata objectMetadata = new ObjectMetadata();
-                    objectMetadata.setContentType(logoFile.getContentType());
-
-                    // Upload the file for public read
-                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, logoFile.getInputStream(), objectMetadata)
-                            .withCannedAcl(CannedAccessControlList.PublicRead));
-                    System.out.println("upload success");
-                    System.out.println("You successfully uploaded " + fileid + "!" + "\thttps://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
-                    res.setStatus("SUCCESS");
-                    shop.setShoplogoPath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
-                    res.setResult("courier added successfully " + shop.getShopNo());
-                    System.out.println(shop);
-                    shopService.registerNewShop(shop);
-
-                } catch (Exception e) {
-                    System.out.println("You failed to upload " + fileid + " => " + e.getMessage());
-                }
-
-
-            } else {
-                res.setStatus("FAIL");
-                res.setResult("Data Not Submitted");
-                System.out.println("Submission errors" + result.getFieldError());
-            }
-
-        } else {
-            res.setStatus("FAIL");
-            res.setResult("Data Not Submitted");
-            System.out.println("Submission errors" + result.getFieldError());
-        }
-
-        return res;
+        return modelAndView;
     }
-
-
-
+//
+//    @RequestMapping(value = "/add", method = RequestMethod.GET)
+//    //public @ResponseBody JsonResponse addShop(@ModelAttribute(value = "shop") Shop shop, @RequestParam(value = "shoplogopathPic")MultipartFile logoFile, @RequestParam(value = "shopcoverpathPic") MultipartFile coverFile ,BindingResult result) {
+//    public @ResponseBody JsonResponse addShop(@RequestParam Map<String, String> allRequestParams) {
+//
+//
+//
+//
+//        System.out.println("Shop logo path"+logoFile.getName());
+//        System.out.println("Shop Cover path"+coverFile.getName());
+//
+//        String fileid = UUID.randomUUID().toString();
+//        JsonResponse res = new JsonResponse();
+//
+//
+//        if (!logoFile.isEmpty()) {
+//            if (!result.hasErrors()) {
+//
+//                try {
+//                    ObjectMetadata objectMetadata = new ObjectMetadata();
+//                    objectMetadata.setContentType(logoFile.getContentType());
+//
+//                    // Upload the file for public read
+//                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, logoFile.getInputStream(), objectMetadata)
+//                            .withCannedAcl(CannedAccessControlList.PublicRead));
+//                    System.out.println("upload success");
+//                    System.out.println("You successfully uploaded " + fileid + "!" + "\thttps://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+//                    res.setStatus("SUCCESS");
+//                    shop.setShoplogoPath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+//                    res.setResult("courier added successfully " + shop.getShopNo());
+//                    System.out.println(shop);
+//                    shopService.registerNewShop(shop);
+//
+//                } catch (Exception e) {
+//                    System.out.println("You failed to upload " + fileid + " => " + e.getMessage());
+//                }
+//
+//
+//            } else {
+//                res.setStatus("FAIL");
+//                res.setResult("Data Not Submitted");
+//                System.out.println("Submission errors" + result.getFieldError());
+//            }
+//
+//        } else {
+//            res.setStatus("FAIL");
+//            res.setResult("Data Not Submitted");
+//            System.out.println("Submission errors" + result.getFieldError());
+//        }
+//
+//        return res;
+//    }
+//
     @GetMapping(path = "/explore")
     public ModelAndView getProducts(Model model){
 
