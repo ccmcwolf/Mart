@@ -6,9 +6,11 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="<@spring.url '/css/materialize.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/mystyle.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<@spring.url '/css/merchant.css'/>" media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"
+
           media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -447,7 +449,31 @@
     </div>
 </div>
 </body>
-<#include "footer.ftl">
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Mart Online Shopping</h5>
+                <p class="grey-text text-lighten-4">@2017</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Explore Foods</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Explore Shops</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Merchant Area</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -473,7 +499,9 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('ul.tabs').tabs('select_tab', 'tab_id');
 });
+
 $('#filter').filterList();
+
 $("#getting-started")
         .countdown("2017/07/01", function (event) {
             $(this).text(

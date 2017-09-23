@@ -39,7 +39,7 @@
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Login</a>
-        <a href="#!" class="breadcrumb">Merchant Area</a>
+        <a href="/product/addproduct" class="breadcrumb">Add Products</a>
 
     </div>
 </div>

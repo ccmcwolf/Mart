@@ -66,7 +66,6 @@ public class CategoryController {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
-
         System.out.println("logged in user name"+name);
 
         System.out.println("category " + category.getCategoryName());

@@ -103,22 +103,6 @@ public class ProductController {
         return res;
     }
 
-    @GetMapping(path = "/add")
-    public ModelAndView showaddProduct(Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
-
-        ModelAndView modelAndView = new ModelAndView("addproduct");
-        if (name != null || name.equals(null))
-            modelAndView.addObject("username", name);
-
-        List<Category> allCategory = categoryService.getAllCategory();
-        model.addAttribute("categories",allCategory);
-        List<Shop> allShop = shopService.getAllShop();
-        model.addAttribute("allshop",allShop);
-
-        return modelAndView;
-    }
 
     @GetMapping(path="/{shopId}")
     public ModelAndView showProducts(Model model,@PathVariable("shopId") int shopId){

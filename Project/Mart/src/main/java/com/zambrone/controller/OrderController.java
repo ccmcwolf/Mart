@@ -249,7 +249,7 @@ public class OrderController {
                 email.addTo(orders.getDeliveryEmail().trim());
                 email.setFrom("noreply@mart.lk");
                 email.setSubject("Order has been placed");
-                email.setHtml("Your order has been placed. Order Number is "+ orderNo+ " \n Order Total "+orders.getAmount()+"\n order  ");
+                email.setHtml("Your order has been placed. Order Number is "+ orderNo+ " \n Order Total "+orders.getAmount()+"\n ");
 
 
                 response = sendgrid.send(email);

@@ -26,26 +26,16 @@ import java.util.List;
 public class ProductDAOImpl implements ProductDAO {
     @Autowired
     private SessionFactory sessionFactory;
-
     public ProductDAOImpl(){}
-
     public SessionFactory getSessionFactory() {
         return this.sessionFactory;
     }
-
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
-
-    /**
-     *
-     * @return
-     */
     private Session getSessionFactoryCurrentSession() {
         return getSessionFactory().openSession();
     }
-
 
     @Override
     public boolean addNewProduct(Product product) throws DataAccessException {

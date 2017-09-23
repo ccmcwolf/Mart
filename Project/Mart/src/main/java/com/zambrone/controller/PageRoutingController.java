@@ -1,17 +1,27 @@
 package com.zambrone.controller;
 
+import com.zambrone.dao.OrderDAO;
+import com.zambrone.entity.Category;
+import com.zambrone.entity.Shop;
+import com.zambrone.service.CategoryService;
+import com.zambrone.service.ShopService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
+import java.util.List;
 
 /**
  * Created by Chamith on 02/07/2017.
@@ -19,6 +29,11 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class PageRoutingController {
 
+    @Autowired
+    CategoryService categoryService;
+
+    @Autowired
+    ShopService shopService;
 
     @GetMapping(path = "/admin/addcourier")
     public ModelAndView showaddCourier() {
@@ -32,6 +47,24 @@ public class PageRoutingController {
         return modelAndView;
 
     }
+
+    @GetMapping(path = "/shop/addproduct")
+    public ModelAndView showaddProduct(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+
+        ModelAndView modelAndView = new ModelAndView("addproduct");
+        if (name != null || name.equals(null))
+            modelAndView.addObject("username", name);
+
+        List<Category> allCategory = categoryService.getAllCategory();
+        model.addAttribute("categories",allCategory);
+        List<Shop> allShop = shopService.getAllShop();
+        model.addAttribute("allshop",allShop);
+
+        return modelAndView;
+    }
+
 
     @GetMapping(path = "/addcustomer")
     public ModelAndView showaddCustomer() {
@@ -67,7 +100,6 @@ public class PageRoutingController {
         ModelAndView modelAndView = new ModelAndView("addshop");
         if (name != null || name.equals(null))
             modelAndView.addObject("username", name);
-
         return modelAndView;
     }
 
@@ -139,6 +171,16 @@ public class PageRoutingController {
     public String myLogoff() {
         SecurityContextHolder.clearContext();
         return "/";
+    }
+
+    @Autowired
+    OrderDAO orderDAO;
+
+    @ResponseBody
+    @GetMapping(path = "/allorders")
+    public String countorders() {
+
+        return ""+orderDAO.getTotalNumberOfOrdersAll();
     }
 
     @GetMapping(path = "/fileupload")

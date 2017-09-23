@@ -25,18 +25,10 @@ public class UserRoleDAOImpl implements UserRoleDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    /**
-     *
-     * @return
-     */
     private SessionFactory getSessionFactory() {
         return (this.sessionFactory instanceof SessionFactory) ? this.sessionFactory : null;
     }
 
-    /**
-     *
-     * @return
-     */
     private Session getSessionFactoryCurrentSession() {
         return getSessionFactory().openSession();
     }

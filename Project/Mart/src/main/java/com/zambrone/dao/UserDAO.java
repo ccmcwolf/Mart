@@ -11,12 +11,8 @@ import java.util.List;
 public interface UserDAO {
 
     void addUser(Users user)  throws DataAccessException;;
-
     void deleteUser(Integer userId)  throws DataAccessException;;
-
     Users searchUser(String userName)  throws DataAccessException;;
-
     int searchUserCount()  throws DataAccessException;;
-
     void updateUser(Users user)  throws DataAccessException;;
 }

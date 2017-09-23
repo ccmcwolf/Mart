@@ -35,23 +35,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Autowired
-//    DataSource dataSource;
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//
-//        auth.jdbcAuthentication().
-//        dataSource(dataSource)
-//                .usersByUsernameQuery(
-//                        "select username,password, enabled from user where username=?")
-//                .authoritiesByUsernameQuery(
-//                        "select username, role from user_roles where username=?");
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-//                .antMatchers("/hello").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/css/*").permitAll()
                 .antMatchers("/img/*").permitAll()
                 .antMatchers("/signup").permitAll()
@@ -69,8 +55,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/seller").hasAnyRole("SELLER", "ADMIN")
                 .antMatchers("/delivery").hasAnyRole("DELIVERY", "ADMIN")
                 .antMatchers("/order/updateorder").hasAnyRole("USER", "ADMIN","SELLER")
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/product/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/product/*").permitAll()
+                .antMatchers("/shop/addproduct").hasAnyRole("ADMIN","SELLER")
                 .antMatchers("/service/admin").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
@@ -83,34 +70,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf();
     }
-
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.formLogin().permitAll()
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/service/test").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/css/*").permitAll()
-//                .antMatchers("/img/*").permitAll()
-//                .antMatchers("/signup").permitAll()
-//                .antMatchers("/").permitAll()
-//                .antMatchers("/js/*").permitAll()
-//                .antMatchers("/order/**").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/shop/explore").permitAll()
-//                .antMatchers("/place").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/order/update").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/order/updateorder").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/product/**").permitAll()
-//                .antMatchers("/service/admin").hasRole("ADMIN")
-//                .anyRequest().authenticated();
-//
-//        http.formLogin()
-//                .loginPage("/login")
-////                .loginProcessingUrl("/perform_login")
-//                .defaultSuccessUrl("/",true)
-//                .failureUrl("/login?error=true");
-//
-//    }
 
     @Bean(name="passwordEncoder")
     public PasswordEncoder passwordencoder(){

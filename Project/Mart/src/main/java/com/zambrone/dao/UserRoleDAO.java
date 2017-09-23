@@ -9,14 +9,9 @@ import org.springframework.dao.DataAccessException;
 public interface UserRoleDAO {
 
     void addUserRole(UserRoles userRoles)  throws DataAccessException;;
-
     void deleteUserRole(Integer roleid)  throws DataAccessException;
-
     void deleteUserRoleName(String  rolename)  throws DataAccessException;;
-
     UserRoles searchUserRole(String userName)  throws DataAccessException;;
-
     int searchUserCount()  throws DataAccessException;;
-
     void updateUserRole(UserRoles userRole)  throws DataAccessException;;
 }

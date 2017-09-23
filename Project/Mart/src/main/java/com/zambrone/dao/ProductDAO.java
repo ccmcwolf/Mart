@@ -10,19 +10,19 @@ import java.util.List;
  */
 public interface ProductDAO {
 
-    public boolean addNewProduct(Product product) throws DataAccessException;
+     boolean addNewProduct(Product product) throws DataAccessException;
 
-    public List<Product> getAllProduct() throws DataAccessException;
+     List<Product> getAllProduct() throws DataAccessException;
 
-    public List<Product> getProductByShopId(int shopId) throws DataAccessException;
+     List<Product> getProductByShopId(int shopId) throws DataAccessException;
 
-    public Product getProductByName(String name) throws DataAccessException;
+     Product getProductByName(String name) throws DataAccessException;
 
-    public Integer getShopIDByProductNo(Integer productID) throws DataAccessException;
+     Integer getShopIDByProductNo(Integer productID) throws DataAccessException;
 
-    public Product getProductByID(Integer id) throws DataAccessException;
+     Product getProductByID(Integer id) throws DataAccessException;
 
-    public void updateProduct(Product product) throws DataAccessException;
+     void updateProduct(Product product) throws DataAccessException;
 
-    public void removeProduct(Integer id) throws DataAccessException;
+     void removeProduct(Integer id) throws DataAccessException;
 }
