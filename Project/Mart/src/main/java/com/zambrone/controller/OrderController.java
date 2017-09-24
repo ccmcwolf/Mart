@@ -178,8 +178,6 @@ public class OrderController {
         if (name != null || name.equals(null))
             modelAndView.addObject("username", name);
 
-
-
         try{
 
             Integer orderId = Integer.parseInt(orderNo.trim());
@@ -191,10 +189,10 @@ public class OrderController {
                     orders.setDeliveryName(deliveryName.trim());
                 }
 
-                if (!city.equals(null) || city != "") {
-                    orders.setCity(city.trim());
-
-                }
+//                if (!city.equals(null) || city != "") {
+//                    orders.getCityId(city.trim());
+//
+//                }
                 if (!totalvalue.equals(null) || totalvalue != "") {
                     Double amount = Double.parseDouble(totalvalue);
                     System.out.println("!!!!!!Amount Total"+totalvalue);

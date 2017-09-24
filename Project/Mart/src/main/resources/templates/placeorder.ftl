@@ -68,7 +68,7 @@
                             <label for="orderNo">Order ID</label>
                         </div>
                         <input type="hidden" name="orderNo" value="${orderid}"" ></input>
-                        <input type="hidden" name="shopNo" value="${shopID}"" ></input>
+                        <input type="hidden" name="shopNo" value="${shopNo}"" ></input>
                         <input type="hidden" id="totalvalue" name="totalvalue"></input>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
@@ -90,6 +90,12 @@
                         <div class="input-field col s6">
                             <i class="material-icons prefix">business</i>
                             <input id="City" name="City" type="text" class="validate">
+                            <select>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+                            </select>
                             <label for="City">City</label>
                         </div>
 
@@ -116,14 +122,6 @@
                             <input id="datepicker" name="date"  type="date" class="validate">
 
                         </div>
-
-                        <#--<div class="input-field col s6">-->
-
-                            <#--Delivery Date <i class="material-icons prefix">today</i>-->
-                            <#--<input id="datepicker" name="date"  type="date" class="validate">-->
-
-                        <#--</div>-->
-
 
                         <div class="input-field col s6">
                             Delivery Time <i class="material-icons prefix">av_timer</i>

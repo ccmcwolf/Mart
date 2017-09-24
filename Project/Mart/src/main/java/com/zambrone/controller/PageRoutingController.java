@@ -177,10 +177,10 @@ public class PageRoutingController {
     OrderDAO orderDAO;
 
     @ResponseBody
-    @GetMapping(path = "/allorders")
+    @GetMapping(path = "/testdata")
     public String countorders() {
 
-        return ""+orderDAO.getTotalNumberOfOrdersAll();
+        return ""+orderDAO.getActiveOrdersByShopId(10,1);
     }
 
     @GetMapping(path = "/fileupload")

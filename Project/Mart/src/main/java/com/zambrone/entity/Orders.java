@@ -1,21 +1,21 @@
 package com.zambrone.entity;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
 /**
- * Created by Chamith on 17/09/2017.
+ * Created by Chamith on 24/09/2017.
  */
 @Entity
+@ToString
 public class Orders {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "order_no")
     private Integer orderNo;
     private Double amount;
-    private String city;
+    private Integer cityId;
     private Double courierCharj;
     private Timestamp courierPaymentSettledDate;
     private String courierTrackingNo;
@@ -26,9 +26,9 @@ public class Orders {
     private String deliveryTelephoneNo;
     private Double delveryCost;
     private Double delveryVat;
-    private String district;
+    private Integer districtId;
     private Timestamp shopPaymentSettledDate;
-    private String province;
+    private Integer provinceId;
     private Double serviceCharg;
     private String specialRequest;
     private String statusCourier;
@@ -40,8 +40,15 @@ public class Orders {
     private Integer deliveryOptionid;
     private Integer shopNo;
     private Time deliveryTime;
+    private String status;
+    private String deliveryLocationLat;
+    private String deliveryLocationLong;
+    private String currentLocationLat;
+    private String currentLocationLong;
 
-
+    @Id
+    @Column(name = "order_no")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     public Integer getOrderNo() {
         return orderNo;
     }
@@ -61,13 +68,13 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "city")
-    public String getCity() {
-        return city;
+    @Column(name = "city_id")
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
     @Basic
@@ -171,13 +178,13 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "district")
-    public String getDistrict() {
-        return district;
+    @Column(name = "district_id")
+    public Integer getDistrictId() {
+        return districtId;
     }
 
-    public void setDistrict(String district) {
-        this.district = district;
+    public void setDistrictId(Integer districtId) {
+        this.districtId = districtId;
     }
 
     @Basic
@@ -191,13 +198,13 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "province")
-    public String getProvince() {
-        return province;
+    @Column(name = "province_id")
+    public Integer getProvinceId() {
+        return provinceId;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setProvinceId(Integer provinceId) {
+        this.provinceId = provinceId;
     }
 
     @Basic
@@ -310,6 +317,56 @@ public class Orders {
         this.deliveryTime = deliveryTime;
     }
 
+    @Basic
+    @Column(name = "status")
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Basic
+    @Column(name = "delivery_location_lat")
+    public String getDeliveryLocationLat() {
+        return deliveryLocationLat;
+    }
+
+    public void setDeliveryLocationLat(String deliveryLocationLat) {
+        this.deliveryLocationLat = deliveryLocationLat;
+    }
+
+    @Basic
+    @Column(name = "delivery_location_long")
+    public String getDeliveryLocationLong() {
+        return deliveryLocationLong;
+    }
+
+    public void setDeliveryLocationLong(String deliveryLocationLong) {
+        this.deliveryLocationLong = deliveryLocationLong;
+    }
+
+    @Basic
+    @Column(name = "current_location_lat")
+    public String getCurrentLocationLat() {
+        return currentLocationLat;
+    }
+
+    public void setCurrentLocationLat(String currentLocationLat) {
+        this.currentLocationLat = currentLocationLat;
+    }
+
+    @Basic
+    @Column(name = "current_location_long")
+    public String getCurrentLocationLong() {
+        return currentLocationLong;
+    }
+
+    public void setCurrentLocationLong(String currentLocationLong) {
+        this.currentLocationLong = currentLocationLong;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -319,7 +376,7 @@ public class Orders {
 
         if (orderNo != null ? !orderNo.equals(orders.orderNo) : orders.orderNo != null) return false;
         if (amount != null ? !amount.equals(orders.amount) : orders.amount != null) return false;
-        if (city != null ? !city.equals(orders.city) : orders.city != null) return false;
+        if (cityId != null ? !cityId.equals(orders.cityId) : orders.cityId != null) return false;
         if (courierCharj != null ? !courierCharj.equals(orders.courierCharj) : orders.courierCharj != null)
             return false;
         if (courierPaymentSettledDate != null ? !courierPaymentSettledDate.equals(orders.courierPaymentSettledDate) : orders.courierPaymentSettledDate != null)
@@ -337,10 +394,10 @@ public class Orders {
             return false;
         if (delveryCost != null ? !delveryCost.equals(orders.delveryCost) : orders.delveryCost != null) return false;
         if (delveryVat != null ? !delveryVat.equals(orders.delveryVat) : orders.delveryVat != null) return false;
-        if (district != null ? !district.equals(orders.district) : orders.district != null) return false;
+        if (districtId != null ? !districtId.equals(orders.districtId) : orders.districtId != null) return false;
         if (shopPaymentSettledDate != null ? !shopPaymentSettledDate.equals(orders.shopPaymentSettledDate) : orders.shopPaymentSettledDate != null)
             return false;
-        if (province != null ? !province.equals(orders.province) : orders.province != null) return false;
+        if (provinceId != null ? !provinceId.equals(orders.provinceId) : orders.provinceId != null) return false;
         if (serviceCharg != null ? !serviceCharg.equals(orders.serviceCharg) : orders.serviceCharg != null)
             return false;
         if (specialRequest != null ? !specialRequest.equals(orders.specialRequest) : orders.specialRequest != null)
@@ -359,6 +416,15 @@ public class Orders {
         if (shopNo != null ? !shopNo.equals(orders.shopNo) : orders.shopNo != null) return false;
         if (deliveryTime != null ? !deliveryTime.equals(orders.deliveryTime) : orders.deliveryTime != null)
             return false;
+        if (status != null ? !status.equals(orders.status) : orders.status != null) return false;
+        if (deliveryLocationLat != null ? !deliveryLocationLat.equals(orders.deliveryLocationLat) : orders.deliveryLocationLat != null)
+            return false;
+        if (deliveryLocationLong != null ? !deliveryLocationLong.equals(orders.deliveryLocationLong) : orders.deliveryLocationLong != null)
+            return false;
+        if (currentLocationLat != null ? !currentLocationLat.equals(orders.currentLocationLat) : orders.currentLocationLat != null)
+            return false;
+        if (currentLocationLong != null ? !currentLocationLong.equals(orders.currentLocationLong) : orders.currentLocationLong != null)
+            return false;
 
         return true;
     }
@@ -367,7 +433,7 @@ public class Orders {
     public int hashCode() {
         int result = orderNo != null ? orderNo.hashCode() : 0;
         result = 31 * result + (amount != null ? amount.hashCode() : 0);
-        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (cityId != null ? cityId.hashCode() : 0);
         result = 31 * result + (courierCharj != null ? courierCharj.hashCode() : 0);
         result = 31 * result + (courierPaymentSettledDate != null ? courierPaymentSettledDate.hashCode() : 0);
         result = 31 * result + (courierTrackingNo != null ? courierTrackingNo.hashCode() : 0);
@@ -378,9 +444,9 @@ public class Orders {
         result = 31 * result + (deliveryTelephoneNo != null ? deliveryTelephoneNo.hashCode() : 0);
         result = 31 * result + (delveryCost != null ? delveryCost.hashCode() : 0);
         result = 31 * result + (delveryVat != null ? delveryVat.hashCode() : 0);
-        result = 31 * result + (district != null ? district.hashCode() : 0);
+        result = 31 * result + (districtId != null ? districtId.hashCode() : 0);
         result = 31 * result + (shopPaymentSettledDate != null ? shopPaymentSettledDate.hashCode() : 0);
-        result = 31 * result + (province != null ? province.hashCode() : 0);
+        result = 31 * result + (provinceId != null ? provinceId.hashCode() : 0);
         result = 31 * result + (serviceCharg != null ? serviceCharg.hashCode() : 0);
         result = 31 * result + (specialRequest != null ? specialRequest.hashCode() : 0);
         result = 31 * result + (statusCourier != null ? statusCourier.hashCode() : 0);
@@ -392,6 +458,11 @@ public class Orders {
         result = 31 * result + (deliveryOptionid != null ? deliveryOptionid.hashCode() : 0);
         result = 31 * result + (shopNo != null ? shopNo.hashCode() : 0);
         result = 31 * result + (deliveryTime != null ? deliveryTime.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (deliveryLocationLat != null ? deliveryLocationLat.hashCode() : 0);
+        result = 31 * result + (deliveryLocationLong != null ? deliveryLocationLong.hashCode() : 0);
+        result = 31 * result + (currentLocationLat != null ? currentLocationLat.hashCode() : 0);
+        result = 31 * result + (currentLocationLong != null ? currentLocationLong.hashCode() : 0);
         return result;
     }
 }

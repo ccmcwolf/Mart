@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +80,91 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrder(int orderId) throws HibernateException, DataAccessException {
        orderDAO.removeOrder(orderId);
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfOrdersAll() throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfOrdersByDate(String date) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfActiveOrders() throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfCompleted() throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getNumberOfOrdersByShopId(int shopId) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getNumberOfOrdersByShopIdByDate(int shopId, String date) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getNumberOfOrdersByShopIdByWeek(int shopId, int weekNo) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getNumberOfOrdersByShopIdByMonth(int shopId, int monthNo) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getNumberOfOrdersByShopIdByYear(int shopId, int monthNo) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfActiveOrdersByShopId(int shopId) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public BigInteger getTotalNumberOfCompletedByShopId(int shopId) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getAllOrders(int limit) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getOrdersByDate(int limit, String date) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getOrdersBetweenTwoDays(int limit, String startDate, String endDate) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getOrdersUnDeliveredOrdersByArea(int limit, String startDate, String endDate) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getActiveOrdersByShopId(int limit, int shopId) throws DataAccessException {
+        return null;
+    }
+
+    @Override
+    public List<Orders> getCompletedOrderByShopId(int limit, int shopId) throws DataAccessException {
+        return null;
     }
 
 
