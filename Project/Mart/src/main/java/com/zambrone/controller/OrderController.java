@@ -132,16 +132,8 @@ public class OrderController {
             orderService.saveOrderDetails(orders.getOrderNo(), productOrders);
             modelAndView.addObject("result", "Sucess");
         }
-        //below else-block for the purpose of deleting the created order id if the order is not placed by the customer user
-        //
-//        else
-//
-//        {
-//             orderService.deleteOrder(orders.getOrderNo());
-//           //System.out.println("product orders is null");
-//        }
 
-        Integer shopID = orderService.getShopIDbyOrderNo(orders.getShopNo());
+        Integer shopID = orderService.getShopIDbyOrderNo(orders.getOrderNo());
         orders.setShopNo(shopID);
         orderService.updateOrder(orders);
         modelAndView.addObject("shopID",shopID);

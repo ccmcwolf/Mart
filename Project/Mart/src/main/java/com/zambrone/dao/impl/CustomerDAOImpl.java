@@ -2,6 +2,7 @@ package com.zambrone.dao.impl;
 
 import com.zambrone.dao.CustomerDAO;
 import com.zambrone.entity.Customer;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -16,12 +17,11 @@ import java.util.List;
  * Created by Chamith on 04/07/2017.
  */
 @Repository
-public class CustomerDAOImpl implements CustomerDAO{
+public class CustomerDAOImpl implements CustomerDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
     /**
-     *
      * @return
      */
     private SessionFactory getSessionFactory() {
@@ -29,7 +29,6 @@ public class CustomerDAOImpl implements CustomerDAO{
     }
 
     /**
-     *
      * @return
      */
     private Session getSessionFactoryCurrentSession() {
@@ -37,8 +36,12 @@ public class CustomerDAOImpl implements CustomerDAO{
     }
 
     @Override
-    public void registerNewCustomer(Customer customer) throws DataAccessException {
-        getSessionFactoryCurrentSession().save(customer);
+    public void registerNewCustomer(Customer customer) {
+        try {
+            getSessionFactoryCurrentSession().saveOrUpdate(customer);
+        }catch (HibernateException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
@@ -72,6 +75,14 @@ public class CustomerDAOImpl implements CustomerDAO{
         return (Customer) getSessionFactoryCurrentSession()
                 .createQuery("from Customer c where c.mobileNo=:pn")
                 .setParameter("pn", phone)
+                .uniqueResult();
+    }
+
+    @Override
+    public Customer getCustomerByEmail(String email) throws DataAccessException {
+        return (Customer) getSessionFactoryCurrentSession()
+                .createQuery("from Customer c where c.mobileNo=:email")
+                .setParameter("email", email)
                 .uniqueResult();
     }
 

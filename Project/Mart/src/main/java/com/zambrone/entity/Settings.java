@@ -3,7 +3,7 @@ package com.zambrone.entity;
 import javax.persistence.*;
 
 /**
- * Created by Chamith on 04/07/2017.
+ * Created by Chamith on 24/09/2017.
  */
 @Entity
 public class Settings {
@@ -12,8 +12,8 @@ public class Settings {
     private Double vat;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "settings_id")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     public Integer getSettingsId() {
         return settingsId;
     }

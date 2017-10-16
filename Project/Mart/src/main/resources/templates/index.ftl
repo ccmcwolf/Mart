@@ -22,11 +22,111 @@
         <h4 class="white-text">Deliciousness</h4>
         <p class="lighten-2 white-text">Ordering food from your favourite restaurant</p>
         <a class="btn waves-effect red white-text" href="login.html">Signup Now</a>
+
     </div>
     <div class="carousel-item green white-text" href="#one!">
         <img src="https://lorempixel.com/800/300/food/3">
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <div class="row">
+                <form id="customerform" class="col s12" action="/customer/add" method="GET">
+                    <div class="row">
+
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person_pin</i>
+                            <input id="customerName" name="customerName" type="text" class="validate" required>
+                            <label for="customerName">Customer Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person_pin</i>
+                            <input id="customer_address" name="customer_address" type="text" class="validate">
+                            <label for="customer_address">Address</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">email</i>
+                            <input id="customerEmail" name="customerEmail" type="email" class="validate" required>
+                            <label for="customerEmail">Email</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="Category" type="text" class="validate">
+                            <label for="Category">Category</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">business</i>
+                            <input id="city" name="city" type="text" class="validate" required>
+                            <label for="city">City</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">business</i>
+                            <input id="district" name="district" type="tel" class="validate">
+                            <label for="district">District</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            <input id="mobileNo" name="mobileNo" type="number" minlength="10" maxlength="10"
+                                   class="validate" required>
+                            <label for="mobileNo">Mobile Number</label>
+                        </div>
+
+                        <div class="file-field input-field col s6">
+                            <div class="btn">
+                                <span>File</span>
+                                <input name="proimage" type="file" accept=".jpg">
+                            </div>
+
+                            <div class="file-path-wrapper">
+                                <input id="lblpro" class="file-path validate" type="text">
+                                <label for="lblpro">Select Profile Picture</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="spinneritem" class="row center">
+                        <div align="center" id="spinmap" class="preloader-wrapper active">
+                            <div class="spinner-layer spinner-red-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row modal-footer">
+
+                        <div class="input-field col s12 center-align">
+                            <button class="btn waves-effect waves-light " type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
 
     </div>
+
     <div class="carousel-item amber white-text" href="#two!">
         <h2>Second Panel</h2>
         <p class="white-text">This is your second panel</p>
@@ -62,7 +162,8 @@
                     <h2 class="center light-blue-text"><img src="http://demo.yoyumm.com/images/info_icon_2.svg"></h2>
                     <h5 class="center">2. Choose</h5>
 
-                    <p class="light center">Select a best fit and appropriate restaurant which fulfills your binge and taste buds.</p>
+                    <p class="light center">Select a best fit and appropriate restaurant which fulfills your binge and
+                        taste buds.</p>
                 </div>
             </div>
             <div class="col s12 m3">
@@ -70,7 +171,8 @@
                     <h2 class="center light-blue-text"><img src="http://demo.yoyumm.com/images/info_icon_3.svg"></h2>
                     <h5 class="center">3. Pay</h5>
 
-                    <p class="light center">Make payment using instant and secured online process or cash on delivery.</p>
+                    <p class="light center">Make payment using instant and secured online process or cash on
+                        delivery.</p>
                 </div>
             </div>
             <div class="col s12 m3">
@@ -92,8 +194,23 @@
 <script>
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $(document).ready(function () {
+        $('#modal1').modal('open');
         $('.parallax').parallax();
     });
+
+    $('.modal').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: 0.3, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '4%', // Starting top style attribute
+                endingTop: '10%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    console.log(modal, trigger);
+                }
+
+            }
+    );
 </script>
 </body>
 </html>

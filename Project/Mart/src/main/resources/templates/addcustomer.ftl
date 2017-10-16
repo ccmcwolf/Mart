@@ -16,30 +16,7 @@
 
 <body>
 
-<nav class="grey darken-4" role="navigation">
-    <div class="nav-wrapper container">
-
-        <a id="logo-container" href="#" class="brand-logo">Mart Online</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-        </ul>
-
-        <ul id="nav-mobile" class="side-nav">
-            <li><a class="text-lighten-3" href="shops.html">Explore Shops</a></li>
-            <li><a class="text-lighten-3" href="products.html">Explore Foods</a></li>
-            <li><a class="text-lighten-3" href="merchent.html">Merchant Area</a></li>
-            <li><a class="text-lighten-3" href="admin.html">Admin Area</a></li>
-            <li><a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        <br><br>
-
-    </div>
-</nav>
+<#include "navbar.ftl">
 <div class="col s12 grey darken-4">
     <div class="container col s12">
         <a href="#!" class="breadcrumb">Customer</a>
@@ -80,15 +57,11 @@
 
         </div>
         <div class="row">
-            <form id="customerform" class="col s12" enctype="multipart/form-data">
+            <form id="customerform" class="col s12" action="/customer/add" method="GET">
                 <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="customerId" name="customerId" type="text" class="validate" disabled>
-                        <label for="customerId">Customer ID</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">store</i>
+
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_pin</i>
                         <input id="customerName" name="customerName" type="text" class="validate" required>
                         <label for="customerName">Customer Name</label>
                     </div>
@@ -99,7 +72,6 @@
                         <input id="customer_address" name="customer_address" type="text" class="validate">
                         <label for="customer_address">Address</label>
                     </div>
-
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
@@ -177,7 +149,6 @@
         </div>
 
 
-
     </div>
 </div>
 <#include "footer.ftl">
@@ -188,80 +159,81 @@
 <script type="text/javascript" src="<@spring.url '/js/jquery.validate.js'/>"></script>
 <script>
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("#spinneritem").hide();
     });
 
     $('.button-collapse').sideNav({
-            menuWidth: 300, // Default is 300
-            edge: 'right', // Choose the horizontal origin
-            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            draggable: true // Choose whether you can drag to open on touch screens
-        }
-);
-
-var urlv = "/customer/add"; // the script where you handle the form input.
-
-$('#customerform').validate({
-//        rules: {
-//            field: {
-//                required: true,
-//                minlength: 3
-//            }
-//        }
-    errorElement: "div",
-    errorPlacement: function (error, element) {
-        var placement = $(element).data('error');
-        if (placement) {
-            $(placement).append(error)
-        } else {
-            error.insertAfter(element);
-        }
-    },
-    submitHandler: function (form) {
-
-        event.preventDefault();
-
-        // Get form
-        var form = $('#customerform')[0];
-
-        // Create an FormData object
-        var data = new FormData(form);
-
-        // If you want to add an extra field for the FormData
-        data.append("CustomField", "This is some extra data, testing");
-
-        // disabled the submit button
-        $("#customerform").prop("disabled", true);
-        $("#spinneritem").show();
-
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: urlv,
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (response) {
-                if (response.status == "SUCCESS") {
-                    Materialize.toast(response.status, 4000);
-                    $("#spinneritem").hide();
-                    $("#customerform")[0].reset();
-                } else {
-                    $("#spinneritem").hide();
-                    Materialize.toast(response.status, 4000);
-
-                }
-            },
-            error: function (e) {
-                Materialize.toast("Error", 4000);
+                menuWidth: 300, // Default is 300
+                edge: 'right', // Choose the horizontal origin
+                closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                draggable: true // Choose whether you can drag to open on touch screens
             }
-        });
-    }
-});
+    );
+
+    //var urlv = "/customer/add"; // the script where you handle the form input.
+
+    //$('#customerform').validate({
+    //        rules: {
+    //            field: {
+    //                required: true,
+    //                minlength: 3
+    //            }
+    //        }
+    //    errorElement: "div",
+    //    errorPlacement: function (error, element) {
+    //        var placement = $(element).data('error');
+    //        if (placement) {
+    //            $(placement).append(error)
+    //        } else {
+    //            error.insertAfter(element);
+    //        }
+    //    }
+    //    ,
+    //    submitHandler: function (form) {
+    //
+    //        event.preventDefault();
+    //
+    //        // Get form
+    //        var form = $('#customerform')[0];
+    //
+    //        // Create an FormData object
+    //        var data = new FormData(form);
+    //
+    //        // If you want to add an extra field for the FormData
+    //        data.append("CustomField", "This is some extra data, testing");
+    //
+    //        // disabled the submit button
+    //        $("#customerform").prop("disabled", true);
+    //        $("#spinneritem").show();
+    //
+    //
+    //        $.ajax({
+    //            type: "GET",
+    //            enctype: 'multipart/form-data',
+    //            url: urlv,
+    //            data: data,
+    //            processData: false,
+    //            contentType: false,
+    //            cache: false,
+    //            timeout: 600000,
+    //            success: function (response) {
+    //                if (response.status == "SUCCESS") {
+    //                    Materialize.toast(response.status, 4000);
+    //                    $("#spinneritem").hide();
+    //                    $("#customerform")[0].reset();
+    //                } else {
+    //                    $("#spinneritem").hide();
+    //                    Materialize.toast(response.status, 4000);
+    //
+    //                }
+    //            },
+    //            error: function (e) {
+    //                Materialize.toast("Error", 4000);
+    //            }
+    //        });
+    //}
+    //});
 
 
 </script>

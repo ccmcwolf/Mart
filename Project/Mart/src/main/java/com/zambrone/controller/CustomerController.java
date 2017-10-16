@@ -49,47 +49,48 @@ public class CustomerController {
     }
 
     //save new customer
-    @RequestMapping(value = "add", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public @ResponseBody
-    JsonResponse addCustomer(@Valid @ModelAttribute(value = "customer") Customer customer, @RequestParam(value = "proimage") MultipartFile file, BindingResult result) {
+    JsonResponse addCustomer(@Valid @ModelAttribute(value = "customer") Customer customer, BindingResult result) {
+    //JsonResponse addCustomer(@Valid @ModelAttribute(value = "customer") Customer customer, @RequestParam(value = "proimage") MultipartFile file, BindingResult result) {
 
-        System.out.println("Content file part " + file.getName());
+        //System.out.println("Content file part " + file.getName());
         JsonResponse res = new JsonResponse();
 
-        String fileid = UUID.randomUUID().toString();
-        if (!result.hasErrors()) {
-            if (!file.isEmpty()) {
-                try {
-                    ObjectMetadata objectMetadata = new ObjectMetadata();
-                    objectMetadata.setContentType(file.getContentType());
+//        String fileid = UUID.randomUUID().toString();
+//        if (!result.hasErrors()) {
+//            if (!file.isEmpty()) {
+//                try {
+//                    ObjectMetadata objectMetadata = new ObjectMetadata();
+//                    objectMetadata.setContentType(file.getContentType());
+//
+//                    //save image to profile image s3 bucket
+//                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, file.getInputStream(), objectMetadata)
+//                            .withCannedAcl(CannedAccessControlList.PublicRead));
+//                    customer.setImagePath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
+//                    customerService.registerNewCustomer(customer);
 
-                    //save image to profile image s3 bucket
-                    amazonS3Template.getAmazonS3Client().putObject(new PutObjectRequest(bucketName, fileid, file.getInputStream(), objectMetadata)
-                            .withCannedAcl(CannedAccessControlList.PublicRead));
-                    customer.setImagePath("https://s3-ap-southeast-1.amazonaws.com/martonline/" + fileid);
-                    customerService.registerNewCustomer(customer);
-                    res.setStatus("SUCCESS");
-                    res.setResult("successfully uploaded");
-                    System.out.println("Customer " + customer);
+//                    res.setResult("successfully uploaded");
+//                    System.out.println("Customer " + customer);
 
 
-                } catch (Exception e) {
-
-                    res.setStatus("FAIL");
-                    res.setResult("Data Not Submitted");
-                    System.out.println("Submission errors" + result.getFieldError());
-                }
-            } else {
+//                } catch (Exception e) {
+//
+//                    res.setStatus("FAIL");
+//                    res.setResult("Data Not Submitted");
+//                    System.out.println("Submission errors" + result.getFieldError());
+//                }
+//            } else {
 
                 customerService.registerNewCustomer(customer);
                 System.out.println("Customer " + customer);
                 res.setStatus("SUCCESS");
-            }
-        } else {
-            res.setStatus("FAIL");
-            res.setResult("Data Not Submitted");
-            System.out.println("Submission errors" + result.getFieldError());
-        }
+//            }
+//        } else {
+//            res.setStatus("FAIL");
+//            res.setResult("Data Not Submitted");
+//            System.out.println("Submission errors" + result.getFieldError());
+//        }
 
 
         return res;

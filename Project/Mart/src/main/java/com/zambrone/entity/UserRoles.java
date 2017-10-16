@@ -3,18 +3,18 @@ package com.zambrone.entity;
 import javax.persistence.*;
 
 /**
- * Created by Chamith on 21/09/2017.
+ * Created by Chamith on 24/09/2017.
  */
 @Entity
 @Table(name = "user_roles", schema = "mart", catalog = "")
 public class UserRoles {
-    @Id
-    @Column(name = "user_role_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer userRoleId;
     private String username;
     private String role;
 
+    @Id
+    @Column(name = "user_role_id")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     public Integer getUserRoleId() {
         return userRoleId;
     }
@@ -63,14 +63,5 @@ public class UserRoles {
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRoles{" +
-                "userRoleId=" + userRoleId +
-                ", username='" + username + '\'' +
-                ", role='" + role + '\'' +
-                '}';
     }
 }

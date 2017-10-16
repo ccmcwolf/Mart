@@ -46,6 +46,7 @@
         <h4 class="white-text">Delivering</h4>
         <h4 class="white-text">Deliciousness</h4>
         <p class="lighten-2 white-text">Ordering food from your favourite restaurant</p>
+        <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
         <a class="btn waves-effect red white-text" href="merchent.html">Signup Now</a>
     </div>
     <div class="carousel-item green white-text" href="#one!">
@@ -61,6 +62,7 @@
         <p class="white-text">This is your third panel</p>
     </div>
 </div>
+
 <div class="container">
     <div class="section">
         <h2 class="black-text center">How It Works</h2>
@@ -118,6 +120,18 @@
                     <li><a class="grey-text text-lighten-3" href="#!">Admin Area</a></li>
                 </ul>
             </div>
+
+        </div>
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+
+<p>Hellow hellow</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
     <div class="footer-copyright">
@@ -132,8 +146,24 @@
 <script>
     $('.carousel.carousel-slider').carousel({fullWidth: true});
     $(document).ready(function () {
+        $('#modal1').modal('open');
         $('.parallax').parallax();
     });
+
+    $('.modal').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+            startingTop: '4%', // Starting top style attribute
+            endingTop: '10%', // Ending top style attribute
+            ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                console.log(modal, trigger);
+            },
+
+        }
+    );
+
 </script>
 </body>
 </html>

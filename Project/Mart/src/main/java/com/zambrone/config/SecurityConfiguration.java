@@ -1,6 +1,6 @@
 package com.zambrone.config;
 
-import org.apache.tomcat.jdbc.pool.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.filter.DelegatingFilterProxy;
 
 /**
@@ -32,11 +33,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
-
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http.authorizeRequests()
                 .antMatchers("/css/*").permitAll()
                 .antMatchers("/img/*").permitAll()
@@ -47,11 +48,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/shop/explore").permitAll()
                 .antMatchers("/place").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/admin/addcourier").hasRole("ADMIN")
-                .antMatchers("/addcustomer").hasRole("ADMIN")
-                .antMatchers("/admin/addshop").hasRole("ADMIN")
+                     .antMatchers("/admin/addshop").hasRole("ADMIN")
                 .antMatchers("/order/update").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/customer/addcustomer").permitAll()
                 .antMatchers("/shop/add").hasRole("ADMIN")
                 .antMatchers("/shop/add").permitAll()
+                .antMatchers("/customer/add").hasAnyRole("ADMIN","SELLER", "DELIVERY","USER")
                 .antMatchers("/seller").hasAnyRole("SELLER", "ADMIN")
                 .antMatchers("/delivery").hasAnyRole("DELIVERY", "ADMIN")
                 .antMatchers("/order/updateorder").hasAnyRole("USER", "ADMIN","SELLER")

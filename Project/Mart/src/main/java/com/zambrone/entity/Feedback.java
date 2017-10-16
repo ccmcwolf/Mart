@@ -3,7 +3,7 @@ package com.zambrone.entity;
 import javax.persistence.*;
 
 /**
- * Created by Chamith on 04/07/2017.
+ * Created by Chamith on 24/09/2017.
  */
 @Entity
 public class Feedback {

@@ -62,6 +62,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer getCustomerByEmail(String email) throws DataAccessException {
+        return getCustomerDAO().getCustomerByEmail(email);
+    }
+
+    @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = false, isolation = Isolation.READ_COMMITTED)
     public void updateCustomer(Customer customer) throws DataAccessException {
         getCustomerDAO().updateCustomer(customer);

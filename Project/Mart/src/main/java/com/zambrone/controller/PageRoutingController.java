@@ -2,8 +2,10 @@ package com.zambrone.controller;
 
 import com.zambrone.dao.OrderDAO;
 import com.zambrone.entity.Category;
+import com.zambrone.entity.Customer;
 import com.zambrone.entity.Shop;
 import com.zambrone.service.CategoryService;
+import com.zambrone.service.CustomerService;
 import com.zambrone.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
@@ -31,6 +33,9 @@ public class PageRoutingController {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    CustomerService customerService;
 
     @Autowired
     ShopService shopService;
@@ -66,7 +71,7 @@ public class PageRoutingController {
     }
 
 
-    @GetMapping(path = "/addcustomer")
+    @GetMapping(path = "/customer/addcustomer")
     public ModelAndView showaddCustomer() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
@@ -156,11 +161,33 @@ public class PageRoutingController {
 
     @GetMapping(path = "/")
     public ModelAndView showIndex() {
-
+        ModelAndView modelAndView = new ModelAndView("index");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
+        if (auth != null) {
+            boolean role_user = auth.getAuthorities().stream()
+                    .anyMatch(r -> r.getAuthority().equals("ROLE_USER"));
+            boolean role_seller = auth.getAuthorities().stream()
+                    .anyMatch(r -> r.getAuthority().equals("ROLE_SELLER"));
+            boolean role_admin = auth.getAuthorities().stream()
+                    .anyMatch(r -> r.getAuthority().equals("ROLE_ADMIN"));
 
-        ModelAndView modelAndView = new ModelAndView("index");
+            if (role_user == true) {
+                System.out.println("user" + auth.getName());
+                Customer customer = customerService.getCustomerByEmail(auth.getName());
+                String address = customer.getCustomerAddress();
+                if(address==null){
+                    modelAndView.addObject("details","empty");
+                }
+
+            }
+            if (role_seller == true) System.out.println("seller");
+            if (role_admin == true) System.out.println("admin");
+            System.out.println("went through the filter");
+
+        }
+
+
         if (name != null || name.equals(null))
             modelAndView.addObject("username", name);
 

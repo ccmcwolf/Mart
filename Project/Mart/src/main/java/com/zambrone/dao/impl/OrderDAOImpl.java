@@ -50,6 +50,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void saveOrder(Orders orders) throws DataAccessException {
+        orders.setShopNo(1);
         getSessionFactoryCurrentSession().save(orders);
     }
 
@@ -84,8 +85,9 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Integer getShopIDbyOrderNo(Integer orderNo) throws DataAccessException {
+        System.out.println("!!!!!!!!!!!!!!shit found "+orderNo);
 
-        List list = getSessionFactoryCurrentSession().createSQLQuery("SELECT shop_id FROM product WHERE product_id IN (SELECT product_id FROM product_order WHERE order_id = 157) ").list();
+        List list = getSessionFactoryCurrentSession().createSQLQuery("SELECT shop_id FROM product WHERE product_id IN (SELECT product_id FROM product_order WHERE order_id = "+orderNo+") ").list();
         if (!list.isEmpty()) {
             System.out.println("! shop found" + list.get(0));
             Integer shopId = (Integer) list.get(0);

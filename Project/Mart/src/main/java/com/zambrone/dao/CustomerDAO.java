@@ -15,6 +15,7 @@ public interface CustomerDAO {
      Customer getCustomerByName(String name) throws DataAccessException;
      Customer getCustomerByID(Integer id) throws DataAccessException;
      Customer getCustomerByPhone(String phone) throws DataAccessException;
+     Customer getCustomerByEmail(String email) throws DataAccessException;
      void updateCustomer(Customer customer) throws DataAccessException;
      void removeCustomer(Integer id) throws DataAccessException;
      List<Customer> getCustomerByType(String type) throws DataAccessException;

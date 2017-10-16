@@ -1,14 +1,11 @@
 package com.zambrone.entity;
 
-import lombok.ToString;
-
 import javax.persistence.*;
 
 /**
  * Created by Chamith on 24/09/2017.
  */
 @Entity
-@ToString
 public class Province {
     private Integer provinceId;
     private String provinceName;
